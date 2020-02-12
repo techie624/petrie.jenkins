@@ -1,0 +1,13 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2020-02-12 19:20:12.365 UTC</timestamp>
+  <md5sum>e35536f83a61e24352c3e19b42dcdc47</md5sum>
+  <fileName>Credential id=c10ba0ff-88c4-43a7-bfb7-6c04923f22e7 name=techie624/****** (github personal)</fileName>
+  <usages>
+    <entry>
+      <string>Test script</string>
+      <ranges>10</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>
