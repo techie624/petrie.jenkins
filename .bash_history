@@ -19,3 +19,12 @@ ls -larth
 cd deploy\ local\ gdm
 ls -larth
 git status
+cd
+ls -larth
+vi .bashrc
+source .bashrc
+ll
+ll
+cd workspace/
+ll
+ll
