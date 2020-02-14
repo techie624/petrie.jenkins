@@ -15,7 +15,6 @@ docker stop jenkins-node || true && docker rm jenkins-node || true
 
 #-----------------------------------------------------------------------------#
 
-
 docker run -dti \
 --name jenkins-node \
 -h jenkins-node \

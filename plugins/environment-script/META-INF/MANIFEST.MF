@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: malina
+Build-Jdk: 1.8.0_40
+Extension-Name: environment-script
+Implementation-Title: environment-script
+Implementation-Version: 1.2.5
+Group-Id: com.lookout.jenkins
+Short-Name: environment-script
+Long-Name: Environment Script Plugin
+Url: http://wiki.jenkins-ci.org/display/JENKINS/Environment+Script+Plu
+ gin
+Plugin-Version: 1.2.5
+Hudson-Version: 1.642.4
+Jenkins-Version: 1.642.4
+Plugin-Dependencies: matrix-project:1.6,ivy:1.26,multi-branch-project-
+ plugin:0.5.1
+Plugin-Developers: Jørgen P. Tjernø:jorgenpt:jorgen.tjerno@mylookout
+ .com,Dawid Malinowski:dawidmalina:dawidmalina@gmail.com
+

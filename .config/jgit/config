@@ -1,0 +1,3 @@
+[filesystem "jenkins-node|Oracle Corporation|1.8.0_242|/dev/sdc1"]
+	timestampResolution = 1001 microseconds
+	minRacyThreshold = 3788 microseconds
