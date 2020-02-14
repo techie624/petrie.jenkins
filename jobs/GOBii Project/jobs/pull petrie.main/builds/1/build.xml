@@ -4,22 +4,78 @@
     <hudson.model.CauseAction>
       <causeBag class="linked-hash-map">
         <entry>
+<<<<<<< HEAD
+          <hudson.model.Cause_-UserIdCause>
+            <userId>rlp243</userId>
+          </hudson.model.Cause_-UserIdCause>
+=======
           <hudson.model.Cause_-UserIdCause/>
+>>>>>>> ec49d95417308113165a499221371735e07f8eae
           <int>1</int>
         </entry>
       </causeBag>
     </hudson.model.CauseAction>
+<<<<<<< HEAD
+    <hudson.plugins.git.util.BuildData plugin="git@4.1.1">
+      <buildsByBranchName>
+        <entry>
+          <string>refs/remotes/origin/develop</string>
+          <hudson.plugins.git.util.Build>
+            <marked plugin="git-client@3.1.1">
+              <sha1>b4b1add9ae8208ad5c8381902bb5bd7a96a9dcc7</sha1>
+              <branches class="list">
+                <hudson.plugins.git.Branch>
+                  <sha1 reference="../../../sha1"/>
+                  <name>refs/remotes/origin/develop</name>
+                </hudson.plugins.git.Branch>
+              </branches>
+            </marked>
+            <revision reference="../marked"/>
+            <hudsonBuildNumber>1</hudsonBuildNumber>
+          </hudson.plugins.git.util.Build>
+        </entry>
+      </buildsByBranchName>
+      <lastBuild reference="../buildsByBranchName/entry/hudson.plugins.git.util.Build"/>
+      <remoteUrls>
+        <string>https://github.com/techie624/petrie.main.git</string>
+      </remoteUrls>
+    </hudson.plugins.git.util.BuildData>
+    <hudson.plugins.git.GitTagAction plugin="git@4.1.1">
+      <tags class="hudson.util.CopyOnWriteMap$Tree">
+        <entry>
+          <string>refs/remotes/origin/develop</string>
+          <list/>
+        </entry>
+      </tags>
+      <ws>/var/jenkins_home/workspace/GOBii Project/pull petrie.main</ws>
+    </hudson.plugins.git.GitTagAction>
+    <hudson.scm.SCMRevisionState_-None/>
+  </actions>
+  <queueId>1</queueId>
+  <timestamp>1581541881287</timestamp>
+  <startTime>1581541881302</startTime>
+  <result>SUCCESS</result>
+  <duration>43946</duration>
+=======
   </actions>
   <queueId>1</queueId>
   <timestamp>1581570919246</timestamp>
   <startTime>1581570919330</startTime>
   <result>FAILURE</result>
   <duration>26</duration>
+>>>>>>> ec49d95417308113165a499221371735e07f8eae
   <charset>UTF-8</charset>
   <keepLog>false</keepLog>
   <builtOn></builtOn>
   <workspace>/var/jenkins_home/workspace/GOBii Project/pull petrie.main</workspace>
   <hudsonVersion>2.204.2</hudsonVersion>
+<<<<<<< HEAD
+  <scm class="hudson.plugins.git.GitChangeLogParser" plugin="git@4.1.1">
+    <authorOrCommitter>false</authorOrCommitter>
+    <showEntireCommitSummaryInChanges>true</showEntireCommitSummaryInChanges>
+  </scm>
+=======
   <scm class="hudson.scm.NullChangeLogParser"/>
+>>>>>>> ec49d95417308113165a499221371735e07f8eae
   <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
 </build>

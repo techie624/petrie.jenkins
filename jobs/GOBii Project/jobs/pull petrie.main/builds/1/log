@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+Started by user [8mha:////4DmSwySpP9h9Zwz4zWA2N0lhMZuRaCsZvXwQEwedj6QhAAAAmB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgYe/dLi1CL9opwCIxNjANAtndTBAAAA[0mRoy Petrie
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/GOBii Project/pull petrie.main
+using credential c10ba0ff-88c4-43a7-bfb7-6c04923f22e7
+Cloning the remote Git repository
+Cloning repository https://github.com/techie624/petrie.main.git
+ > git init /var/jenkins_home/workspace/GOBii Project/pull petrie.main # timeout=10
+Fetching upstream changes from https://github.com/techie624/petrie.main.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials github personal
+ > git fetch --tags --progress -- https://github.com/techie624/petrie.main.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/techie624/petrie.main.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/techie624/petrie.main.git # timeout=10
+Fetching upstream changes from https://github.com/techie624/petrie.main.git
+using GIT_ASKPASS to set credentials github personal
+ > git fetch --tags --progress -- https://github.com/techie624/petrie.main.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision b4b1add9ae8208ad5c8381902bb5bd7a96a9dcc7 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b4b1add9ae8208ad5c8381902bb5bd7a96a9dcc7 # timeout=10
+Commit message: "moved petrie.jenkins into its own repo"
+First time build. Skipping changelog.
+Finished: SUCCESS
+=======
 Started by user unknown or anonymous
 Running as SYSTEM
 Building in workspace /var/jenkins_home/workspace/GOBii Project/pull petrie.main
@@ -19,3 +46,4 @@ java.lang.IllegalArgumentException: Null value not allowed as an environment var
 	at hudson.model.ResourceController.execute(ResourceController.java:97)
 	at hudson.model.Executor.run(Executor.java:427)
 Finished: FAILURE
+>>>>>>> ec49d95417308113165a499221371735e07f8eae

@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+lastCompletedBuild 1
+lastFailedBuild -1
+lastStableBuild 1
+lastSuccessfulBuild 1
+=======
 lastCompletedBuild 2
 lastFailedBuild 1
 lastStableBuild 2
 lastSuccessfulBuild 2
+>>>>>>> ec49d95417308113165a499221371735e07f8eae
 lastUnstableBuild -1
 lastUnsuccessfulBuild 1

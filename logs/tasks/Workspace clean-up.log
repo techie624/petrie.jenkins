@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+Started at Thu Feb 13 17:09:32 UTC 2020
+Checking GOBii Project » Deploy PedVer xvm3
+Checking GOBii Project » pull petrie.main
+Finished at Thu Feb 13 17:09:32 UTC 2020. 4ms
+=======
 Started at Fri Feb 14 02:24:18 UTC 2020
 Checking Project Petrie » Petrie Main Repos download
 Checking GOBii Project » deploy local gdm
 Checking GOBii Project » pull petrie.main
 Checking EBS Project » ebs-swarm
 Finished at Fri Feb 14 02:24:18 UTC 2020. 2ms
+>>>>>>> ec49d95417308113165a499221371735e07f8eae

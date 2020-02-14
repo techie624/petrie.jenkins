@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+ssh gadm@cbsugobiixvm03.biohpc.cornell.edu
+ssh-keygen -t rsa
+ssh-copy-id gadm@cbsugobiixvm03.biohpc.cornell.edu
+=======
 sudo vi /var/lib/Jenkins/config.xml
 ll
 ls -larth
@@ -28,3 +33,4 @@ ll
 cd workspace/
 ll
 ll
+>>>>>>> ec49d95417308113165a499221371735e07f8eae
