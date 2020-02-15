@@ -1,9 +1,0 @@
-Started by user [8mha:////4DmSwySpP9h9Zwz4zWA2N0lhMZuRaCsZvXwQEwedj6QhAAAAmB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgYe/dLi1CL9opwCIxNjANAtndTBAAAA[0mRoy Petrie
-Running as SYSTEM
-Building in workspace /var/jenkins_home/workspace/GOBii Project/Deploy PedVer xvm3
-[Deploy PedVer xvm3] $ /bin/sh -xe /tmp/jenkins7117509138035273512.sh
-+ ssh gadm@cbsugobii13.biohpc.cornell.edu bash /home/gadm/workspace/gobiimarkerapp/redeploy_pedver.sh
-Terminated
-Build was aborted
-Aborted by [8mha:////4DmSwySpP9h9Zwz4zWA2N0lhMZuRaCsZvXwQEwedj6QhAAAAmB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgYe/dLi1CL9opwCIxNjANAtndTBAAAA[0mRoy Petrie
-Finished: ABORTED

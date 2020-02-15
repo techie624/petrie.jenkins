@@ -1,2 +1,0 @@
-# petrie.jenkins
-jenkins build
