@@ -32,9 +32,9 @@ apt update && apt install vim tree htop -y
 "
 
 #-----------------------------------------------------------------------------#
+echo;
 
 echo "Please Copy the following line into localhost:8080"
+echo;
 
-docker exec jenkins-node bash -c "
-cat /var/jenkins_home/secrets/initialAdminPassword
-"
+cat secrets/initialAdminPassword
