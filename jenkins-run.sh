@@ -28,7 +28,7 @@ echo;
 ### Install vim
 
 docker exec -u root jenkins-node bash -c "
-apt update && apt install vim tree htop -y
+apt update && apt install vim tree htop openssh-server -y
 "
 
 #-----------------------------------------------------------------------------#

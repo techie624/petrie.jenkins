@@ -34,3 +34,6 @@ cd workspace/
 ll
 ll
 >>>>>>> ec49d95417308113165a499221371735e07f8eae
+cd
+apt install openssh-server
+sudo apt install openssh-server -y
