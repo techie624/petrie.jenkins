@@ -22,7 +22,7 @@ docker run -dti \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -p 8090:8080 \
 -p 50000:50000 \
-jenkins/jenkins:lts
+techie624/petrie.jenkins:v0.1
 echo;
 
 #-----------------------------------------------------------------------------#
@@ -30,23 +30,15 @@ echo;
 
 docker exec -u root jenkins-node bash -c "
 apt update && apt install vim tree htop sudo -y;
-apt-get update;
-apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y;
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -;
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-   $(lsb_release -cs) \
-   stable";
-apt-get update;
-apt-get install docker-ce docker-ce-cli containerd.io -y;
-echo 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
-usermod -aG docker jenkins
 "
+echo;
 
 #-----------------------------------------------------------------------------#
-echo;
 
-echo "Please Copy the following line into localhost:8080"
-echo;
+FILE="/var/jenkins_home/secrets/initialAdminPassword"
 
-cat /var/jenkins_home/secrets/initialAdminPassword
+if [[ -f "$FILE" ]]; then
+   echo "Please Copy the following line into localhost:8080"
+   cat /var/jenkins_home/secrets/initialAdminPassword
+   echo;
+fi
