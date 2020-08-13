@@ -1,8 +1,0 @@
-Started by user [8mha:////4KA15CcGPbpION+3msXm0OGM15XLlU+06YPovae+YpxuAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
-Running as SYSTEM
-Building in workspace /var/jenkins_home/workspace/Jay Show
-[Jay Show] $ /bin/sh -xe /tmp/jenkins6364275462410655874.sh
-+ sudo docker run -dti --name filebrowser -h filebrowser -v /data:/srv -v /home/rpetrie
-/tmp/jenkins6364275462410655874.sh: 2: /tmp/jenkins6364275462410655874.sh: sudo: not found
-Build step 'Execute shell' marked build as failure
-Finished: FAILURE
