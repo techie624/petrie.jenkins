@@ -34,11 +34,19 @@ apt update && apt install vim tree htop sudo -y;
 echo;
 
 #-----------------------------------------------------------------------------#
+### On initial setup display initialAdminPassword
 
+docker exec -u root jenkins-node bash -c '
 FILE="/var/jenkins_home/secrets/initialAdminPassword"
-
 if [[ -f "$FILE" ]]; then
    echo "Please Copy the following line into localhost:8080"
    cat /var/jenkins_home/secrets/initialAdminPassword
    echo;
-fi
+fi';
+echo;
+
+#-----------------------------------------------------------------------------#
+### Script completion
+
+echo "Jenkins Deployment script has completed! Good Bye."
+echo;
