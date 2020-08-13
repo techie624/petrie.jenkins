@@ -33,9 +33,13 @@ apt update && apt install vim tree htop sudo -y;
 apt-get update;
 apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y;
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -;
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/debian \
+   $(lsb_release -cs) \
+   stable";
 apt-get update;
 apt-get install docker-ce docker-ce-cli containerd.io -y;
-cat "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+echo 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 usermod -aG docker jenkins
 "
 
@@ -45,4 +49,4 @@ echo;
 echo "Please Copy the following line into localhost:8080"
 echo;
 
-cat secrets/initialAdminPassword
+cat /var/jenkins_home/secrets/initialAdminPassword
