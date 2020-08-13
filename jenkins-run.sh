@@ -19,7 +19,8 @@ docker run -dti \
 --name jenkins-node \
 -h jenkins-node \
 -v $pwd:/var/jenkins_home \
--p 8080:8080 \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-p 8090:8080 \
 -p 50000:50000 \
 jenkins/jenkins:lts
 echo;
@@ -28,7 +29,7 @@ echo;
 ### Install vim
 
 docker exec -u root jenkins-node bash -c "
-apt update && apt install vim tree htop openssh-server -y
+apt update && apt install vim tree htop -y
 "
 
 #-----------------------------------------------------------------------------#
