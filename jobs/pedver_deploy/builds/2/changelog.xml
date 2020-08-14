@@ -1,0 +1,10 @@
+commit 870b18d09a6467769cefa7eb388bb2277ee915b5
+tree eb03621edbd1224709fdd11dfe032a004e98677f
+parent 8c39a9219bbb42faa93eb91e5cd26cc6bce4587e
+author rlp243 <rlp243@cornell.edu> 2020-08-13 22:45:00 -0400
+committer rlp243 <rlp243@cornell.edu> 2020-08-13 22:45:00 -0400
+
+    jenkins handles the parameter passing
+
+
+:100644 100644 454669808f3d05bd1669f4b58f03fd89f901cc7a 180999316c895f5ca59138c7351c032d369e9f89 M	container_scripts/jenkins_deploy/pedver_deploy.sh

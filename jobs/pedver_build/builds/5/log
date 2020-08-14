@@ -1,0 +1,131 @@
+Started by an SCM change
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building in workspace /var/jenkins_home/workspace/pedver_build
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/pedver_build # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin1.url https://rlp243@bitbucket.org/gobiiproject/gobii.markerapp.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.markerapp.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.markerapp.git +refs/heads/*:refs/remotes/origin1/* # timeout=10
+Seen branch in repository origin/develop
+Seen branch in repository origin/master
+Seen branch in repository origin/release/2.2
+Seen branch in repository origin/release/2.2.2
+Seen branch in repository origin/standalone_develop
+Seen branch in repository origin1/bugfix/release2point2
+Seen branch in repository origin1/bugfix/release2point2-1
+Seen branch in repository origin1/bugfix/release2point2-2
+Seen branch in repository origin1/bugfix/release2point2-3
+Seen branch in repository origin1/bugfix/release2point2-4
+Seen branch in repository origin1/develop
+Seen branch in repository origin1/feature/C2-29
+Seen branch in repository origin1/feature/C2-29-avrTest
+Seen branch in repository origin1/feature/C2-31
+Seen branch in repository origin1/feature/C2-31-1
+Seen branch in repository origin1/feature/C2-32
+Seen branch in repository origin1/feature/C2-33
+Seen branch in repository origin1/feature/C2-34
+Seen branch in repository origin1/feature/C2-34-2
+Seen branch in repository origin1/feature/C2-35
+Seen branch in repository origin1/feature/C2-35-2
+Seen branch in repository origin1/feature/C2-37
+Seen branch in repository origin1/feature/C2-38
+Seen branch in repository origin1/feature/C2-39
+Seen branch in repository origin1/feature/C2-40
+Seen branch in repository origin1/feature/C2-41
+Seen branch in repository origin1/feature/C2-42
+Seen branch in repository origin1/feature/C2-42-1
+Seen branch in repository origin1/feature/C2-43
+Seen branch in repository origin1/feature/C2-44
+Seen branch in repository origin1/feature/C2-45
+Seen branch in repository origin1/feature/C2-47
+Seen branch in repository origin1/feature/C2-48
+Seen branch in repository origin1/feature/GDM-355
+Seen branch in repository origin1/feature/GDM-462
+Seen branch in repository origin1/feature/GDM-464
+Seen branch in repository origin1/feature/GDM-465
+Seen branch in repository origin1/feature/GDM-466
+Seen branch in repository origin1/feature/GDM-536
+Seen branch in repository origin1/feature/GDM-615
+Seen branch in repository origin1/feature/GDM-644
+Seen branch in repository origin1/feature/GDM-666
+Seen branch in repository origin1/feature/GDM-667
+Seen branch in repository origin1/feature/GDM-668
+Seen branch in repository origin1/feature/GDM-669
+Seen branch in repository origin1/feature/GDM-670
+Seen branch in repository origin1/feature/GDM-710
+Seen branch in repository origin1/feature/GDM-713
+Seen branch in repository origin1/feature/GDM-713-1
+Seen branch in repository origin1/feature/GDM-715
+Seen branch in repository origin1/feature/GDM-716
+Seen branch in repository origin1/feature/GDM-724
+Seen branch in repository origin1/feature/GDM-733
+Seen branch in repository origin1/feature/GDM-734
+Seen branch in repository origin1/feature/GDM-737
+Seen branch in repository origin1/feature/GDM-740
+Seen branch in repository origin1/feature/GDM-740-2
+Seen branch in repository origin1/feature/GDM-750
+Seen branch in repository origin1/feature/GDM-750-2
+Seen branch in repository origin1/feature/GDM-799
+Seen branch in repository origin1/feature/GDM-839
+Seen branch in repository origin1/feature/GE-151
+Seen branch in repository origin1/feature/GE-240
+Seen branch in repository origin1/feature/GE-270
+Seen branch in repository origin1/feature/GE-298
+Seen branch in repository origin1/feature/GE-301
+Seen branch in repository origin1/feature/GE-65
+Seen branch in repository origin1/feature/GE-90
+Seen branch in repository origin1/master
+Seen branch in repository origin1/release/2.2
+Seen branch in repository origin1/release/2.2.2
+Seen branch in repository origin1/vg249/READMEmd-1579806991142
+Seen 72 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 6aa814f4e2ce0356cbdc4a564aef476d019cc1aa (origin/release/2.2.2)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 6aa814f4e2ce0356cbdc4a564aef476d019cc1aa # timeout=10
+Commit message: "attempt to run"
+First time build. Skipping changelog.
+[pedver_build] $ /bin/sh -xe /tmp/jenkins939371306342570772.sh
++ pwd
+/var/jenkins_home/workspace/pedver_build
++ ls -larth
+total 120K
+drwxr-xr-x  4 jenkins jenkins 4.0K Aug 14 00:08 ..
+drwxr-xr-x  4 jenkins jenkins 4.0K Aug 14 00:10 container_scripts
+-rwxr-xr-x  1 jenkins jenkins  474 Aug 14 00:10 confidentiality.txt
+-rwxr-xr-x  1 jenkins jenkins 1.5K Aug 14 00:10 backup_docker_to_hub.sh
+-rwxr-xr-x  1 jenkins jenkins 3.0K Aug 14 00:10 backup_data_bundle.sh
+-rwxr-xr-x  1 jenkins jenkins 1002 Aug 14 00:10 backup_crontab_jobs.template
+-rwxr-xr-x  1 jenkins jenkins   16 Aug 14 00:10 .gitignore
+drwxr-xr-x  3 jenkins jenkins 4.0K Aug 14 00:10 hotfix
+-rwxr-xr-x  1 jenkins jenkins 4.8K Aug 14 00:10 gobiiconfig_wrapper.sh
+-rwxr-xr-x  1 jenkins jenkins 1.5K Aug 14 00:10 gadm_aliases
+drwxr-xr-x  6 jenkins jenkins 4.0K Aug 14 00:10 devops_files
+drwxr-xr-x  2 jenkins jenkins 4.0K Aug 14 00:10 utils
+-rwxr-xr-x  1 jenkins jenkins  25K Aug 14 00:10 the_gobii_ship.sh
+-rwxr-xr-x  1 jenkins jenkins 1.1K Aug 14 00:10 restore_data_bundle.sh
+-rwxr-xr-x  1 jenkins jenkins 5.0K Aug 14 00:10 readme.md
+drwxr-xr-x  2 jenkins jenkins 4.0K Aug 14 00:10 postgres_backup_scripts
+drwxr-xr-x  3 jenkins jenkins 4.0K Aug 14 00:10 params
+drwxr-xr-x  3 jenkins jenkins 4.0K Aug 14 00:10 logs
+-rwxr-xr-x  1 jenkins jenkins  911 Aug 14 00:10 install_cert.sh
+drwxr-xr-x  2 jenkins jenkins 4.0K Aug 14 00:10 icons
+drwxr-xr-x  8 jenkins jenkins 4.0K Aug 14 00:10 .git
+drwxr-xr-x 11 jenkins jenkins 4.0K Aug 14 00:10 .
+Finished: SUCCESS

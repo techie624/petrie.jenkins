@@ -7,7 +7,27 @@
 #-----------------------------------------------------------------------------#
 #@author: RLPetrie (rlp243@cornell.edu)
 
+#-----------------------------------------------------------------------------#
+### verify proper arguments are passed
+
+if [ $# -lt 2 ];
+  then
+    echo "No arguments supplied."
+    echo "Usage: bash <bash_script_name>.sh <NDD_PATH> <JENKINS_EXT_PORT>"
+    echo "/data directory is mounted which is normally a symlink which needs 
+    to be mounted for the symlink pointer"
+    exit 1
+fi
+
+#-----------------------------------------------------------------------------#
+### set present working directory (jenkins repo) as jenkins_home
+
 pwd="`pwd`" && echo $pwd
+
+#-----------------------------------------------------------------------------#
+
+NDD_PATH=$1
+JENKINS_EXT_PORT=$2
 
 #-----------------------------------------------------------------------------#
 
@@ -18,9 +38,11 @@ docker stop jenkins-node || true && docker rm jenkins-node || true
 docker run -dti \
 --name jenkins-node \
 -h jenkins-node \
+-v ${NDD_PATH}:${NDD_PATH} \
+-v /data:/data \
 -v $pwd:/var/jenkins_home \
 -v /var/run/docker.sock:/var/run/docker.sock \
--p 8090:8080 \
+-p $JENKINS_EXT_PORT:8080 \
 -p 50000:50000 \
 techie624/petrie.jenkins:v0.1
 echo;

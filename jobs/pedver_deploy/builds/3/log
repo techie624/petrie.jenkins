@@ -1,0 +1,165 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building in workspace /var/jenkins_home/workspace/pedver_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/pedver_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/release/2.2.2^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/release/2.2.2^{commit} # timeout=10
+Checking out Revision 870b18d09a6467769cefa7eb388bb2277ee915b5 (refs/remotes/origin/release/2.2.2)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 870b18d09a6467769cefa7eb388bb2277ee915b5 # timeout=10
+Commit message: "jenkins handles the parameter passing"
+ > git rev-list --no-walk 870b18d09a6467769cefa7eb388bb2277ee915b5 # timeout=10
+[pedver_deploy] $ /bin/sh -xe /tmp/jenkins8244820125048504154.sh
++ bash container_scripts/jenkins_deploy/pedver_deploy.sh
+Error response from daemon: network with name pedver_net already exists
+Error response from daemon: No such container: gobii-haplo-node
+Error response from daemon: No such container: gobii-portainer-node
+Error response from daemon: No such container: gobii-oc-node
+Error response from daemon: No such container: gobii-kdc-node
+Error response from daemon: endpoint with name gobii-web-node already exists in network pedver_net
+Error response from daemon: endpoint with name gobii-db-node already exists in network pedver_net
+Error response from daemon: endpoint with name gobii-compute-node already exists in network pedver_net
+Error response from daemon: No such container: portainer-sherpa-node
+Starting the pedver deployment...
+
+Error: No such container: gobiimarkerapp-worker
+Error: No such container: gobiimarkerapp
+Error: No such container: redis
+
+Error: No such container: gobii-pedver-web
+Error: No such container: gobii-pedver-worker
+Error: No such container: gobii-pedver-redis
+
+mkdir: cannot create directory ‘/data/pedver’: File exists
+mkdir: cannot create directory ‘/data/pedver/data’: File exists
+mkdir: cannot create directory ‘/data/pedver/instance’: File exists
+
+
+Error: Cannot perform an interactive login from a non TTY device
++ docker pull gadm01/gobii_pedver_redis:rel2.2.2
+rel2.2.2: Pulling from gadm01/gobii_pedver_redis
+bf5952930446: Already exists
+911b8422b695: Already exists
+093b947e0ade: Already exists
+5b1d5f59e382: Already exists
+7a5f59580c0b: Already exists
+f9c63997c980: Already exists
+Digest: sha256:6d245b7f3c582ca7aada0f458b6581b5af31f7abff92d9667591311c0b08ebfe
+Status: Downloaded newer image for gadm01/gobii_pedver_redis:rel2.2.2
+docker.io/gadm01/gobii_pedver_redis:rel2.2.2
++ docker pull gadm01/gobii_pedver_web:rel2.2.2
+rel2.2.2: Pulling from gadm01/gobii_pedver_web
+7595c8c21622: Already exists
+d13af8ca898f: Already exists
+70799171ddba: Already exists
+b6c12202c5ef: Already exists
+32b3954adbad: Pulling fs layer
+42b9f0f171d7: Pulling fs layer
+11a285e2e8dc: Pulling fs layer
+789f4740cc37: Pulling fs layer
+901cdd942cdb: Pulling fs layer
+3e0cc13c07f3: Pulling fs layer
+44687443ef14: Pulling fs layer
+40c89020da8e: Pulling fs layer
+901cdd942cdb: Waiting
+3e0cc13c07f3: Waiting
+789f4740cc37: Waiting
+44687443ef14: Waiting
+40c89020da8e: Waiting
+11a285e2e8dc: Verifying Checksum
+11a285e2e8dc: Download complete
+789f4740cc37: Verifying Checksum
+789f4740cc37: Download complete
+42b9f0f171d7: Verifying Checksum
+901cdd942cdb: Verifying Checksum
+901cdd942cdb: Download complete
+44687443ef14: Verifying Checksum
+44687443ef14: Download complete
+40c89020da8e: Verifying Checksum
+40c89020da8e: Download complete
+3e0cc13c07f3: Verifying Checksum
+3e0cc13c07f3: Download complete
+32b3954adbad: Verifying Checksum
+32b3954adbad: Download complete
+32b3954adbad: Pull complete
+42b9f0f171d7: Pull complete
+11a285e2e8dc: Pull complete
+789f4740cc37: Pull complete
+901cdd942cdb: Pull complete
+3e0cc13c07f3: Pull complete
+44687443ef14: Pull complete
+40c89020da8e: Pull complete
+Digest: sha256:1a27011d4dc4b2e04b06d44015ad035562b0f9ae336a732c778e8f182c7b9738
+Status: Downloaded newer image for gadm01/gobii_pedver_web:rel2.2.2
+docker.io/gadm01/gobii_pedver_web:rel2.2.2
++ docker pull gadm01/gobii_pedver_worker:rel2.2.2
+rel2.2.2: Pulling from gadm01/gobii_pedver_worker
+7595c8c21622: Already exists
+d13af8ca898f: Already exists
+70799171ddba: Already exists
+b6c12202c5ef: Already exists
+32b3954adbad: Already exists
+5bcf9cb9f2c3: Pulling fs layer
+b00982d279fe: Pulling fs layer
+032924006d7e: Pulling fs layer
+7108d4719259: Pulling fs layer
+7108d4719259: Waiting
+b00982d279fe: Verifying Checksum
+b00982d279fe: Download complete
+7108d4719259: Download complete
+032924006d7e: Verifying Checksum
+032924006d7e: Download complete
+5bcf9cb9f2c3: Verifying Checksum
+5bcf9cb9f2c3: Download complete
+5bcf9cb9f2c3: Pull complete
+b00982d279fe: Pull complete
+032924006d7e: Pull complete
+7108d4719259: Pull complete
+Digest: sha256:775eb372c3f237b7b432d9bf7fdd2518caa92875754d7f426963ee3f53e11d8d
+Status: Downloaded newer image for gadm01/gobii_pedver_worker:rel2.2.2
+docker.io/gadm01/gobii_pedver_worker:rel2.2.2
++ docker run -dti --name gobii-pedver-redis -h pedver-redis -p 6379:6379 --restart=always --network=pedver_net gadm01/gobii_pedver_redis:rel2.2.2
+5e17a7fbda87612bd452b7ceed969d234047b112cb0410d8441c966088d65033
++ echo
+
++ cp devops_files/pedver/config.ini /data/pedver/instance/
++ echo
+
++ SET_INSPECT='{{ .NetworkSettings.Networks.pedver_net.IPAddress }}'
+++ docker inspect '--format={{ .NetworkSettings.Networks.pedver_net.IPAddress }}' gobii-pedver-redis
++ REDIS_IP=172.19.0.5
++ echo
+
++ sed -ie 's~CELERY_BROKER_URL = redis://localhost:6379/0~CELERY_BROKER_URL = redis://172.19.0.5:6379/0~g' /data/pedver/instance/config.ini
++ sed -ie 's~CELERY_RESULT_BACKEND = redis://localhost:6379/0~CELERY_RESULT_BACKEND = redis://172.19.0.5:6379/0~g' /data/pedver/instance/config.ini
++ docker run -dti --name gobii-pedver-web -h pedver-web -p 7000:80 -v /data/pedver/data:/data/ -v /data/pedver/instance:/gobiimarkerapp/instance/ --restart=always --network=pedver_net gadm01/gobii_pedver_web:rel2.2.2
+bd55b693454448c37724eb967b1c32f3aede26eab7182b250cc0e138659c7a8a
++ echo
+
++ docker run -dti --name gobii-pedver-worker -h gobii-pedver-worker -v /data/pedver/data:/data/ -v /data/pedver/instance:/gobiimarkerapp/instance/ --restart=always --network=pedver_net gadm01/gobii_pedver_worker:rel2.2.2
+c41378d70ab44dbbb9228bf6cf3cde910b32cb5e18d7552ec215bdb61aad51da
++ echo
+
++ docker network connect bridge gobii-pedver-redis
++ docker network connect bridge gobii-pedver-web
++ docker network connect bridge gobii-pedver-worker
++ set +x
+PedVer Redeploy Completed
+
+Finished: SUCCESS

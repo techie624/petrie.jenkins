@@ -1,0 +1,213 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>This will deploy pedver containers</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.13">
+      <gitLabConnection></gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>PEDVER_DOCKER_NET</name>
+          <description>This is the docker network created and all existing containers are added to.</description>
+          <defaultValue>pedver_net</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PEDVER_RELEASE_TAG</name>
+          <description>Container tag for PedVer Images</description>
+          <defaultValue>rel2.2.2</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKERHUB_PEDVER_REPO_WEB</name>
+          <description>Dockerhub repo name (gobii-pedver-web)</description>
+          <defaultValue>gobii_pedver_web</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKERHUB_PEDVER_REPO_WORKER</name>
+          <description>Dockerhub repo name (gobii-pedver-worker)</description>
+          <defaultValue>gobii_pedver_worker</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKERHUB_PEDVER_REPO_REDIS</name>
+          <description>Dockerhub repo name (gobii-pedver-redis)</description>
+          <defaultValue>gobii_pedver_redis</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_PEDVER_WEB_NAME</name>
+          <description>Docker Engine Container name (gobii-pedver-web)</description>
+          <defaultValue>gobii-pedver-web</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_PEDVER_WORKER_NAME</name>
+          <description>Docker Engine Container name (gobii-pedver-worker)</description>
+          <defaultValue>gobii-pedver-worker</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_PEDVER_REDIS_NAME</name>
+          <description>Docker Engine Container name (gobii-pedver-redis)</description>
+          <defaultValue>gobii-pedver-redis</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>CONTAINER_PEDVER_NAME_WEB</name>
+          <description>Container host name inside of the container (pedver-web)</description>
+          <defaultValue>pedver-web</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>CONTAINER_PEDVER_NAME_WORKER</name>
+          <description>Container host name inside of the container (pedver-worker)</description>
+          <defaultValue>pedver-worker</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>CONTAINER_PEDVER_NAME_REDIS</name>
+          <description>Container host name inside of the container (pedver-redis)</description>
+          <defaultValue>pedver-redis</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PEDVER_DATA_VOLUME</name>
+          <description>This directory is mounted on the /data within the containers but sits under /data on the host.</description>
+          <defaultValue>/data/pedver</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PEDVER_WEB_PORT</name>
+          <description>External host port to access PedVer Web Interface</description>
+          <defaultValue>7000</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PEDVER_REDIS_PORT</name>
+          <description>Redis Port</description>
+          <defaultValue>6379</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>DOCKER_HUB_PASSWORD</name>
+          <description>Dockerhub password for GDM collaborator user gadmreader</description>
+          <defaultValue>{AQAAABAAAAAQZ+/d4Pa5jO19nE9BNv+Wa8yLJ+5cnhf/9JBbP4IKjgY=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_HAPLO_NAME</name>
+          <description>Docker Engine container name (gobii-haplo-node)</description>
+          <defaultValue>gobii-haplo-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_PORTAINER_NAME</name>
+          <description>Docker Engine container name (gobii-portainer-node)</description>
+          <defaultValue>gobii-portainer-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_OC_NAME</name>
+          <description>Docker Engine container name (gobii-oc-node)</description>
+          <defaultValue>gobii-oc-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_KDC_NAME</name>
+          <description>Docker Engine container name (gobii-kdc-node)</description>
+          <defaultValue>gobii-kdc-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_WEB_NAME</name>
+          <description>Docker Engine container name (gobii-web-node)</description>
+          <defaultValue>gobii-web-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_DB_NAME</name>
+          <description>Docker Engine container name (gobii-db-node)</description>
+          <defaultValue>gobii-db-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_COMPUTE_NAME</name>
+          <description>Docker Engine container name (gobii-compute-node)</description>
+          <defaultValue>gobii-compute-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_SHERPA_AGENT_NAME</name>
+          <description>Docker Engine container name (portainer-sherpa-node)</description>
+          <defaultValue>portainer-sherpa-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_HUB_USERNAME</name>
+          <description>Dockerhub user that owns the container images</description>
+          <defaultValue>gadm01</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DEPLOY_BRANCH</name>
+          <description>The gobii.deploy.bash branch to clone and deploy</description>
+          <defaultValue>develop</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@2.0.2">
+      <maxConcurrentPerNode>0</maxConcurrentPerNode>
+      <maxConcurrentTotal>0</maxConcurrentTotal>
+      <categories class="java.util.concurrent.CopyOnWriteArrayList"/>
+      <throttleEnabled>false</throttleEnabled>
+      <throttleOption>project</throttleOption>
+      <limitOneJobWithMatchingParams>false</limitOneJobWithMatchingParams>
+      <paramsToUseForLimit></paramsToUseForLimit>
+    </hudson.plugins.throttleconcurrents.ThrottleJobProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.3.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/$DEPLOY_BRANCH</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>bash container_scripts/jenkins_deploy/pedver_deploy.sh</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.38">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
+      <disableDeferredWipeout>false</disableDeferredWipeout>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+  </buildWrappers>
+</project>

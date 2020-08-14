@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: basil
+Build-Jdk: 1.8.0_242
+Extension-Name: throttle-concurrents
+Specification-Title: Plugin to throttle the number of concurrent build
+ s of a single job per node.
+Implementation-Title: throttle-concurrents
+Implementation-Version: 2.0.2
+Group-Id: org.jenkins-ci.plugins
+Short-Name: throttle-concurrents
+Long-Name: Jenkins Throttle Concurrent Builds Plug-in
+Url: https://github.com/jenkinsci/throttle-concurrent-builds-plugin
+Minimum-Java-Version: 1.8
+Plugin-Version: 2.0.2
+Hudson-Version: 2.60.3
+Jenkins-Version: 2.60.3
+Plugin-Dependencies: workflow-api:2.24,workflow-durable-task-step:2.13
+ ,workflow-step-api:2.13,workflow-support:2.16,matrix-project:1.11
+Plugin-Developers: Andrew Bayer:abayer:andrew.bayer@gmail.com,Basil Cr
+ ow:basil:me@basilcrow.com,Oleg Nenashev:oleg_nenashev:o.v.nenashev@gm
+ ail.com
+Plugin-License-Name: MIT license
+Plugin-ScmUrl: https://github.com/jenkinsci/throttle-concurrent-builds
+ -plugin
+

@@ -1,0 +1,94 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building in workspace /var/jenkins_home/workspace/pedver_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/pedver_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/release/2.2.2^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/release/2.2.2^{commit} # timeout=10
+Checking out Revision 870b18d09a6467769cefa7eb388bb2277ee915b5 (refs/remotes/origin/release/2.2.2)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 870b18d09a6467769cefa7eb388bb2277ee915b5 # timeout=10
+Commit message: "jenkins handles the parameter passing"
+ > git rev-list --no-walk 8c39a9219bbb42faa93eb91e5cd26cc6bce4587e # timeout=10
+[pedver_deploy] $ /bin/sh -xe /tmp/jenkins1789327750186410451.sh
++ bash container_scripts/jenkins_deploy/pedver_deploy.sh
+09e7ad01fec757b1f261faca9793b63161e8d1aa2ce616a2e38333d0c1e9308a
+Error response from daemon: No such container: gobii-haplo-node
+Error response from daemon: No such container: gobii-portainer-node
+Error response from daemon: No such container: gobii-oc-node
+Error response from daemon: No such container: gobii-kdc-node
+Error response from daemon: No such container: portainer-sherpa-node
+Starting the pedver deployment...
+
+gobiimarkerapp-worker
+gobiimarkerapp
+redis
+
+Error: No such container: gobii-pedver-web
+Error: No such container: gobii-pedver-worker
+Error: No such container: gobii-pedver-redis
+
+mkdir: cannot create directory ‘/data/pedver’: File exists
+mkdir: cannot create directory ‘/data/pedver/data’: File exists
+mkdir: cannot create directory ‘/data/pedver/instance’: File exists
+
+
+Error: Cannot perform an interactive login from a non TTY device
++ docker pull /gobii_pedver_redis:rel2.2.2
+invalid reference format
++ docker pull /gobii_pedver_web:rel2.2.2
+invalid reference format
++ docker pull /gobii_pedver_worker:rel2.2.2
+invalid reference format
++ docker run -dti --name gobii-pedver-redis -h pedver-redis -p 6379:6379 --restart=always --network=pedver_net /gobii_pedver_redis:rel2.2.2
+docker: invalid reference format.
+See 'docker run --help'.
++ echo
+
++ cp devops_files/pedver/config.ini /data/pedver/instance/
+cp: cannot create regular file '/data/pedver/instance/config.ini': Permission denied
++ echo
+
++ SET_INSPECT='{{ .NetworkSettings.Networks.pedver_net.IPAddress }}'
+++ docker inspect '--format={{ .NetworkSettings.Networks.pedver_net.IPAddress }}' gobii-pedver-redis
+Error: No such object: gobii-pedver-redis
++ REDIS_IP=
++ echo
+
++ sed -ie 's~CELERY_BROKER_URL = redis://localhost:6379/0~CELERY_BROKER_URL = redis://:6379/0~g' /data/pedver/instance/config.ini
++ sed -ie 's~CELERY_RESULT_BACKEND = redis://localhost:6379/0~CELERY_RESULT_BACKEND = redis://:6379/0~g' /data/pedver/instance/config.ini
++ docker run -dti --name gobii-pedver-web -h pedver-web -p 7000:80 -v /data/pedver/data:/data/ -v /data/pedver/instance:/gobiimarkerapp/instance/ --restart=always --network=pedver_net /gobii_pedver_web:rel2.2.2
+docker: invalid reference format.
+See 'docker run --help'.
++ echo
+
++ docker run -dti --name gobii-pedver-worker -h gobii-pedver-worker -v /data/pedver/data:/data/ -v /data/pedver/instance:/gobiimarkerapp/instance/ --restart=always --network=pedver_net /gobii_pedver_worker:rel2.2.2
+docker: invalid reference format.
+See 'docker run --help'.
++ echo
+
++ docker network connect bridge gobii-pedver-redis
+Error response from daemon: No such container: gobii-pedver-redis
++ docker network connect bridge gobii-pedver-web
+Error response from daemon: No such container: gobii-pedver-web
++ docker network connect bridge gobii-pedver-worker
+Error response from daemon: No such container: gobii-pedver-worker
++ set +x
+PedVer Redeploy Completed
+
+Finished: SUCCESS
