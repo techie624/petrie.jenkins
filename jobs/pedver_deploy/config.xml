@@ -198,7 +198,28 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>bash container_scripts/jenkins_deploy/pedver_deploy.sh</command>
+      <command># Running PedVer Deployment
+bash container_scripts/jenkins_deploy/pedver_deploy.sh
+echo;
+
+#-----------------------------------------------------------------------------#
+
+echo &quot;
+ ______________________________
+&lt;                              &gt;
+&lt; PedVer Deployment Completed! &gt;
+&lt;                              &gt;
+ ------------------------------
+   \
+    \
+        .--.
+       |o_o |
+       |:_/ |
+      //   \ \
+     (|     | )
+    /&apos;\_   _/`\
+    \___)=(___/
+&quot;;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
