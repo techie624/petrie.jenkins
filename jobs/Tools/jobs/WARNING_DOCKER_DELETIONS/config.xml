@@ -1,7 +1,7 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <com.cloudbees.hudson.plugins.folder.Folder plugin="cloudbees-folder@6.14">
+  <actions/>
   <description></description>
-  <displayName>WARNING_DELETIONS</displayName>
   <properties>
     <org.jenkinsci.plugins.docker.workflow.declarative.FolderConfig plugin="docker-workflow@1.23">
       <dockerLabel></dockerLabel>

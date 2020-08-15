@@ -1,0 +1,1162 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/gdm_deploy_localhost
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/Deployments/gdm_deploy_localhost # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/release/2.2.2^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/release/2.2.2^{commit} # timeout=10
+Checking out Revision f9a49631ea2d1773aeedaf1735edda2f81ef03d8 (refs/remotes/origin/release/2.2.2)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f f9a49631ea2d1773aeedaf1735edda2f81ef03d8 # timeout=10
+Commit message: "GDM deploy scripts completed for calling from jenkins and pedver build scripted"
+ > git rev-list --no-walk f9a49631ea2d1773aeedaf1735edda2f81ef03d8 # timeout=10
+[gdm_deploy_localhost] $ /bin/sh -xe /tmp/jenkins5273730820512272578.sh
++ bash container_scripts/jenkins_deploy/gobii_db_deploy.sh
+Error response from daemon: network with name gobii_net already exists
+
+Deploying the DB node...
+
++ docker rm -f gobii-db-node
+gobii-db-node
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker pull gadm01/gobii_db_vanilla_ubuntu:release_2.2.2_2
+release_2.2.2_2: Pulling from gadm01/gobii_db_vanilla_ubuntu
+Digest: sha256:735b8a0db079a80ed4c8f934bc838c04eb7ee371d0f1fadccde3b9be393700c9
+Status: Image is up to date for gadm01/gobii_db_vanilla_ubuntu:release_2.2.2_2
+docker.io/gadm01/gobii_db_vanilla_ubuntu:release_2.2.2_2
++ docker run -i --detach --name gobii-db-node -h db-node -e gobiiuid=1000 -e gobiigid=1001 -e gobiiuserpassword=g0b11Admin -v /persistent_storage/persistent_data:/persistent_storage/persistent_data -v /data:/data -v gobiipostgresetcubuntu:/etc/postgresql -v gobiipostgreslogubuntu:/var/log/postgresql -v gobiipostgreslibubuntu:/var/lib/postgresql --restart=always -p 5433:5432 --network=gobii_net '--health-cmd=pg_isready -U postgres || exit 1' gadm01/gobii_db_vanilla_ubuntu:release_2.2.2_2
+bf329ef6dca941bd6e1e5d71aad6c2a282d82e4a9b35706f8a18126d2f217f02
++ docker start gobii-db-node
+gobii-db-node
++ docker network connect bridge gobii-db-node
++ DOCKER_CMD='apt update && apt install rsync -y;'
++ eval docker exec gobii-db-node bash -c '"apt' update '&&' apt install rsync '-y;"'
+++ docker exec gobii-db-node bash -c 'apt update && apt install rsync -y;'
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
+Get:3 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Hit:4 http://apt.postgresql.org/pub/repos/apt trusty-pgdg InRelease
+Get:5 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [884 kB]
+Get:6 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]
+Get:7 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [9558 B]
+Get:8 http://security.ubuntu.com/ubuntu bionic-security/restricted amd64 Packages [100 kB]
+Get:9 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [1038 kB]
+Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [27.1 kB]
+Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [1336 kB]
+Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [116 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [1413 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 Packages [8432 B]
+Get:15 http://archive.ubuntu.com/ubuntu bionic-backports/main amd64 Packages [8286 B]
+Fetched 5194 kB in 2s (2853 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+74 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  rsync
+0 upgraded, 1 newly installed, 0 to remove and 74 not upgraded.
+Need to get 334 kB of archives.
+After this operation, 721 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 rsync amd64 3.1.2-2.1ubuntu1.1 [334 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 334 kB in 1s (397 kB/s)
+Selecting previously unselected package rsync.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 18670 files and directories currently installed.)
+Preparing to unpack .../rsync_3.1.2-2.1ubuntu1.1_amd64.deb ...
+Unpacking rsync (3.1.2-2.1ubuntu1.1) ...
+Setting up rsync (3.1.2-2.1ubuntu1.1) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of restart.
+Created symlink /etc/systemd/system/multi-user.target.wants/rsync.service → /lib/systemd/system/rsync.service.
+Processing triggers for systemd (237-3ubuntu10.31) ...
++ set +x
+
+Matching the docker gadm account to that of the host's and changing file ownerships...
+
++ DOCKER_CMD='usermod -u 1000 gadm;'
++ eval docker exec gobii-db-node bash -c '"usermod' -u 1000 'gadm;"'
+++ docker exec gobii-db-node bash -c 'usermod -u 1000 gadm;'
++ DOCKER_CMD='groupmod -g 1001 gobii;'
++ eval docker exec gobii-db-node bash -c '"groupmod' -g 1001 'gobii;"'
+++ docker exec gobii-db-node bash -c 'groupmod -g 1001 gobii;'
++ DOCKER_CMD='find / -user 1016 -exec chown -h 1000 {} \; || :'
++ eval docker exec gobii-db-node bash -c '"find' / -user 1016 -exec chown -h 1000 '{}' '\;' '||' ':"'
+++ docker exec gobii-db-node bash -c 'find / -user 1016 -exec chown -h 1000 {} \; || :'
+find: '/proc/411/task/411/fd/5': No such file or directory
+find: '/proc/411/task/411/fdinfo/5': No such file or directory
+find: '/proc/411/fd/6': No such file or directory
+find: '/proc/411/fdinfo/6': No such file or directory
++ DOCKER_CMD='find / -group 1016 -exec chgrp -h 1001 {} \; || :'
++ eval docker exec gobii-db-node bash -c '"find' / -group 1016 -exec chgrp -h 1001 '{}' '\;' '||' ':"'
+++ docker exec gobii-db-node bash -c 'find / -group 1016 -exec chgrp -h 1001 {} \; || :'
+find: '/proc/417/task/417/fd/5': No such file or directory
+find: '/proc/417/task/417/fdinfo/5': No such file or directory
+find: '/proc/417/fd/6': No such file or directory
+find: '/proc/417/fdinfo/6': No such file or directory
++ set +x
+
+Copying the GOBII_BUNDLE to the shared directory/volume...
+
++ DOCKER_CMD='rm -rfv /data/'
++ eval docker exec gobii-db-node bash -c '"rm' -rfv '/data/"'
+++ docker exec gobii-db-node bash -c 'rm -rfv /data/'
+removed '/data/liquibase/liquibase_update.sh'
+removed '/data/liquibase/changelogs/db.changelog-2.2.xml'
+removed '/data/liquibase/changelogs/db.changelog-master.xml'
+removed '/data/liquibase/changelogs/db.changelog-standalone.xml'
+removed '/data/liquibase/changelogs/db.changelog-2.1.xml'
+removed '/data/liquibase/changelogs/db.changelog-1.0.xml'
+removed '/data/liquibase/changelogs/changesets/get_cvterms.sql'
+removed '/data/liquibase/changelogs/changesets/gobiiprop_versioning.sql'
+removed '/data/liquibase/changelogs/changesets/sorghum_contacts_data.sql'
+removed '/data/liquibase/changelogs/changesets/chickpea_contacts_data.sql'
+removed '/data/liquibase/changelogs/changesets/mde_extraction_by_sample_list.sql'
+removed '/data/liquibase/changelogs/changesets/jobs_summary_view.sql'
+removed '/data/liquibase/changelogs/changesets/create_indices.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/get_functions.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/delete_functions.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/remove_functions.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/append_functions.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/timescope_functions_prereq.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/flexquery_functions.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/update_functions.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/create_functions.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/utility_views.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/timescope_functions.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/update_gobiidb_version.sql'
+removed '/data/liquibase/changelogs/changesets/run_on_change/upsert_functions.sql'
+removed directory '/data/liquibase/changelogs/changesets/run_on_change'
+removed '/data/liquibase/changelogs/changesets/rice_contacts_rel_data.sql'
+removed '/data/liquibase/changelogs/changesets/platform_protocol_data.sql'
+removed '/data/liquibase/changelogs/changesets/add_username_to_contact.sql'
+removed '/data/liquibase/changelogs/changesets/mde_append_map_info_to_markerfile.sql'
+removed '/data/liquibase/changelogs/changesets/cv_module_extension.sql'
+removed '/data/liquibase/changelogs/changesets/fix_old_datasets_job_ids.sql'
+removed '/data/liquibase/changelogs/changesets/mde_filter_by_map.sql'
+removed '/data/liquibase/changelogs/changesets/fix_constraints.sql'
+removed '/data/liquibase/changelogs/changesets/dataset_join_tables_fix.sql'
+removed '/data/liquibase/changelogs/changesets/fix_mde_fxn_chr_length.sql'
+removed '/data/liquibase/changelogs/changesets/marker_group_fxns.sql'
+removed '/data/liquibase/changelogs/changesets/fix_upsert_kvp.sql'
+removed '/data/liquibase/changelogs/changesets/wheat_contacts_rel_data.sql'
+removed '/data/liquibase/changelogs/changesets/chickpea_contacts_rel_data.sql'
+removed '/data/liquibase/changelogs/changesets/sorghum_contacts_rel_data.sql'
+removed '/data/liquibase/changelogs/changesets/fix_platform_type_id.sql'
+removed '/data/liquibase/changelogs/changesets/mde_missing_extractbysample_cases.sql'
+removed '/data/liquibase/changelogs/changesets/set_dataset_modifiedcols_null.sql'
+removed '/data/liquibase/changelogs/changesets/mde_fix_2_project_meta_fxn.sql'
+removed '/data/liquibase/changelogs/changesets/standalone/pfr_requested_constraints.sql'
+removed directory '/data/liquibase/changelogs/changesets/standalone'
+removed '/data/liquibase/changelogs/changesets/default_contact_user_data.sql'
+removed '/data/liquibase/changelogs/changesets/mde_fix_project_meta_fxn.sql'
+removed '/data/liquibase/changelogs/changesets/fix_functions_jsonb_idx.sql'
+removed '/data/liquibase/changelogs/changesets/cv_germplasm_par_type_seed_data.sql'
+removed '/data/liquibase/changelogs/changesets/mde_get_marker_meta_qc.sql'
+removed '/data/liquibase/changelogs/changesets/mde_add_par_type_for_sample.sql'
+removed '/data/liquibase/changelogs/changesets/fix_functions_inconsistent_tables.sql'
+removed '/data/liquibase/changelogs/changesets/2.2/alter_lg_start_stop.sql'
+removed '/data/liquibase/changelogs/changesets/2.2/nucleotide_4_letter.sql'
+removed directory '/data/liquibase/changelogs/changesets/2.2'
+removed '/data/liquibase/changelogs/changesets/flexquery/create_graph_schema.sql'
+removed '/data/liquibase/changelogs/changesets/flexquery/fix_wrong_vertex_data.sql'
+removed directory '/data/liquibase/changelogs/changesets/flexquery'
+removed '/data/liquibase/changelogs/changesets/fix_fxns_propstable.sql'
+removed '/data/liquibase/changelogs/changesets/case_insensitive_cols.sql'
+removed '/data/liquibase/changelogs/changesets/mde_change_sample_output_order.sql'
+removed '/data/liquibase/changelogs/changesets/add_nothingness_cvterm.sql'
+removed '/data/liquibase/changelogs/changesets/fix_failing_functions.sql'
+removed '/data/liquibase/changelogs/changesets/mde_filter_by_dataset_typeid.sql'
+removed '/data/liquibase/changelogs/changesets/dataset_join_tables_fix_alt1.sql'
+removed '/data/liquibase/changelogs/changesets/mde_derive_marker_ids.sql'
+removed '/data/liquibase/changelogs/changesets/fix_createcontacts_on_conflict.sql'
+removed '/data/liquibase/changelogs/changesets/maize_contacts_data.sql'
+removed '/data/liquibase/changelogs/changesets/mde_add_sample_qc_metadata.sql'
+removed '/data/liquibase/changelogs/changesets/fix_wgrs_protocol_seed_data.sql'
+removed '/data/liquibase/changelogs/changesets/upsert_kvp.sql'
+removed '/data/liquibase/changelogs/changesets/mde_chr_end.sql'
+removed '/data/liquibase/changelogs/changesets/fix_column_names.sql'
+removed '/data/liquibase/changelogs/changesets/maize_contacts_rel_data.sql'
+removed '/data/liquibase/changelogs/changesets/seed/add_pgcrypto.sql'
+removed '/data/liquibase/changelogs/changesets/seed/pigeonpea_contacts.sql'
+removed '/data/liquibase/changelogs/changesets/seed/add_gadm_to_contacts.sql'
+removed '/data/liquibase/changelogs/changesets/seed/fingermillet_contacts.sql'
+removed '/data/liquibase/changelogs/changesets/seed/add_tadm_to_timescoper.sql'
+removed '/data/liquibase/changelogs/changesets/seed/create_timescoper_dbuser.sql'
+removed '/data/liquibase/changelogs/changesets/seed/pearlmillet_contacts.sql'
+removed '/data/liquibase/changelogs/changesets/seed/groundnut_contacts.sql'
+removed directory '/data/liquibase/changelogs/changesets/seed'
+removed '/data/liquibase/changelogs/changesets/fix_dangerous_cascade_links.sql'
+removed '/data/liquibase/changelogs/changesets/fix_remove_proptables.sql'
+removed '/data/liquibase/changelogs/changesets/2.1/job_status_functions.sql'
+removed '/data/liquibase/changelogs/changesets/2.1/add_sample_uuid.sql'
+removed directory '/data/liquibase/changelogs/changesets/2.1'
+removed '/data/liquibase/changelogs/changesets/create_timescoper_module.sql'
+removed '/data/liquibase/changelogs/changesets/cv_germplasm_species_seed_data.sql'
+removed '/data/liquibase/changelogs/changesets/cv_seed_data.sql'
+removed '/data/liquibase/changelogs/changesets/mde_extraction_by_marker_list.sql'
+removed '/data/liquibase/changelogs/changesets/organizations_data.sql'
+removed '/data/liquibase/changelogs/changesets/fix_mde_fxns_output_names.sql'
+removed '/data/liquibase/changelogs/changesets/mde_mapset_info.sql'
+removed '/data/liquibase/changelogs/changesets/mde_derive_sample_ids.sql'
+removed '/data/liquibase/changelogs/changesets/create_job_module.sql'
+removed '/data/liquibase/changelogs/changesets/rice_contacts_data.sql'
+removed '/data/liquibase/changelogs/changesets/cbsu_gobii_contacts_data.sql'
+removed '/data/liquibase/changelogs/changesets/fix_missing_lg_stop.sql'
+removed '/data/liquibase/changelogs/changesets/wheat_contacts_data.sql'
+removed '/data/liquibase/changelogs/changesets/functions_cleanup.sql'
+removed '/data/liquibase/changelogs/changesets/cornell_contacts_data.sql'
+removed '/data/liquibase/changelogs/changesets/create_platform_protocol_module.sql'
+removed '/data/liquibase/changelogs/changesets/fix_samplemetadata_wrongdatasets.sql'
+removed '/data/liquibase/changelogs/changesets/mde_fix_duplicated_samples.sql'
+removed '/data/liquibase/changelogs/changesets/mde_fix_extract_property_fields.sql'
+removed directory '/data/liquibase/changelogs/changesets'
+removed '/data/liquibase/changelogs/db.changelog-2.0.xml'
+removed directory '/data/liquibase/changelogs'
+removed '/data/liquibase/liquibase.properties.template'
+removed '/data/liquibase/liquibase_exportData.sh'
+removed '/data/liquibase/bin/LICENSE.txt'
+removed '/data/liquibase/bin/liquibase.bat'
+removed '/data/liquibase/bin/liquibase.spec'
+removed '/data/liquibase/bin/lib/snakeyaml-1.13.jar'
+removed directory '/data/liquibase/bin/lib'
+removed '/data/liquibase/bin/README.txt'
+removed '/data/liquibase/bin/liquibase.jar'
+removed '/data/liquibase/bin/liquibase'
+removed directory '/data/liquibase/bin'
+removed '/data/liquibase/drivers/postgresql-9.4.1209.jar'
+removed '/data/liquibase/drivers/postgresql-42.2.10.jar'
+removed directory '/data/liquibase/drivers'
+removed directory '/data/liquibase'
+removed directory '/data/gobii_bundle'
+rm: cannot remove '/data/': Device or resource busy
++ DOCKER_CMD='rm -rfv /data/liquibase'
++ eval docker exec gobii-db-node bash -c '"rm' -rfv '/data/liquibase"'
+++ docker exec gobii-db-node bash -c 'rm -rfv /data/liquibase'
++ DOCKER_CMD='cd /var; cp -Rv  /data/'
++ eval docker exec gobii-db-node bash -c '"cd' '/var;' cp -Rv '/data/"'
+++ docker exec gobii-db-node bash -c 'cd /var; cp -Rv /data/'
+cp: missing destination file operand after '/data/'
+Try 'cp --help' for more information.
++ DOCKER_CMD='cd /var; rsync -ahI --delete --progress liquibase/ /data/liquibase || true'
++ eval docker exec gobii-db-node bash -c '"cd' '/var;' rsync -ahI --delete --progress liquibase/ /data/liquibase '||' 'true"'
+++ docker exec gobii-db-node bash -c 'cd /var; rsync -ahI --delete --progress liquibase/ /data/liquibase || true'
+sending incremental file list
+created directory /data/liquibase
+./
+liquibase.properties.template
+            231 100%    0.00kB/s    0:00:00              231 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=125/127)
+liquibase_exportData.sh
+            138 100%  134.77kB/s    0:00:00              138 100%  134.77kB/s    0:00:00 (xfr#2, to-chk=124/127)
+liquibase_update.sh
+             61 100%   59.57kB/s    0:00:00               61 100%   59.57kB/s    0:00:00 (xfr#3, to-chk=123/127)
+bin/
+bin/LICENSE.txt
+         11.36K 100%   10.83MB/s    0:00:00           11.36K 100%   10.83MB/s    0:00:00 (xfr#4, to-chk=119/127)
+bin/README.txt
+          3.05K 100%    2.91MB/s    0:00:00            3.05K 100%    2.91MB/s    0:00:00 (xfr#5, to-chk=118/127)
+bin/liquibase
+          1.20K 100%    1.15MB/s    0:00:00            1.20K 100%    1.15MB/s    0:00:00 (xfr#6, to-chk=117/127)
+bin/liquibase.bat
+            647 100%  631.84kB/s    0:00:00              647 100%  631.84kB/s    0:00:00 (xfr#7, to-chk=116/127)
+bin/liquibase.jar
+         32.77K   1%   15.62MB/s    0:00:00            2.02M 100%  160.54MB/s    0:00:00 (xfr#8, to-chk=115/127)
+bin/liquibase.spec
+          7.03K 100%  572.18kB/s    0:00:00            7.03K 100%  572.18kB/s    0:00:00 (xfr#9, to-chk=114/127)
+bin/lib/
+bin/lib/snakeyaml-1.13.jar
+         32.77K  11%    2.60MB/s    0:00:00          273.45K 100%   20.06MB/s    0:00:00 (xfr#10, to-chk=112/127)
+changelogs/
+changelogs/db.changelog-1.0.xml
+          4.35K 100%  326.70kB/s    0:00:00            4.35K 100%  326.70kB/s    0:00:00 (xfr#11, to-chk=111/127)
+changelogs/db.changelog-2.0.xml
+          2.65K 100%  199.22kB/s    0:00:00            2.65K 100%  199.22kB/s    0:00:00 (xfr#12, to-chk=110/127)
+changelogs/db.changelog-2.1.xml
+            450 100%   33.80kB/s    0:00:00              450 100%   33.80kB/s    0:00:00 (xfr#13, to-chk=109/127)
+changelogs/db.changelog-2.2.xml
+            454 100%   34.10kB/s    0:00:00              454 100%   34.10kB/s    0:00:00 (xfr#14, to-chk=108/127)
+changelogs/db.changelog-master.xml
+            582 100%   43.72kB/s    0:00:00              582 100%   43.72kB/s    0:00:00 (xfr#15, to-chk=107/127)
+changelogs/db.changelog-standalone.xml
+            397 100%   29.82kB/s    0:00:00              397 100%   29.82kB/s    0:00:00 (xfr#16, to-chk=106/127)
+changelogs/changesets/
+changelogs/changesets/add_nothingness_cvterm.sql
+            271 100%   20.36kB/s    0:00:00              271 100%   20.36kB/s    0:00:00 (xfr#17, to-chk=104/127)
+changelogs/changesets/add_username_to_contact.sql
+          2.01K 100%  150.84kB/s    0:00:00            2.01K 100%  150.84kB/s    0:00:00 (xfr#18, to-chk=103/127)
+changelogs/changesets/case_insensitive_cols.sql
+          3.77K 100%  282.83kB/s    0:00:00            3.77K 100%  282.83kB/s    0:00:00 (xfr#19, to-chk=102/127)
+changelogs/changesets/cbsu_gobii_contacts_data.sql
+            727 100%   54.61kB/s    0:00:00              727 100%   54.61kB/s    0:00:00 (xfr#20, to-chk=101/127)
+changelogs/changesets/chickpea_contacts_data.sql
+            739 100%   55.51kB/s    0:00:00              739 100%   55.51kB/s    0:00:00 (xfr#21, to-chk=100/127)
+changelogs/changesets/chickpea_contacts_rel_data.sql
+            733 100%   55.06kB/s    0:00:00              733 100%   55.06kB/s    0:00:00 (xfr#22, to-chk=99/127)
+changelogs/changesets/cornell_contacts_data.sql
+            727 100%   54.61kB/s    0:00:00              727 100%   54.61kB/s    0:00:00 (xfr#23, to-chk=98/127)
+changelogs/changesets/create_indices.sql
+          4.75K 100%  357.12kB/s    0:00:00            4.75K 100%  357.12kB/s    0:00:00 (xfr#24, to-chk=97/127)
+changelogs/changesets/create_job_module.sql
+         15.08K 100%    1.11MB/s    0:00:00           15.08K 100%    1.11MB/s    0:00:00 (xfr#25, to-chk=96/127)
+changelogs/changesets/create_platform_protocol_module.sql
+         13.62K 100% 1022.91kB/s    0:00:00           13.62K 100% 1022.91kB/s    0:00:00 (xfr#26, to-chk=95/127)
+changelogs/changesets/create_timescoper_module.sql
+            625 100%   46.95kB/s    0:00:00              625 100%   46.95kB/s    0:00:00 (xfr#27, to-chk=94/127)
+changelogs/changesets/cv_germplasm_par_type_seed_data.sql
+            578 100%   43.42kB/s    0:00:00              578 100%   43.42kB/s    0:00:00 (xfr#28, to-chk=93/127)
+changelogs/changesets/cv_germplasm_species_seed_data.sql
+         11.58K 100%  869.67kB/s    0:00:00           11.58K 100%  869.67kB/s    0:00:00 (xfr#29, to-chk=92/127)
+changelogs/changesets/cv_module_extension.sql
+         11.33K 100%  851.19kB/s    0:00:00           11.33K 100%  851.19kB/s    0:00:00 (xfr#30, to-chk=91/127)
+changelogs/changesets/cv_seed_data.sql
+         13.82K 100%    1.01MB/s    0:00:00           13.82K 100%    1.01MB/s    0:00:00 (xfr#31, to-chk=90/127)
+changelogs/changesets/dataset_join_tables_fix.sql
+          1.91K 100%  143.18kB/s    0:00:00            1.91K 100%  143.18kB/s    0:00:00 (xfr#32, to-chk=89/127)
+changelogs/changesets/dataset_join_tables_fix_alt1.sql
+          3.57K 100%  268.03kB/s    0:00:00            3.57K 100%  268.03kB/s    0:00:00 (xfr#33, to-chk=88/127)
+changelogs/changesets/default_contact_user_data.sql
+            414 100%   31.10kB/s    0:00:00              414 100%   31.10kB/s    0:00:00 (xfr#34, to-chk=87/127)
+changelogs/changesets/fix_column_names.sql
+          2.43K 100%  182.24kB/s    0:00:00            2.43K 100%  182.24kB/s    0:00:00 (xfr#35, to-chk=86/127)
+changelogs/changesets/fix_constraints.sql
+          4.39K 100%  330.15kB/s    0:00:00            4.39K 100%  330.15kB/s    0:00:00 (xfr#36, to-chk=85/127)
+changelogs/changesets/fix_createcontacts_on_conflict.sql
+          1.23K 100%   92.02kB/s    0:00:00            1.23K 100%   92.02kB/s    0:00:00 (xfr#37, to-chk=84/127)
+changelogs/changesets/fix_dangerous_cascade_links.sql
+            702 100%   52.73kB/s    0:00:00              702 100%   52.73kB/s    0:00:00 (xfr#38, to-chk=83/127)
+changelogs/changesets/fix_failing_functions.sql
+         11.80K 100%  886.19kB/s    0:00:00           11.80K 100%  886.19kB/s    0:00:00 (xfr#39, to-chk=82/127)
+changelogs/changesets/fix_functions_inconsistent_tables.sql
+          9.04K 100%  679.39kB/s    0:00:00            9.04K 100%  679.39kB/s    0:00:00 (xfr#40, to-chk=81/127)
+changelogs/changesets/fix_functions_jsonb_idx.sql
+          5.81K 100%  405.48kB/s    0:00:00            5.81K 100%  405.48kB/s    0:00:00 (xfr#41, to-chk=80/127)
+changelogs/changesets/fix_fxns_propstable.sql
+         32.77K  96%    2.23MB/s    0:00:00           34.09K 100%    2.32MB/s    0:00:00 (xfr#42, to-chk=79/127)
+changelogs/changesets/fix_mde_fxn_chr_length.sql
+          1.93K 100%  134.28kB/s    0:00:00            1.93K 100%  134.28kB/s    0:00:00 (xfr#43, to-chk=78/127)
+changelogs/changesets/fix_mde_fxns_output_names.sql
+          9.22K 100%  643.00kB/s    0:00:00            9.22K 100%  643.00kB/s    0:00:00 (xfr#44, to-chk=77/127)
+changelogs/changesets/fix_missing_lg_stop.sql
+          8.63K 100%  602.12kB/s    0:00:00            8.63K 100%  602.12kB/s    0:00:00 (xfr#45, to-chk=76/127)
+changelogs/changesets/fix_old_datasets_job_ids.sql
+            556 100%   38.78kB/s    0:00:00              556 100%   38.78kB/s    0:00:00 (xfr#46, to-chk=75/127)
+changelogs/changesets/fix_platform_type_id.sql
+            140 100%    9.77kB/s    0:00:00              140 100%    9.77kB/s    0:00:00 (xfr#47, to-chk=74/127)
+changelogs/changesets/fix_remove_proptables.sql
+          3.78K 100%  263.74kB/s    0:00:00            3.78K 100%  263.74kB/s    0:00:00 (xfr#48, to-chk=73/127)
+changelogs/changesets/fix_samplemetadata_wrongdatasets.sql
+         14.45K 100% 1008.02kB/s    0:00:00           14.45K 100% 1008.02kB/s    0:00:00 (xfr#49, to-chk=72/127)
+changelogs/changesets/fix_upsert_kvp.sql
+          1.28K 100%   89.08kB/s    0:00:00            1.28K 100%   89.08kB/s    0:00:00 (xfr#50, to-chk=71/127)
+changelogs/changesets/fix_wgrs_protocol_seed_data.sql
+            234 100%   16.32kB/s    0:00:00              234 100%   16.32kB/s    0:00:00 (xfr#51, to-chk=70/127)
+changelogs/changesets/functions_cleanup.sql
+            842 100%   58.73kB/s    0:00:00              842 100%   58.73kB/s    0:00:00 (xfr#52, to-chk=69/127)
+changelogs/changesets/get_cvterms.sql
+            430 100%   29.99kB/s    0:00:00              430 100%   29.99kB/s    0:00:00 (xfr#53, to-chk=68/127)
+changelogs/changesets/gobiiprop_versioning.sql
+          2.42K 100%  157.36kB/s    0:00:00            2.42K 100%  157.36kB/s    0:00:00 (xfr#54, to-chk=67/127)
+changelogs/changesets/jobs_summary_view.sql
+          2.56K 100%  166.99kB/s    0:00:00            2.56K 100%  166.99kB/s    0:00:00 (xfr#55, to-chk=66/127)
+changelogs/changesets/maize_contacts_data.sql
+            732 100%   47.66kB/s    0:00:00              732 100%   47.66kB/s    0:00:00 (xfr#56, to-chk=65/127)
+changelogs/changesets/maize_contacts_rel_data.sql
+            727 100%   47.33kB/s    0:00:00              727 100%   47.33kB/s    0:00:00 (xfr#57, to-chk=64/127)
+changelogs/changesets/marker_group_fxns.sql
+          5.45K 100%  354.75kB/s    0:00:00            5.45K 100%  354.75kB/s    0:00:00 (xfr#58, to-chk=63/127)
+changelogs/changesets/mde_add_par_type_for_sample.sql
+         32.77K  72%    2.08MB/s    0:00:00           45.26K 100%    2.88MB/s    0:00:00 (xfr#59, to-chk=62/127)
+changelogs/changesets/mde_add_sample_qc_metadata.sql
+          4.24K 100%  276.30kB/s    0:00:00            4.24K 100%  276.30kB/s    0:00:00 (xfr#60, to-chk=61/127)
+changelogs/changesets/mde_append_map_info_to_markerfile.sql
+          4.61K 100%  300.26kB/s    0:00:00            4.61K 100%  300.26kB/s    0:00:00 (xfr#61, to-chk=60/127)
+changelogs/changesets/mde_change_sample_output_order.sql
+         26.54K 100%    1.69MB/s    0:00:00           26.54K 100%    1.69MB/s    0:00:00 (xfr#62, to-chk=59/127)
+changelogs/changesets/mde_chr_end.sql
+          1.79K 100%  116.54kB/s    0:00:00            1.79K 100%  116.54kB/s    0:00:00 (xfr#63, to-chk=58/127)
+changelogs/changesets/mde_derive_marker_ids.sql
+          1.53K 100%   99.87kB/s    0:00:00            1.53K 100%   99.87kB/s    0:00:00 (xfr#64, to-chk=57/127)
+changelogs/changesets/mde_derive_sample_ids.sql
+          2.59K 100%  168.62kB/s    0:00:00            2.59K 100%  168.62kB/s    0:00:00 (xfr#65, to-chk=56/127)
+changelogs/changesets/mde_extraction_by_marker_list.sql
+         16.84K 100%    1.07MB/s    0:00:00           16.84K 100%    1.07MB/s    0:00:00 (xfr#66, to-chk=55/127)
+changelogs/changesets/mde_extraction_by_sample_list.sql
+          9.20K 100%  598.89kB/s    0:00:00            9.20K 100%  598.89kB/s    0:00:00 (xfr#67, to-chk=54/127)
+changelogs/changesets/mde_filter_by_dataset_typeid.sql
+         17.52K 100%    1.11MB/s    0:00:00           17.52K 100%    1.11MB/s    0:00:00 (xfr#68, to-chk=53/127)
+changelogs/changesets/mde_filter_by_map.sql
+          2.84K 100%  184.77kB/s    0:00:00            2.84K 100%  184.77kB/s    0:00:00 (xfr#69, to-chk=52/127)
+changelogs/changesets/mde_fix_2_project_meta_fxn.sql
+          1.94K 100%  125.98kB/s    0:00:00            1.94K 100%  125.98kB/s    0:00:00 (xfr#70, to-chk=51/127)
+changelogs/changesets/mde_fix_duplicated_samples.sql
+         14.25K 100%  927.93kB/s    0:00:00           14.25K 100%  927.93kB/s    0:00:00 (xfr#71, to-chk=50/127)
+changelogs/changesets/mde_fix_extract_property_fields.sql
+         29.63K 100%    1.77MB/s    0:00:00           29.63K 100%    1.77MB/s    0:00:00 (xfr#72, to-chk=49/127)
+changelogs/changesets/mde_fix_project_meta_fxn.sql
+            908 100%   55.42kB/s    0:00:00              908 100%   55.42kB/s    0:00:00 (xfr#73, to-chk=48/127)
+changelogs/changesets/mde_get_marker_meta_qc.sql
+          3.16K 100%  192.99kB/s    0:00:00            3.16K 100%  192.99kB/s    0:00:00 (xfr#74, to-chk=47/127)
+changelogs/changesets/mde_mapset_info.sql
+          3.66K 100%  223.39kB/s    0:00:00            3.66K 100%  223.39kB/s    0:00:00 (xfr#75, to-chk=46/127)
+changelogs/changesets/mde_missing_extractbysample_cases.sql
+          3.55K 100%  216.55kB/s    0:00:00            3.55K 100%  216.55kB/s    0:00:00 (xfr#76, to-chk=45/127)
+changelogs/changesets/organizations_data.sql
+          4.50K 100%  274.60kB/s    0:00:00            4.50K 100%  274.60kB/s    0:00:00 (xfr#77, to-chk=44/127)
+changelogs/changesets/platform_protocol_data.sql
+          3.39K 100%  206.91kB/s    0:00:00            3.39K 100%  206.91kB/s    0:00:00 (xfr#78, to-chk=43/127)
+changelogs/changesets/rice_contacts_data.sql
+            729 100%   44.49kB/s    0:00:00              729 100%   44.49kB/s    0:00:00 (xfr#79, to-chk=42/127)
+changelogs/changesets/rice_contacts_rel_data.sql
+            725 100%   44.25kB/s    0:00:00              725 100%   44.25kB/s    0:00:00 (xfr#80, to-chk=41/127)
+changelogs/changesets/set_dataset_modifiedcols_null.sql
+            486 100%   29.66kB/s    0:00:00              486 100%   29.66kB/s    0:00:00 (xfr#81, to-chk=40/127)
+changelogs/changesets/sorghum_contacts_data.sql
+            735 100%   44.86kB/s    0:00:00              735 100%   44.86kB/s    0:00:00 (xfr#82, to-chk=39/127)
+changelogs/changesets/sorghum_contacts_rel_data.sql
+            731 100%   44.62kB/s    0:00:00              731 100%   44.62kB/s    0:00:00 (xfr#83, to-chk=38/127)
+changelogs/changesets/upsert_kvp.sql
+          1.36K 100%   83.31kB/s    0:00:00            1.36K 100%   83.31kB/s    0:00:00 (xfr#84, to-chk=37/127)
+changelogs/changesets/wheat_contacts_data.sql
+            733 100%   44.74kB/s    0:00:00              733 100%   44.74kB/s    0:00:00 (xfr#85, to-chk=36/127)
+changelogs/changesets/wheat_contacts_rel_data.sql
+            727 100%   44.37kB/s    0:00:00              727 100%   44.37kB/s    0:00:00 (xfr#86, to-chk=35/127)
+changelogs/changesets/2.1/
+changelogs/changesets/2.1/add_sample_uuid.sql
+            693 100%   42.30kB/s    0:00:00              693 100%   42.30kB/s    0:00:00 (xfr#87, to-chk=28/127)
+changelogs/changesets/2.1/job_status_functions.sql
+          1.08K 100%   65.73kB/s    0:00:00            1.08K 100%   65.73kB/s    0:00:00 (xfr#88, to-chk=27/127)
+changelogs/changesets/2.2/
+changelogs/changesets/2.2/alter_lg_start_stop.sql
+            855 100%   52.19kB/s    0:00:00              855 100%   52.19kB/s    0:00:00 (xfr#89, to-chk=26/127)
+changelogs/changesets/2.2/nucleotide_4_letter.sql
+            370 100%   22.58kB/s    0:00:00              370 100%   22.58kB/s    0:00:00 (xfr#90, to-chk=25/127)
+changelogs/changesets/flexquery/
+changelogs/changesets/flexquery/create_graph_schema.sql
+         12.80K 100%  781.07kB/s    0:00:00           12.80K 100%  781.07kB/s    0:00:00 (xfr#91, to-chk=24/127)
+changelogs/changesets/flexquery/fix_wrong_vertex_data.sql
+            256 100%   15.62kB/s    0:00:00              256 100%   15.62kB/s    0:00:00 (xfr#92, to-chk=23/127)
+changelogs/changesets/run_on_change/
+changelogs/changesets/run_on_change/append_functions.sql
+          1.17K 100%   71.66kB/s    0:00:00            1.17K 100%   71.66kB/s    0:00:00 (xfr#93, to-chk=22/127)
+changelogs/changesets/run_on_change/create_functions.sql
+         18.75K 100%    1.12MB/s    0:00:00           18.75K 100%    1.12MB/s    0:00:00 (xfr#94, to-chk=21/127)
+changelogs/changesets/run_on_change/delete_functions.sql
+         11.74K 100%  716.74kB/s    0:00:00           11.74K 100%  716.74kB/s    0:00:00 (xfr#95, to-chk=20/127)
+changelogs/changesets/run_on_change/flexquery_functions.sql
+            629 100%   38.39kB/s    0:00:00              629 100%   38.39kB/s    0:00:00 (xfr#96, to-chk=19/127)
+changelogs/changesets/run_on_change/get_functions.sql
+         32.77K  34%    1.95MB/s    0:00:00           95.04K 100%    5.66MB/s    0:00:00 (xfr#97, to-chk=18/127)
+changelogs/changesets/run_on_change/remove_functions.sql
+          1.30K 100%   79.53kB/s    0:00:00            1.30K 100%   79.53kB/s    0:00:00 (xfr#98, to-chk=17/127)
+changelogs/changesets/run_on_change/timescope_functions.sql
+          9.63K 100%  553.48kB/s    0:00:00            9.63K 100%  553.48kB/s    0:00:00 (xfr#99, to-chk=16/127)
+changelogs/changesets/run_on_change/timescope_functions_prereq.sql
+          1.10K 100%   63.19kB/s    0:00:00            1.10K 100%   63.19kB/s    0:00:00 (xfr#100, to-chk=15/127)
+changelogs/changesets/run_on_change/update_functions.sql
+         24.79K 100%    1.39MB/s    0:00:00           24.79K 100%    1.39MB/s    0:00:00 (xfr#101, to-chk=14/127)
+changelogs/changesets/run_on_change/update_gobiidb_version.sql
+            939 100%   53.94kB/s    0:00:00              939 100%   53.94kB/s    0:00:00 (xfr#102, to-chk=13/127)
+changelogs/changesets/run_on_change/upsert_functions.sql
+          9.66K 100%  555.20kB/s    0:00:00            9.66K 100%  555.20kB/s    0:00:00 (xfr#103, to-chk=12/127)
+changelogs/changesets/run_on_change/utility_views.sql
+          3.66K 100%  210.36kB/s    0:00:00            3.66K 100%  210.36kB/s    0:00:00 (xfr#104, to-chk=11/127)
+changelogs/changesets/seed/
+changelogs/changesets/seed/add_gadm_to_contacts.sql
+            403 100%   23.15kB/s    0:00:00              403 100%   23.15kB/s    0:00:00 (xfr#105, to-chk=10/127)
+changelogs/changesets/seed/add_pgcrypto.sql
+            138 100%    7.93kB/s    0:00:00              138 100%    7.93kB/s    0:00:00 (xfr#106, to-chk=9/127)
+changelogs/changesets/seed/add_tadm_to_timescoper.sql
+            290 100%   16.66kB/s    0:00:00              290 100%   16.66kB/s    0:00:00 (xfr#107, to-chk=8/127)
+changelogs/changesets/seed/create_timescoper_dbuser.sql
+            672 100%   38.60kB/s    0:00:00              672 100%   38.60kB/s    0:00:00 (xfr#108, to-chk=7/127)
+changelogs/changesets/seed/fingermillet_contacts.sql
+            744 100%   42.74kB/s    0:00:00              744 100%   42.74kB/s    0:00:00 (xfr#109, to-chk=6/127)
+changelogs/changesets/seed/groundnut_contacts.sql
+            738 100%   42.39kB/s    0:00:00              738 100%   42.39kB/s    0:00:00 (xfr#110, to-chk=5/127)
+changelogs/changesets/seed/pearlmillet_contacts.sql
+            742 100%   42.62kB/s    0:00:00              742 100%   42.62kB/s    0:00:00 (xfr#111, to-chk=4/127)
+changelogs/changesets/seed/pigeonpea_contacts.sql
+            738 100%   42.39kB/s    0:00:00              738 100%   42.39kB/s    0:00:00 (xfr#112, to-chk=3/127)
+changelogs/changesets/standalone/
+changelogs/changesets/standalone/pfr_requested_constraints.sql
+          1.73K 100%   99.26kB/s    0:00:00            1.73K 100%   99.26kB/s    0:00:00 (xfr#113, to-chk=2/127)
+drivers/
+drivers/postgresql-42.2.10.jar
+         32.77K   3%    1.84MB/s    0:00:00          927.45K 100%   44.22MB/s    0:00:00 (xfr#114, to-chk=1/127)
+drivers/postgresql-9.4.1209.jar
+         32.77K   4%    1.56MB/s    0:00:00          689.28K 100%   29.88MB/s    0:00:00 (xfr#115, to-chk=0/127)
++ DOCKER_CMD='chown -Rv gadm:gobii /data/'
++ eval docker exec gobii-db-node bash -c '"chown' -Rv gadm:gobii '/data/"'
+++ docker exec gobii-db-node bash -c 'chown -Rv gadm:gobii /data/'
+changed ownership of '/data/liquibase/liquibase_update.sh' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/db.changelog-2.2.xml' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/db.changelog-master.xml' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/db.changelog-standalone.xml' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/db.changelog-2.1.xml' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/db.changelog-1.0.xml' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/get_cvterms.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/gobiiprop_versioning.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/sorghum_contacts_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/chickpea_contacts_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_extraction_by_sample_list.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/jobs_summary_view.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/create_indices.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/get_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/delete_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/remove_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/append_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/timescope_functions_prereq.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/flexquery_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/update_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/create_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/utility_views.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/timescope_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/update_gobiidb_version.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change/upsert_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/run_on_change' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/rice_contacts_rel_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/platform_protocol_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/add_username_to_contact.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_append_map_info_to_markerfile.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/cv_module_extension.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_old_datasets_job_ids.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_filter_by_map.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_constraints.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/dataset_join_tables_fix.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_mde_fxn_chr_length.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/marker_group_fxns.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_upsert_kvp.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/wheat_contacts_rel_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/chickpea_contacts_rel_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/sorghum_contacts_rel_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_platform_type_id.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_missing_extractbysample_cases.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/set_dataset_modifiedcols_null.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_fix_2_project_meta_fxn.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/standalone/pfr_requested_constraints.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/standalone' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/default_contact_user_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_fix_project_meta_fxn.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_functions_jsonb_idx.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/cv_germplasm_par_type_seed_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_get_marker_meta_qc.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_add_par_type_for_sample.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_functions_inconsistent_tables.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/2.2/alter_lg_start_stop.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/2.2/nucleotide_4_letter.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/2.2' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/flexquery/create_graph_schema.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/flexquery/fix_wrong_vertex_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/flexquery' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_fxns_propstable.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/case_insensitive_cols.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_change_sample_output_order.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/add_nothingness_cvterm.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_failing_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_filter_by_dataset_typeid.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/dataset_join_tables_fix_alt1.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_derive_marker_ids.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_createcontacts_on_conflict.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/maize_contacts_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_add_sample_qc_metadata.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_wgrs_protocol_seed_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/upsert_kvp.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_chr_end.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_column_names.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/maize_contacts_rel_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/seed/add_pgcrypto.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/seed/pigeonpea_contacts.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/seed/add_gadm_to_contacts.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/seed/fingermillet_contacts.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/seed/add_tadm_to_timescoper.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/seed/create_timescoper_dbuser.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/seed/pearlmillet_contacts.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/seed/groundnut_contacts.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/seed' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_dangerous_cascade_links.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_remove_proptables.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/2.1/job_status_functions.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/2.1/add_sample_uuid.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/2.1' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/create_timescoper_module.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/cv_germplasm_species_seed_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/cv_seed_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_extraction_by_marker_list.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/organizations_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_mde_fxns_output_names.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_mapset_info.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_derive_sample_ids.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/create_job_module.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/rice_contacts_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/cbsu_gobii_contacts_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_missing_lg_stop.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/wheat_contacts_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/functions_cleanup.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/cornell_contacts_data.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/create_platform_protocol_module.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/fix_samplemetadata_wrongdatasets.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_fix_duplicated_samples.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets/mde_fix_extract_property_fields.sql' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/changesets' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs/db.changelog-2.0.xml' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/changelogs' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/liquibase.properties.template' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/liquibase_exportData.sh' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/bin/LICENSE.txt' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/bin/liquibase.bat' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/bin/liquibase.spec' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/bin/lib/snakeyaml-1.13.jar' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/bin/lib' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/bin/README.txt' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/bin/liquibase.jar' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/bin/liquibase' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/bin' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/drivers/postgresql-9.4.1209.jar' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/drivers/postgresql-42.2.10.jar' from root:root to gadm:gobii
+changed ownership of '/data/liquibase/drivers' from root:root to gadm:gobii
+changed ownership of '/data/liquibase' from root:root to gadm:gobii
+ownership of '/data/' retained as gadm:gobii
++ DOCKER_CMD='chown -Rv gadm:gobii /data/liquibase'
++ eval docker exec gobii-db-node bash -c '"chown' -Rv gadm:gobii '/data/liquibase"'
+++ docker exec gobii-db-node bash -c 'chown -Rv gadm:gobii /data/liquibase'
+ownership of '/data/liquibase/liquibase_update.sh' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/db.changelog-2.2.xml' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/db.changelog-master.xml' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/db.changelog-standalone.xml' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/db.changelog-2.1.xml' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/db.changelog-1.0.xml' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/get_cvterms.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/gobiiprop_versioning.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/sorghum_contacts_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/chickpea_contacts_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_extraction_by_sample_list.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/jobs_summary_view.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/create_indices.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/get_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/delete_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/remove_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/append_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/timescope_functions_prereq.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/flexquery_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/update_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/create_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/utility_views.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/timescope_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/update_gobiidb_version.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change/upsert_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/run_on_change' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/rice_contacts_rel_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/platform_protocol_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/add_username_to_contact.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_append_map_info_to_markerfile.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/cv_module_extension.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_old_datasets_job_ids.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_filter_by_map.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_constraints.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/dataset_join_tables_fix.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_mde_fxn_chr_length.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/marker_group_fxns.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_upsert_kvp.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/wheat_contacts_rel_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/chickpea_contacts_rel_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/sorghum_contacts_rel_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_platform_type_id.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_missing_extractbysample_cases.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/set_dataset_modifiedcols_null.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_fix_2_project_meta_fxn.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/standalone/pfr_requested_constraints.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/standalone' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/default_contact_user_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_fix_project_meta_fxn.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_functions_jsonb_idx.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/cv_germplasm_par_type_seed_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_get_marker_meta_qc.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_add_par_type_for_sample.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_functions_inconsistent_tables.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/2.2/alter_lg_start_stop.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/2.2/nucleotide_4_letter.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/2.2' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/flexquery/create_graph_schema.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/flexquery/fix_wrong_vertex_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/flexquery' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_fxns_propstable.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/case_insensitive_cols.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_change_sample_output_order.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/add_nothingness_cvterm.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_failing_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_filter_by_dataset_typeid.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/dataset_join_tables_fix_alt1.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_derive_marker_ids.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_createcontacts_on_conflict.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/maize_contacts_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_add_sample_qc_metadata.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_wgrs_protocol_seed_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/upsert_kvp.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_chr_end.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_column_names.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/maize_contacts_rel_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/seed/add_pgcrypto.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/seed/pigeonpea_contacts.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/seed/add_gadm_to_contacts.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/seed/fingermillet_contacts.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/seed/add_tadm_to_timescoper.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/seed/create_timescoper_dbuser.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/seed/pearlmillet_contacts.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/seed/groundnut_contacts.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/seed' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_dangerous_cascade_links.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_remove_proptables.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/2.1/job_status_functions.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/2.1/add_sample_uuid.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/2.1' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/create_timescoper_module.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/cv_germplasm_species_seed_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/cv_seed_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_extraction_by_marker_list.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/organizations_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_mde_fxns_output_names.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_mapset_info.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_derive_sample_ids.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/create_job_module.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/rice_contacts_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/cbsu_gobii_contacts_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_missing_lg_stop.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/wheat_contacts_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/functions_cleanup.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/cornell_contacts_data.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/create_platform_protocol_module.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/fix_samplemetadata_wrongdatasets.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_fix_duplicated_samples.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets/mde_fix_extract_property_fields.sql' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/changesets' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs/db.changelog-2.0.xml' retained as gadm:gobii
+ownership of '/data/liquibase/changelogs' retained as gadm:gobii
+ownership of '/data/liquibase/liquibase.properties.template' retained as gadm:gobii
+ownership of '/data/liquibase/liquibase_exportData.sh' retained as gadm:gobii
+ownership of '/data/liquibase/bin/LICENSE.txt' retained as gadm:gobii
+ownership of '/data/liquibase/bin/liquibase.bat' retained as gadm:gobii
+ownership of '/data/liquibase/bin/liquibase.spec' retained as gadm:gobii
+ownership of '/data/liquibase/bin/lib/snakeyaml-1.13.jar' retained as gadm:gobii
+ownership of '/data/liquibase/bin/lib' retained as gadm:gobii
+ownership of '/data/liquibase/bin/README.txt' retained as gadm:gobii
+ownership of '/data/liquibase/bin/liquibase.jar' retained as gadm:gobii
+ownership of '/data/liquibase/bin/liquibase' retained as gadm:gobii
+ownership of '/data/liquibase/bin' retained as gadm:gobii
+ownership of '/data/liquibase/drivers/postgresql-9.4.1209.jar' retained as gadm:gobii
+ownership of '/data/liquibase/drivers/postgresql-42.2.10.jar' retained as gadm:gobii
+ownership of '/data/liquibase/drivers' retained as gadm:gobii
+ownership of '/data/liquibase' retained as gadm:gobii
++ echo 'Setting gobii group as postgres primary group'
+Setting gobii group as postgres primary group
++ echo
+
++ DOCKER_CMD='usermod -aG gobii postgres'
++ eval docker exec gobii-db-node bash -c '"usermod' -aG gobii 'postgres"'
+++ docker exec gobii-db-node bash -c 'usermod -aG gobii postgres'
++ echo
+
++ DOCKER_CMD='usermod -g gobii postgres'
++ eval docker exec gobii-db-node bash -c '"usermod' -g gobii 'postgres"'
+++ docker exec gobii-db-node bash -c 'usermod -g gobii postgres'
++ echo
+
++ DOCKER_CMD='usermod -aG postgres postgres'
++ eval docker exec gobii-db-node bash -c '"usermod' -aG postgres 'postgres"'
+++ docker exec gobii-db-node bash -c 'usermod -aG postgres postgres'
++ echo
+
++ echo 'Restarting Postgres DB...'
+Restarting Postgres DB...
++ echo
+
++ sleep 3
++ DOCKER_CMD='service postgresql restart'
++ eval docker exec -u postgres gobii-db-node bash -c '"service' postgresql 'restart"'
+++ docker exec -u postgres gobii-db-node bash -c 'service postgresql restart'
+ * Restarting PostgreSQL 9.5 database server
+   ...done.
++ echo
+
++ sleep 3
++ set +x
+
++ echo
+
++ echo Moving on to gobii-web-node deployment...
+Moving on to gobii-web-node deployment...
++ echo
+
++ sleep 3
++ bash container_scripts/jenkins_deploy/gobii_web_deploy.sh
+Error response from daemon: network with name gobii_net already exists
+
+Starting the web-node deployment...
+
++ docker rm -f gobii-web-node
+gobii-web-node
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker pull gadm01/gobii_web_vanilla_ubuntu:release_2.2.2_2
+release_2.2.2_2: Pulling from gadm01/gobii_web_vanilla_ubuntu
+Digest: sha256:59ead93b59b3d51d24ddb71a1a722f39c365396e39295c6c7bebc0b216ef2a75
+Status: Image is up to date for gadm01/gobii_web_vanilla_ubuntu:release_2.2.2_2
+docker.io/gadm01/gobii_web_vanilla_ubuntu:release_2.2.2_2
++ docker run -i --detach --name gobii-web-node -h web-node -v /persistent_storage/persistent_data:/persistent_storage/persistent_data -v /data:/data -p 8081:8080 --restart=always --network=gobii_net '--health-cmd=wget --quiet --spider http://localhost:8080/ || exit 1' gadm01/gobii_web_vanilla_ubuntu:release_2.2.2_2
+2b1984f71bb6ab7311739b785496e0644042d0b4cf652b004b86f8bb3db8b837
++ docker start gobii-web-node
+gobii-web-node
++ docker network connect bridge gobii-web-node
++ set +x
+
+Copying the param file and the config wrapper first...
+
++ docker cp gobii-web-node:/data//config/
+"docker cp" requires exactly 2 arguments.
+See 'docker cp --help'.
+
+Usage:  docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
+	docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
+
+Copy files/folders between a container and the local filesystem
++ docker cp gobiiconfig_wrapper.sh gobii-web-node:/data//config/gobiiconfig_wrapper.sh
+Error: No such container:path: gobii-web-node:/data/config
++ set +x
+
+Matching the docker gadm account to that of the host's and changing file ownerships...
+
++ DOCKER_CMD='usermod -u 1000 gadm;'
++ eval docker exec gobii-web-node bash -c '"usermod' -u 1000 'gadm;"'
+++ docker exec gobii-web-node bash -c 'usermod -u 1000 gadm;'
++ DOCKER_CMD='groupmod -g 1001 gobii;'
++ eval docker exec gobii-web-node bash -c '"groupmod' -g 1001 'gobii;"'
+++ docker exec gobii-web-node bash -c 'groupmod -g 1001 gobii;'
++ DOCKER_CMD='find / -user 1016 -exec chown -h 1000 {} \; || :'
++ eval docker exec gobii-web-node bash -c '"find' / -user 1016 -exec chown -h 1000 '{}' '\;' '||' ':"'
+++ docker exec gobii-web-node bash -c 'find / -user 1016 -exec chown -h 1000 {} \; || :'
+find: '/proc/36/task/36/fd/5': No such file or directory
+find: '/proc/36/task/36/fdinfo/5': No such file or directory
+find: '/proc/36/fd/6': No such file or directory
+find: '/proc/36/fdinfo/6': No such file or directory
++ DOCKER_CMD='find / -group 1016 -exec chgrp -h 1001 {} \; || :'
++ eval docker exec gobii-web-node bash -c '"find' / -group 1016 -exec chgrp -h 1001 '{}' '\;' '||' ':"'
+++ docker exec gobii-web-node bash -c 'find / -group 1016 -exec chgrp -h 1001 {} \; || :'
+find: '/proc/11163/task/11163/fd/5': No such file or directory
+find: '/proc/11163/task/11163/fdinfo/5': No such file or directory
+find: '/proc/11163/fd/6': No such file or directory
+find: '/proc/11163/fdinfo/6': No such file or directory
++ set +x
+
+Updating gobii-web.xml...
+
++ DOCKER_CMD='cd /config; bash . gobiiconfig_wrapper.sh;'
++ eval docker exec gobii-web-node bash -c '"cd' '/config;' bash . 'gobiiconfig_wrapper.sh;"'
+++ docker exec gobii-web-node bash -c 'cd /config; bash . gobiiconfig_wrapper.sh;'
+bash: line 0: cd: /config: No such file or directory
+.: .: Is a directory
++ DOCKER_CMD='cd /data//config;
+cp -n confidentiality.txt /data//crops/dev/notices || true;
+chown 1000:1001 /data//crops/dev/notices/confidentiality.txt;
+chmod 777 /data//crops/dev/notices/confidentiality.txt;'
++ eval docker exec -u gadm gobii-web-node bash -c '"cd' '/data//config;' cp -n confidentiality.txt /data//crops/dev/notices '||' 'true;' chown 1000:1001 '/data//crops/dev/notices/confidentiality.txt;' chmod 777 '/data//crops/dev/notices/confidentiality.txt;"'
+++ docker exec -u gadm gobii-web-node bash -c 'cd /data//config; cp -n confidentiality.txt /data//crops/dev/notices || true; chown 1000:1001 /data//crops/dev/notices/confidentiality.txt; chmod 777 /data//crops/dev/notices/confidentiality.txt;'
+bash: line 0: cd: /data//config: No such file or directory
+cp: cannot stat 'confidentiality.txt': No such file or directory
+chown: cannot access '/data//crops/dev/notices/confidentiality.txt': No such file or directory
+chmod: cannot access '/data//crops/dev/notices/confidentiality.txt': No such file or directory
++ [[ -v DOCKER_CROP2_NAME ]]
++ [[ -v DOCKER_CROP3_NAME ]]
++ [[ -v DOCKER_CROP4_NAME ]]
++ [[ -v DOCKER_CROP5_NAME ]]
++ [[ -v DOCKER_CROP6_NAME ]]
++ DOCKER_CMD='cd /data/liquibase;
+java -jar bin/liquibase.jar --username=appuser --password=g0b11isw3s0m3 --url=jdbc:postgresql://gobii-db-node:5432/gobii_dev --driver=org.postgresql.Driver --classpath=drivers/postgresql-9.4.1209.jar --changeLogFile=changelogs/db.changelog-master.xml --contexts=general,seed_general,seed_crop1 update;'
++ eval docker exec gobii-web-node bash -c '"cd' '/data/liquibase;' java -jar bin/liquibase.jar --username=appuser --password=g0b11isw3s0m3 --url=jdbc:postgresql://gobii-db-node:5432/gobii_dev --driver=org.postgresql.Driver --classpath=drivers/postgresql-9.4.1209.jar --changeLogFile=changelogs/db.changelog-master.xml --contexts=general,seed_general,seed_crop1 'update;"'
+++ docker exec gobii-web-node bash -c 'cd /data/liquibase; java -jar bin/liquibase.jar --username=appuser --password=g0b11isw3s0m3 --url=jdbc:postgresql://gobii-db-node:5432/gobii_dev --driver=org.postgresql.Driver --classpath=drivers/postgresql-9.4.1209.jar --changeLogFile=changelogs/db.changelog-master.xml --contexts=general,seed_general,seed_crop1 update;'
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.postgresql.jdbc.TimestampUtils (file:/data/liquibase/drivers/postgresql-9.4.1209.jar) to field java.util.TimeZone.defaultTimeZone
+WARNING: Please consider reporting this to the maintainers of org.postgresql.jdbc.TimestampUtils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Liquibase Update Successful
++ [[ -v DB_NAME_CROP2 ]]
++ [[ -v DB_NAME_CROP3 ]]
++ [[ -v DB_NAME_CROP4 ]]
++ [[ -v DB_NAME_CROP5 ]]
++ [[ -v DB_NAME_CROP6 ]]
++ docker exec -u gadm gobii-web-node bash -c '
+cd /data/gobii_bundle/config/utils; python3.6 xml_config_parser.py -f /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml -x ".//launcher[name='\''dev'\'']/url" -r "http://localhost:8081/gobii-dev" -v;
+'
+bash: line 1: cd: /data/gobii_bundle/config/utils: No such file or directory
+python3.6: can't open file 'xml_config_parser.py': [Errno 2] No such file or directory
++ docker exec -u gadm gobii-web-node bash -c '
+cd /data/gobii_bundle/config/utils; python3.6 xml_config_parser.py -f /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml -x ".//launcher[name='\''dev'\'']/name" -r "dev" -v;
+'
+bash: line 1: cd: /data/gobii_bundle/config/utils: No such file or directory
+python3.6: can't open file 'xml_config_parser.py': [Errno 2] No such file or directory
++ docker exec gobii-web-node bash -c '
+GDM_LOGO_OLD="<logo>gdm-11-b.png</logo>"
+GDM_LOGO_NEW="<logo>extract.png</logo>"
+sed -i "s~$GDM_LOGO_OLD~$GDM_LOGO_NEW~g" /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml
+'
++ docker exec -u gadm gobii-web-node bash -c '
+cd /data/gobii_bundle/config/utils; python3.6 xml_config_parser.py -f /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml -x ".//launcher[name='\''Timescope'\'']/url" -r "http://localhost:8081/timescope" -v;
+'
+bash: line 1: cd: /data/gobii_bundle/config/utils: No such file or directory
+python3.6: can't open file 'xml_config_parser.py': [Errno 2] No such file or directory
++ [[ -v PORTAL_OWNCLOUD_URL_XPATH ]]
++ docker exec -u gadm gobii-web-node bash -c '
+cd /data/gobii_bundle/config/utils; python3.6 xml_config_parser.py -f /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml -x ".//launcher[name='\''File Browser'\'']/url" -r "http://localhost:8084" -v;
+'
+bash: line 1: cd: /data/gobii_bundle/config/utils: No such file or directory
+python3.6: can't open file 'xml_config_parser.py': [Errno 2] No such file or directory
++ docker exec -u gadm gobii-web-node bash -c '
+cd /data/gobii_bundle/config/utils; python3.6 xml_config_parser.py -f /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml -x ".//launcher[name='\''GDM Data QC'\'']/url" -r "http://localhost:8083/kdcompute" -v;
+'
+bash: line 1: cd: /data/gobii_bundle/config/utils: No such file or directory
+python3.6: can't open file 'xml_config_parser.py': [Errno 2] No such file or directory
++ docker exec -u gadm gobii-web-node bash -c '
+cd /data/gobii_bundle/config/utils; python3.6 xml_config_parser.py -f /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml -x ".//launcher[name='\''GDM Data Loader'\'']/url" -r "https://bitbucket.org/gobiiproject/gobii.deploy.bash/downloads/distribution_release2-2_windows.zip" -v;
+'
+bash: line 1: cd: /data/gobii_bundle/config/utils: No such file or directory
+python3.6: can't open file 'xml_config_parser.py': [Errno 2] No such file or directory
++ docker exec -u gadm gobii-web-node bash -c '
+cd /data/gobii_bundle/config/utils; python3.6 xml_config_parser.py -f /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml -x ".//launcher[name='\''Haplo Tool'\'']/url" -r "http://localhost:8085" -v;
+'
+bash: line 1: cd: /data/gobii_bundle/config/utils: No such file or directory
+python3.6: can't open file 'xml_config_parser.py': [Errno 2] No such file or directory
++ docker exec -u gadm gobii-web-node bash -c '
+cd /data/gobii_bundle/config/utils; python3.6 xml_config_parser.py -f /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml -x ".//launcher[name='\''PedVer'\'']/url" -r "http://localhost:7000" -v;
+'
+bash: line 1: cd: /data/gobii_bundle/config/utils: No such file or directory
+python3.6: can't open file 'xml_config_parser.py': [Errno 2] No such file or directory
++ docker exec -u gadm gobii-web-node bash -c '
+cd /data/gobii_bundle/config/utils; python3.6 xml_config_parser.py -f /usr/local/tomcat/webapps/gobii-portal/config/launchers.xml -x ".//launcher[name='\''Flapjack Bytes'\'']/url" -r "https://gobiiproject.atlassian.net/wiki/spaces/GD/pages/238911510/Flapjack+Bytes" -v;
+'
+bash: line 1: cd: /data/gobii_bundle/config/utils: No such file or directory
+python3.6: can't open file 'xml_config_parser.py': [Errno 2] No such file or directory
++ set +x
+
+Updating Timescoper Configuration...
+
+
+
+
++ DOCKER_CMD='touch /data/gobii_bundle/config/gobii.version || true; '
++ eval docker exec --user gadm gobii-web-node bash -c '"touch' /data/gobii_bundle/config/gobii.version '||' 'true;' '"'
+++ docker exec --user gadm gobii-web-node bash -c 'touch /data/gobii_bundle/config/gobii.version || true; '
+touch: cannot touch '/data/gobii_bundle/config/gobii.version': No such file or directory
++ DOCKER_CMD='echo Release X.Y.Z > /data/gobii_bundle/config/gobii.version || true; '
++ eval docker exec --user gadm gobii-web-node bash -c '"echo' Release X.Y.Z '>' /data/gobii_bundle/config/gobii.version '||' 'true;' '"'
+++ docker exec --user gadm gobii-web-node bash -c 'echo Release X.Y.Z > /data/gobii_bundle/config/gobii.version || true; '
+bash: /data/gobii_bundle/config/gobii.version: No such file or directory
++ DOCKER_CMD='chmod 777 /data/gobii_bundle/config/gobii.version || true; '
++ eval docker exec --user gadm gobii-web-node bash -c '"chmod' 777 /data/gobii_bundle/config/gobii.version '||' 'true;' '"'
+++ docker exec --user gadm gobii-web-node bash -c 'chmod 777 /data/gobii_bundle/config/gobii.version || true; '
+chmod: cannot access '/data/gobii_bundle/config/gobii.version': No such file or directory
++ set +x
+
+Restarting tomcat under user gadm...
+
++ docker exec -i -u gadm gobii-web-node bash -c '
+/usr/local/tomcat/bin/shutdown.sh;
+sleep 3;
+/usr/local/tomcat/bin/startup.sh;
+sleep 3
+exit;
+'
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+Aug 15, 2020 8:58:59 PM org.apache.catalina.startup.Catalina stopServer
+SEVERE: Could not contact [localhost:8005] (base port [8005] and offset [0]). Tomcat may not be running.
+Aug 15, 2020 8:58:59 PM org.apache.catalina.startup.Catalina stopServer
+SEVERE: Error stopping Catalina
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:493)
+	at java.base/sun.nio.ch.Net.connect(Net.java:482)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:588)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:339)
+	at java.base/java.net.Socket.connect(Socket.java:603)
+	at java.base/java.net.Socket.connect(Socket.java:552)
+	at java.base/java.net.Socket.<init>(Socket.java:475)
+	at java.base/java.net.Socket.<init>(Socket.java:249)
+	at org.apache.catalina.startup.Catalina.stopServer(Catalina.java:513)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.catalina.startup.Bootstrap.stopServer(Bootstrap.java:390)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:480)
+
+Tomcat started.
++ set +x
+
++ echo
+
++ echo Moving on to gobii-compute-node deployment...
+Moving on to gobii-compute-node deployment...
++ echo
+
++ sleep 3
++ bash container_scripts/jenkins_deploy/gobii_compute_deploy.sh
+Error response from daemon: network with name gobii_net already exists
+
+Starting the compute-node deployment...
+
++ docker rm -f gobii-compute-node
+gobii-compute-node
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker pull gadm01/gobii_compute_vanilla_ubuntu:release_2.2.2_2
+release_2.2.2_2: Pulling from gadm01/gobii_compute_vanilla_ubuntu
+Digest: sha256:b17f5ac6f1923a1a02a39b1369ff8448900dafcc03ab6f0d5fc449a8bb7718bb
+Status: Image is up to date for gadm01/gobii_compute_vanilla_ubuntu:release_2.2.2_2
+docker.io/gadm01/gobii_compute_vanilla_ubuntu:release_2.2.2_2
++ docker run -i --detach --name gobii-compute-node -h compute-node -v /persistent_storage/persistent_data:/persistent_storage/persistent_data -v /data:/data -p 2222:22 --restart=always --network=gobii_net '--health-cmd=crontab -u gadm -l | grep gobii_bundle || exit 1' gadm01/gobii_compute_vanilla_ubuntu:release_2.2.2_2
+ea35ca9aa7059c733e1a192b538783a4a29b7759c1bdd3d91c39ca19e5026169
++ echo
+
++ docker start gobii-compute-node
+gobii-compute-node
++ docker network connect bridge gobii-compute-node
++ set +x
+
+Matching the docker gadm account to that of the host's and changing file ownerships...
+
++ DOCKER_CMD='usermod -u 1000 gadm;'
++ eval docker exec gobii-compute-node bash -c '"usermod' -u 1000 'gadm;"'
+++ docker exec gobii-compute-node bash -c 'usermod -u 1000 gadm;'
++ DOCKER_CMD='groupmod -g 1001 gobii;'
++ eval docker exec gobii-compute-node bash -c '"groupmod' -g 1001 'gobii;"'
+++ docker exec gobii-compute-node bash -c 'groupmod -g 1001 gobii;'
++ DOCKER_CMD='find / -user 1016 -exec chown -h 1000 {} \; || :'
++ eval docker exec gobii-compute-node bash -c '"find' / -user 1016 -exec chown -h 1000 '{}' '\;' '||' ':"'
+++ docker exec gobii-compute-node bash -c 'find / -user 1016 -exec chown -h 1000 {} \; || :'
+find: '/proc/85/task/85/fd/5': No such file or directory
+find: '/proc/85/task/85/fdinfo/5': No such file or directory
+find: '/proc/85/fd/6': No such file or directory
+find: '/proc/85/fdinfo/6': No such file or directory
++ DOCKER_CMD='find / -group 1016 -exec chgrp -h 1001 {} \; || :'
++ eval docker exec gobii-compute-node bash -c '"find' / -group 1016 -exec chgrp -h 1001 '{}' '\;' '||' ':"'
+++ docker exec gobii-compute-node bash -c 'find / -group 1016 -exec chgrp -h 1001 {} \; || :'
+find: '/proc/92/task/92/fd/5': No such file or directory
+find: '/proc/92/task/92/fdinfo/5': No such file or directory
+find: '/proc/92/fd/6': No such file or directory
+find: '/proc/92/fdinfo/6': No such file or directory
++ echo 'Granting permissions...'
+Granting permissions...
++ DOCKER_CMD='chmod -Rv +rx /data//loaders/;'
++ eval docker exec gobii-compute-node bash -c '"chmod' -Rv +rx '/data//loaders/;"'
+++ docker exec gobii-compute-node bash -c 'chmod -Rv +rx /data//loaders/;'
+chmod: cannot access '/data//loaders/': No such file or directory
+failed to change mode of '/data//loaders/' from 0000 (---------) to 0000 (---------)
++ DOCKER_CMD='chmod -Rv +rx /data//extractors/;'
++ eval docker exec gobii-compute-node bash -c '"chmod' -Rv +rx '/data//extractors/;"'
+++ docker exec gobii-compute-node bash -c 'chmod -Rv +rx /data//extractors/;'
+chmod: cannot access '/data//extractors/': No such file or directory
+failed to change mode of '/data//extractors/' from 0000 (---------) to 0000 (---------)
++ DOCKER_CMD='chmod -Rv g+rwx /data//crops/*/files;'
++ eval docker exec gobii-compute-node bash -c '"chmod' -Rv g+rwx '/data//crops/*/files;"'
+++ docker exec gobii-compute-node bash -c 'chmod -Rv g+rwx /data//crops/*/files;'
+chmod: cannot access '/data//crops/*/files': No such file or directory
+failed to change mode of '/data//crops/*/files' from 0000 (---------) to 0000 (---------)
++ set +x
+
+Setting cron jobs...
+
++ DOCKER_CMD='cd /data//loaders/etc; crontab -r || true;'
++ eval docker exec --user gadm gobii-compute-node bash -c '"cd' '/data//loaders/etc;' crontab -r '||' 'true;"'
+++ docker exec --user gadm gobii-compute-node bash -c 'cd /data//loaders/etc; crontab -r || true;'
+bash: line 0: cd: /data//loaders/etc: No such file or directory
++ DOCKER_CMD='cd /data//loaders/etc; sh addCron.sh /data/ dev 2 +2;'
++ eval docker exec --user gadm gobii-compute-node bash -c '"cd' '/data//loaders/etc;' sh addCron.sh /data/ dev 2 '+2;"'
+++ docker exec --user gadm gobii-compute-node bash -c 'cd /data//loaders/etc; sh addCron.sh /data/ dev 2 +2;'
+bash: line 0: cd: /data//loaders/etc: No such file or directory
+sh: 0: Can't open addCron.sh
++ [[ -v DOCKER_CROP2_NAME ]]
++ [[ -v DOCKER_CROP3_NAME ]]
++ [[ -v DOCKER_CROP4_NAME ]]
++ [[ -v DOCKER_CROP5_NAME ]]
++ [[ -v DOCKER_CROP6_NAME ]]
++ DOCKER_CMD='cd /data/gobii_bundle/config && java -jar gobiiconfig.jar -wfqpn gobii-web.xml -ownc -ocERR logs -soR crops -soH localhost -soN 8084 -soU admin -soP admin'
++ eval docker exec -u gadm gobii-compute-node bash -c '"cd' /data/gobii_bundle/config '&&' java -jar gobiiconfig.jar -wfqpn gobii-web.xml -ownc -ocERR logs -soR crops -soH localhost -soN 8084 -soU admin -soP 'admin"'
+++ docker exec -u gadm gobii-compute-node bash -c 'cd /data/gobii_bundle/config && java -jar gobiiconfig.jar -wfqpn gobii-web.xml -ownc -ocERR logs -soR crops -soH localhost -soN 8084 -soU admin -soP admin'
+bash: line 0: cd: /data/gobii_bundle/config: No such file or directory
++ '[' -z localhost_test ']'
++ echo 'Environment Name set as: localhost_test'
+Environment Name set as: localhost_test
++ echo 'Configuring Emails to have shown Environment Name.'
+Configuring Emails to have shown Environment Name.
++ echo
+
++ JAVA_JAR='java -jar'
++ ENV_CONF='java -Dorg.gobii.environment.name=localhost_test -jar'
++ sed -ie 's/java -jar/java -Dorg.gobii.environment.name=localhost_test -jar/g' /data/gobii_bundle/loaders/cronjob.sh
+sed: can't read /data/gobii_bundle/loaders/cronjob.sh: No such file or directory
++ sed -ie 's/java -jar/java -Dorg.gobii.environment.name=localhost_test -jar/g' /data/gobii_bundle/extractors/cronjob.sh
+sed: can't read /data/gobii_bundle/extractors/cronjob.sh: No such file or directory
++ echo 'Configuration change: '
+Configuration change: 
++ echo
+
++ echo /data/gobii_bundle/loaders/cronjob.sh
+/data/gobii_bundle/loaders/cronjob.sh
++ cat /data/gobii_bundle/loaders/cronjob.sh
++ grep '\-jar'
+cat: /data/gobii_bundle/loaders/cronjob.sh: No such file or directory
++ echo
+
++ echo /data/gobii_bundle/extractors/cronjob.sh
+/data/gobii_bundle/extractors/cronjob.sh
++ cat /data/gobii_bundle/extractors/cronjob.sh
++ grep '\-jar'
+cat: /data/gobii_bundle/extractors/cronjob.sh: No such file or directory
++ echo
+
++ set +x
+
++ echo
+
++ echo GOBii Data Manager Deployment Completed!
+GOBii Data Manager Deployment Completed!
++ _______________________________
+/tmp/jenkins5273730820512272578.sh: 24: /tmp/jenkins5273730820512272578.sh: _______________________________: not found
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

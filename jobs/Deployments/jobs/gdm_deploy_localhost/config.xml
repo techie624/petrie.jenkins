@@ -31,7 +31,7 @@
         <hudson.model.StringParameterDefinition>
           <name>NDD_PATH</name>
           <description>NFS or persistent storage for data (/storage/persistent_data)</description>
-          <defaultValue>/persistent_storage/persistent_data</defaultValue>
+          <defaultValue>/nfs_storage/virtual_env/cbsugobiixvm3_data/persistent_data</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -593,18 +593,6 @@
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>GOBII_RELEASE_VERSION</name>
-          <description>This is the image tagged for the image deployment. (release/2.2.2)</description>
-          <defaultValue>release/2.2.2</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>BRANCH</name>
-          <description>This is the branch being used for the gobii.deploy.bash repo.</description>
-          <defaultValue>develop</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
           <name>LL_USER1</name>
           <description>This is for the ownCloud LiveLinks Enablement. (admin)</description>
           <defaultValue>admin</defaultValue>
@@ -619,6 +607,18 @@
           <name>DOCKER_LL_PORT</name>
           <description>ownCloud  port used for pointing livelinks to files. (8084)</description>
           <defaultValue>8084</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>GOBII_RELEASE_VERSION</name>
+          <description>This is the image tagged for the image deployment. (release_2.2.2_2)</description>
+          <defaultValue>release_2.2.2_2</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH</name>
+          <description>This is the branch being used for the gobii.deploy.bash repo. (release/2.2.2) (develop)</description>
+          <defaultValue>release/2.2.2</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
