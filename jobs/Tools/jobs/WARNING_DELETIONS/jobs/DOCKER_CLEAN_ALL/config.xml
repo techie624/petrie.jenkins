@@ -1,0 +1,109 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>****************************************&#xd;
+!!!                           WARNING                             !!!&#xd;
+****************************************&#xd;
+!!!       THIS BUILD WILL WIPE OUT ALL      !!!&#xd;
+!!!                 DOCKER RESOURCES                !!!&#xd;
+****************************************&#xd;
+&#xd;
+This build will delete all containers, images, volumes and networks!</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.13">
+      <gitLabConnection></gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@2.0.2">
+      <maxConcurrentPerNode>0</maxConcurrentPerNode>
+      <maxConcurrentTotal>0</maxConcurrentTotal>
+      <categories class="java.util.concurrent.CopyOnWriteArrayList"/>
+      <throttleEnabled>false</throttleEnabled>
+      <throttleOption>project</throttleOption>
+      <limitOneJobWithMatchingParams>false</limitOneJobWithMatchingParams>
+      <paramsToUseForLimit></paramsToUseForLimit>
+    </hudson.plugins.throttleconcurrents.ThrottleJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command># Completely remove all docker resources
+
+echo &apos;	
+###############################################################################
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
+#!                                                                           !#
+#!           #     #    #    ######  #     # ### #     #  #####              !#
+#!           #  #  #   # #   #     # ##    #  #  ##    # #     #             !#
+#!           #  #  #  #   #  #     # # #   #  #  # #   # #                   !#
+#!           #  #  # #     # ######  #  #  #  #  #  #  # #  ####             !#
+#!           #  #  # ####### #   #   #   # #  #  #   # # #     #             !#
+#!           #  #  # #     # #    #  #    ##  #  #    ## #     #             !#
+#!            ## ##  #     # #     # #     # ### #     #  #####              !#
+#!                                                                           !#
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
+###############################################################################
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
+#!                                                                           !#
+#!       #    ####### ####### ####### #     # ####### ### ####### #     #    !#
+#!      # #      #       #    #       ##    #    #     #  #     # ##    #    !#
+#!     #   #     #       #    #       # #   #    #     #  #     # # #   #    !#
+#!    #     #    #       #    #####   #  #  #    #     #  #     # #  #  #    !#
+#!    #######    #       #    #       #   # #    #     #  #     # #   # #    !#
+#!    #     #    #       #    #       #    ##    #     #  #     # #    ##    !#
+#!    #     #    #       #    ####### #     #    #    ### ####### #     #    !#
+#!                                                                           !#
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
+###############################################################################
+&apos;
+echo;
+
+echo &quot;All containers:&quot;
+docker ps -a
+echo;
+
+echo &quot;All images:&quot;
+docker images
+echo;
+
+echo &quot;All volumes:&quot;
+docker volumes ls
+echo;
+
+echo &quot;All docker networks:&quot;
+docker network ls
+echo;
+
+
+echo &quot;This will completely destory all docker resources.&quot;;
+echo;
+
+echo &quot;This project will suspend for 30 seconds before performing docker resource wipe!&quot;;
+echo;
+
+sleep 30;
+
+docker rm -f $(docker ps -qa)
+docker image rm $(docker images)
+docker volume rm $(docker volume ls)
+docker network rm $(docker network ls)
+docker volume rm gobiipostgresetcubuntu || true;
+docker volume rm gobiipostgreslibubuntu || true;
+docker volume rm gobiipostgreslogubuntu || true;
+echo -e &quot;y\n&quot; | docker system prune -a
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

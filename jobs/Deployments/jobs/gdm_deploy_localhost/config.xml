@@ -31,7 +31,7 @@
         <hudson.model.StringParameterDefinition>
           <name>NDD_PATH</name>
           <description>NFS or persistent storage for data (/storage/persistent_data)</description>
-          <defaultValue>/storage/persistent_data</defaultValue>
+          <defaultValue>/persistent_storage/persistent_data</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -255,8 +255,8 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PORTAL_CROP1_URL</name>
-          <description>The external link for the ExtractorUI. (http://&lt;External_FQDN_IP&gt;:8081/gobii-dev)</description>
-          <defaultValue>http://&lt;External_FQDN_IP&gt;:8081/gobii-dev</defaultValue>
+          <description>The external link for the ExtractorUI. (http://localhost:8081/gobii-dev)</description>
+          <defaultValue>http://localhost:8081/gobii-dev</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -279,8 +279,8 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PORTAL_TIMESCOPE_URL</name>
-          <description>The external link for the Timescope UI. (http://&lt;External_FQDN_IP&gt;:8081/timescope)</description>
-          <defaultValue>http://&lt;External_FQDN_IP&gt;:8081/timescope</defaultValue>
+          <description>The external link for the Timescope UI. (http://localhost:8081/timescope)</description>
+          <defaultValue>http://localhost:8081/timescope</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -291,8 +291,8 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PORTAL_OWNCLOUD_URL</name>
-          <description>The external link for the ownCloud UI. (http://&lt;External_FQDN_IP&gt;:8084)</description>
-          <defaultValue>http://&lt;External_FQDN_IP&gt;:8084</defaultValue>
+          <description>The external link for the ownCloud UI. (http://localhost:8084)</description>
+          <defaultValue>http://localhost:8084</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -303,8 +303,8 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PORTAL_KDC_URL</name>
-          <description>The external link for the KDCompute UI. (http://&lt;External_FQDN_IP&gt;:8083/kdcompute)</description>
-          <defaultValue>http://&lt;External_FQDN_IP&gt;:8083/kdcompute</defaultValue>
+          <description>The external link for the KDCompute UI. (http://localhost:8083/kdcompute)</description>
+          <defaultValue>http://localhost:8083/kdcompute</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -327,8 +327,8 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PORTAL_PORTAINER_URL</name>
-          <description>The external link for the Portainer UI. (http://&lt;External_FQDN_IP&gt;:9000)</description>
-          <defaultValue>http://&lt;External_FQDN_IP&gt;:9000</defaultValue>
+          <description>The external link for the Portainer UI. (http://localhost:9000)</description>
+          <defaultValue>http://localhost:9000</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -339,8 +339,8 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PORTAL_HAPLOTOOL_URL</name>
-          <description>The external link for the Haplo Tool UI. (http://&lt;External_FQDN_IP&gt;:8085)</description>
-          <defaultValue>http://&lt;External_FQDN_IP&gt;:8085</defaultValue>
+          <description>The external link for the Haplo Tool UI. (http://localhost:8085)</description>
+          <defaultValue>http://localhost:8085</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -351,8 +351,8 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PORTAL_PEDVER_URL</name>
-          <description>The external link for the PedVer UI. (http://&lt;External_FQDN_IP&gt;:7000)</description>
-          <defaultValue>http://&lt;External_FQDN_IP&gt;:7000</defaultValue>
+          <description>The external link for the PedVer UI. (http://localhost:7000)</description>
+          <defaultValue>http://localhost:7000</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -370,14 +370,14 @@
         <hudson.model.StringParameterDefinition>
           <name>EXTERNAL_HOST_IP_HOSTNAME</name>
           <description>External FQDN or IP of the host. </description>
-          <defaultValue>&lt;External_FQDN_IP&gt;</defaultValue>
+          <defaultValue>localhost</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>ENV_NAME</name>
           <description>The name of the environment which is shown on the emails. [Example: QA_TEST] 
 **THIS VARIABLE CAN NOT CONTAIN ANY SPACES!!!**</description>
-          <defaultValue>&lt;ENV_NAME&gt;</defaultValue>
+          <defaultValue>localhost_test</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -594,14 +594,31 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>GOBII_RELEASE_VERSION</name>
-          <description>This is the dockerhub tag used for the images. (release/2.2.2)</description>
+          <description>This is the image tagged for the image deployment. (release/2.2.2)</description>
           <defaultValue>release/2.2.2</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>BRANCH</name>
-          <description>This is the branch for the gobii.deploy.bash used for the scripts.  (release/2.2.2)</description>
-          <defaultValue>release/2.2.2</defaultValue>
+          <description>This is the branch being used for the gobii.deploy.bash repo.</description>
+          <defaultValue>develop</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LL_USER1</name>
+          <description>This is for the ownCloud LiveLinks Enablement. (admin)</description>
+          <defaultValue>admin</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>LL_USER1_PASS</name>
+          <description>LL_USER1 Password.</description>
+          <defaultValue>{AQAAABAAAAAQ+XBn0HaNJd3SHYgdmN812IPDQajKe/ASl2Ss8/AGEzY=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_LL_PORT</name>
+          <description>ownCloud  port used for pointing livelinks to files. (8084)</description>
+          <defaultValue>8084</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
@@ -640,28 +657,32 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command># Deploying gobii-db-node
+      <command># Run gobii-db-node deployment
 bash container_scripts/jenkins_deploy/gobii_db_deploy.sh
 echo;
 
-echo &quot;Moving on to gobii-web-node...&quot;
+echo &quot;Moving on to gobii-web-node deployment...&quot;
 echo;
+sleep 3
 
-# Deploying gobii-web-node
+# Run gobii-web-node deployment
 bash container_scripts/jenkins_deploy/gobii_web_deploy.sh
 echo;
 
-echo &quot;Moving on to gobii-compute-node...&quot;
+echo &quot;Moving on to gobii-compute-node deployment...&quot;
 echo;
+sleep 3
 
-# Deploying gobii-compute-node
+# Run gobii-compute-node deployment
 bash container_scripts/jenkins_deploy/gobii_compute_deploy.sh
 echo;
 
-echo &quot;
+echo &quot;GOBii Data Manager Deployment Completed!&quot;
+
  _______________________________
-/ GOBii Data Manager Deployment \
-\           Completed!          /
+&lt;                               &gt;
+&lt; Jenkins Deployment Completed! &gt;
+&lt;                               &gt;
  -------------------------------
    \
     \
@@ -671,10 +692,16 @@ echo &quot;
       //   \ \
      (|     | )
     /&apos;\_   _/`\
-    \___)=(___/
-&quot;;</command>
+    \___)=(___/</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
-  <buildWrappers/>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.38">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
+      <disableDeferredWipeout>false</disableDeferredWipeout>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+  </buildWrappers>
 </project>

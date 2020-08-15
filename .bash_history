@@ -79,3 +79,4 @@ vi pedver_deploy.sh
 cd ..
 ll
 dps
+cowsay -f tux "Hello Boyo"
