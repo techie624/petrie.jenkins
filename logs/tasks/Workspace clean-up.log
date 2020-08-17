@@ -1,4 +1,4 @@
-Started at Sat Aug 15 10:54:46 UTC 2020
+Started at Mon Aug 17 10:54:46 UTC 2020
 Checking Tools » GOBii_Postgres_Restart
 Checking Tools » HaploTool_Start
 Checking Tools » LDAP_Start
@@ -9,16 +9,4 @@ Checking Deployments » gdm_deploy_localhost
 Checking Deployments » gdm_deploy_template
 Checking Deployments » pedver_deploy
 Checking Builds » pedver_build
-Finished at Sat Aug 15 10:54:46 UTC 2020. 3ms
-Started at Sun Aug 16 10:54:46 UTC 2020
-Checking Tools » GOBii_Postgres_Restart
-Checking Tools » HaploTool_Start
-Checking Tools » LDAP_Start
-Checking Tools » tomcat_restart
-Checking Tools » WARNING_DOCKER_DELETIONS » DOCKER_CLEAN_ALL
-Checking Deployments » filebrowser_deploy
-Checking Deployments » gdm_deploy_localhost
-Checking Deployments » gdm_deploy_template
-Checking Deployments » pedver_deploy
-Checking Builds » pedver_build
-Finished at Sun Aug 16 10:54:46 UTC 2020. 2ms
+Finished at Mon Aug 17 10:54:46 UTC 2020. 1ms

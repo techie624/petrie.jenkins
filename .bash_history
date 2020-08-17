@@ -80,3 +80,7 @@ cd ..
 ll
 dps
 cowsay -f tux "Hello Boyo"
+dps
+id
+adps
+dps
