@@ -1,34 +1,4 @@
-Started at Sat Aug 15 02:28:15 UTC 2020
-Processing Tools/tomcat_restart
-Offering Tools/tomcat_restart to Project Build Discarder
-Processing Deployments/filebrowser_deploy
-Offering Deployments/filebrowser_deploy to Project Build Discarder
-Processing Deployments/gdm_deploy
-Offering Deployments/gdm_deploy to Project Build Discarder
-Processing Deployments/gdm_deploy_localhost
-Offering Deployments/gdm_deploy_localhost to Project Build Discarder
-Processing Deployments/pedver_deploy
-Offering Deployments/pedver_deploy to Project Build Discarder
-Processing Builds/pedver_build
-Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 02:28:15 UTC 2020. 2ms
-Started at Sat Aug 15 03:28:15 UTC 2020
-Processing Tools/tomcat_restart
-Offering Tools/tomcat_restart to Project Build Discarder
-Processing Tools/WARNING_DELETIONS/DOCKER_CLEAN_ALL
-Offering Tools/WARNING_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
-Processing Deployments/filebrowser_deploy
-Offering Deployments/filebrowser_deploy to Project Build Discarder
-Processing Deployments/gdm_deploy
-Offering Deployments/gdm_deploy to Project Build Discarder
-Processing Deployments/gdm_deploy_localhost
-Offering Deployments/gdm_deploy_localhost to Project Build Discarder
-Processing Deployments/pedver_deploy
-Offering Deployments/pedver_deploy to Project Build Discarder
-Processing Builds/pedver_build
-Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 03:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 04:28:15 UTC 2020
+Started at Sun Aug 16 03:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -49,8 +19,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 04:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 05:28:15 UTC 2020
+Finished at Sun Aug 16 03:28:15 UTC 2020. 1ms
+Started at Sun Aug 16 04:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -71,8 +41,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 05:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 06:28:15 UTC 2020
+Finished at Sun Aug 16 04:28:15 UTC 2020. 1ms
+Started at Sun Aug 16 05:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -93,8 +63,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 06:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 07:28:15 UTC 2020
+Finished at Sun Aug 16 05:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 06:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -115,8 +85,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 07:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 08:28:15 UTC 2020
+Finished at Sun Aug 16 06:28:15 UTC 2020. 1ms
+Started at Sun Aug 16 07:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -137,8 +107,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 08:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 09:28:15 UTC 2020
+Finished at Sun Aug 16 07:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 08:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -159,8 +129,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 09:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 10:28:15 UTC 2020
+Finished at Sun Aug 16 08:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 09:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -181,8 +151,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 10:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 11:28:15 UTC 2020
+Finished at Sun Aug 16 09:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 10:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -203,8 +173,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 11:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 12:28:15 UTC 2020
+Finished at Sun Aug 16 10:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 11:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -225,8 +195,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 12:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 13:28:15 UTC 2020
+Finished at Sun Aug 16 11:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 12:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -247,8 +217,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 13:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 14:28:15 UTC 2020
+Finished at Sun Aug 16 12:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 13:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -269,8 +239,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 14:28:15 UTC 2020. 0ms
-Started at Sat Aug 15 15:28:15 UTC 2020
+Finished at Sun Aug 16 13:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 14:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -291,8 +261,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 15:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 16:28:15 UTC 2020
+Finished at Sun Aug 16 14:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 15:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -313,8 +283,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 16:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 17:28:15 UTC 2020
+Finished at Sun Aug 16 15:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 16:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -335,8 +305,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 17:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 18:28:15 UTC 2020
+Finished at Sun Aug 16 16:28:15 UTC 2020. 1ms
+Started at Sun Aug 16 17:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -357,8 +327,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 18:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 19:28:15 UTC 2020
+Finished at Sun Aug 16 17:28:15 UTC 2020. 1ms
+Started at Sun Aug 16 18:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -379,8 +349,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 19:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 20:28:15 UTC 2020
+Finished at Sun Aug 16 18:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 19:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -401,8 +371,8 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 20:28:15 UTC 2020. 1ms
-Started at Sat Aug 15 21:28:15 UTC 2020
+Finished at Sun Aug 16 19:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 20:28:15 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -423,4 +393,158 @@ Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Sat Aug 15 21:28:15 UTC 2020. 356ms
+Finished at Sun Aug 16 20:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 21:28:15 UTC 2020
+Processing Tools/GOBii_Postgres_Restart
+Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
+Processing Tools/HaploTool_Start
+Offering Tools/HaploTool_Start to Project Build Discarder
+Processing Tools/LDAP_Start
+Offering Tools/LDAP_Start to Project Build Discarder
+Processing Tools/tomcat_restart
+Offering Tools/tomcat_restart to Project Build Discarder
+Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
+Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
+Processing Deployments/filebrowser_deploy
+Offering Deployments/filebrowser_deploy to Project Build Discarder
+Processing Deployments/gdm_deploy_localhost
+Offering Deployments/gdm_deploy_localhost to Project Build Discarder
+Processing Deployments/gdm_deploy_template
+Offering Deployments/gdm_deploy_template to Project Build Discarder
+Processing Deployments/pedver_deploy
+Offering Deployments/pedver_deploy to Project Build Discarder
+Processing Builds/pedver_build
+Offering Builds/pedver_build to Project Build Discarder
+Finished at Sun Aug 16 21:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 22:28:15 UTC 2020
+Processing Tools/GOBii_Postgres_Restart
+Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
+Processing Tools/HaploTool_Start
+Offering Tools/HaploTool_Start to Project Build Discarder
+Processing Tools/LDAP_Start
+Offering Tools/LDAP_Start to Project Build Discarder
+Processing Tools/tomcat_restart
+Offering Tools/tomcat_restart to Project Build Discarder
+Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
+Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
+Processing Deployments/filebrowser_deploy
+Offering Deployments/filebrowser_deploy to Project Build Discarder
+Processing Deployments/gdm_deploy_localhost
+Offering Deployments/gdm_deploy_localhost to Project Build Discarder
+Processing Deployments/gdm_deploy_template
+Offering Deployments/gdm_deploy_template to Project Build Discarder
+Processing Deployments/pedver_deploy
+Offering Deployments/pedver_deploy to Project Build Discarder
+Processing Builds/pedver_build
+Offering Builds/pedver_build to Project Build Discarder
+Finished at Sun Aug 16 22:28:15 UTC 2020. 0ms
+Started at Sun Aug 16 23:28:15 UTC 2020
+Processing Tools/GOBii_Postgres_Restart
+Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
+Processing Tools/HaploTool_Start
+Offering Tools/HaploTool_Start to Project Build Discarder
+Processing Tools/LDAP_Start
+Offering Tools/LDAP_Start to Project Build Discarder
+Processing Tools/tomcat_restart
+Offering Tools/tomcat_restart to Project Build Discarder
+Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
+Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
+Processing Deployments/filebrowser_deploy
+Offering Deployments/filebrowser_deploy to Project Build Discarder
+Processing Deployments/gdm_deploy_localhost
+Offering Deployments/gdm_deploy_localhost to Project Build Discarder
+Processing Deployments/gdm_deploy_template
+Offering Deployments/gdm_deploy_template to Project Build Discarder
+Processing Deployments/pedver_deploy
+Offering Deployments/pedver_deploy to Project Build Discarder
+Processing Builds/pedver_build
+Offering Builds/pedver_build to Project Build Discarder
+Finished at Sun Aug 16 23:28:15 UTC 2020. 0ms
+Started at Mon Aug 17 00:28:15 UTC 2020
+Processing Tools/GOBii_Postgres_Restart
+Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
+Processing Tools/HaploTool_Start
+Offering Tools/HaploTool_Start to Project Build Discarder
+Processing Tools/LDAP_Start
+Offering Tools/LDAP_Start to Project Build Discarder
+Processing Tools/tomcat_restart
+Offering Tools/tomcat_restart to Project Build Discarder
+Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
+Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
+Processing Deployments/filebrowser_deploy
+Offering Deployments/filebrowser_deploy to Project Build Discarder
+Processing Deployments/gdm_deploy_localhost
+Offering Deployments/gdm_deploy_localhost to Project Build Discarder
+Processing Deployments/gdm_deploy_template
+Offering Deployments/gdm_deploy_template to Project Build Discarder
+Processing Deployments/pedver_deploy
+Offering Deployments/pedver_deploy to Project Build Discarder
+Processing Builds/pedver_build
+Offering Builds/pedver_build to Project Build Discarder
+Finished at Mon Aug 17 00:28:15 UTC 2020. 0ms
+Started at Mon Aug 17 01:28:15 UTC 2020
+Processing Tools/GOBii_Postgres_Restart
+Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
+Processing Tools/HaploTool_Start
+Offering Tools/HaploTool_Start to Project Build Discarder
+Processing Tools/LDAP_Start
+Offering Tools/LDAP_Start to Project Build Discarder
+Processing Tools/tomcat_restart
+Offering Tools/tomcat_restart to Project Build Discarder
+Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
+Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
+Processing Deployments/filebrowser_deploy
+Offering Deployments/filebrowser_deploy to Project Build Discarder
+Processing Deployments/gdm_deploy_localhost
+Offering Deployments/gdm_deploy_localhost to Project Build Discarder
+Processing Deployments/gdm_deploy_template
+Offering Deployments/gdm_deploy_template to Project Build Discarder
+Processing Deployments/pedver_deploy
+Offering Deployments/pedver_deploy to Project Build Discarder
+Processing Builds/pedver_build
+Offering Builds/pedver_build to Project Build Discarder
+Finished at Mon Aug 17 01:28:15 UTC 2020. 0ms
+Started at Mon Aug 17 02:28:15 UTC 2020
+Processing Tools/GOBii_Postgres_Restart
+Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
+Processing Tools/HaploTool_Start
+Offering Tools/HaploTool_Start to Project Build Discarder
+Processing Tools/LDAP_Start
+Offering Tools/LDAP_Start to Project Build Discarder
+Processing Tools/tomcat_restart
+Offering Tools/tomcat_restart to Project Build Discarder
+Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
+Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
+Processing Deployments/filebrowser_deploy
+Offering Deployments/filebrowser_deploy to Project Build Discarder
+Processing Deployments/gdm_deploy_localhost
+Offering Deployments/gdm_deploy_localhost to Project Build Discarder
+Processing Deployments/gdm_deploy_template
+Offering Deployments/gdm_deploy_template to Project Build Discarder
+Processing Deployments/pedver_deploy
+Offering Deployments/pedver_deploy to Project Build Discarder
+Processing Builds/pedver_build
+Offering Builds/pedver_build to Project Build Discarder
+Finished at Mon Aug 17 02:28:15 UTC 2020. 0ms
+Started at Mon Aug 17 03:28:15 UTC 2020
+Processing Tools/GOBii_Postgres_Restart
+Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
+Processing Tools/HaploTool_Start
+Offering Tools/HaploTool_Start to Project Build Discarder
+Processing Tools/LDAP_Start
+Offering Tools/LDAP_Start to Project Build Discarder
+Processing Tools/tomcat_restart
+Offering Tools/tomcat_restart to Project Build Discarder
+Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
+Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
+Processing Deployments/filebrowser_deploy
+Offering Deployments/filebrowser_deploy to Project Build Discarder
+Processing Deployments/gdm_deploy_localhost
+Offering Deployments/gdm_deploy_localhost to Project Build Discarder
+Processing Deployments/gdm_deploy_template
+Offering Deployments/gdm_deploy_template to Project Build Discarder
+Processing Deployments/pedver_deploy
+Offering Deployments/pedver_deploy to Project Build Discarder
+Processing Builds/pedver_build
+Offering Builds/pedver_build to Project Build Discarder
+Finished at Mon Aug 17 03:28:15 UTC 2020. 0ms

@@ -44,6 +44,7 @@ docker run -dti \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -p $JENKINS_EXT_PORT:8080 \
 -p 50000:50000 \
+--restart=always \
 techie624/petrie.jenkins:v0.1
 echo;
 
