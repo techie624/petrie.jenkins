@@ -31,7 +31,7 @@ JENKINS_EXT_PORT=$2
 
 #-----------------------------------------------------------------------------#
 
-docker stop jenkins-node || true && docker rm jenkins-node || true
+docker rm -f jenkins-node || true
 
 #-----------------------------------------------------------------------------#
 
