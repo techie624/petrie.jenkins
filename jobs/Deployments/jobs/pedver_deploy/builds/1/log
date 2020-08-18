@@ -1,0 +1,31 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building in workspace /var/jenkins_home/workspace/pedver_deploy
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/pedver_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/release/2.2.2^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/release/2.2.2^{commit} # timeout=10
+Checking out Revision 8c39a9219bbb42faa93eb91e5cd26cc6bce4587e (refs/remotes/origin/release/2.2.2)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 8c39a9219bbb42faa93eb91e5cd26cc6bce4587e # timeout=10
+Commit message: "added jenkins deploy script for pedver"
+First time build. Skipping changelog.
+[pedver_deploy] $ /bin/sh -xe /tmp/jenkins2469234656813668086.sh
++ bash container_scripts/jenkins_deploy/pedver_deploy.sh
+No arguments supplied.
+Usage: bash <bash_script_name>.sh <path of gobii.parameters> <dockerhubpassw | "askme"> <gobii_release_version>
+Set dockerhubpassw parameter to 'askme' for the script to prompt for password instead.
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

@@ -1,0 +1,12 @@
+commit 88946c7a08bb026f7cb821c87ca8c6a5342f5d49
+tree 0081d332758a4fe27d0e892a0e9c24639fa633b5
+parent f9a49631ea2d1773aeedaf1735edda2f81ef03d8
+author rlp243 <rlp243@cornell.edu> 2020-08-17 16:32:56 -0400
+committer rlp243 <rlp243@cornell.edu> 2020-08-17 16:32:56 -0400
+
+    update with temp params
+
+
+:100644 100644 0d1b54e961dec97fccdc1d18e2afdbb49703750b 48eb1fc0908358f7f00a925bfb2f7237365374f6 M	container_scripts/jenkins_deploy/gobii_compute_deploy.sh
+:100644 100644 94fa45d8f77fa0a33e0d370e3e71a047d1edae7b 34096d7fbbe039f2db6ce5f92390e0f720b8ac94 M	container_scripts/jenkins_deploy/gobii_db_deploy.sh
+:100644 100644 45f2cdb789e92a553cf781cf812b7ad2d71a081d a714c6eb6947af85304eabae7c9bc730f110d87c M	container_scripts/jenkins_deploy/gobii_web_deploy.sh

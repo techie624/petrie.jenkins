@@ -1,0 +1,54 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building in workspace /var/jenkins_home/workspace/pedver_build
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/pedver_build # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision fd5b13d707eeeddc87ca83ff5267669fbb07157f (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f fd5b13d707eeeddc87ca83ff5267669fbb07157f # timeout=10
+Commit message: "update to make sure all containers are added to the bridge network"
+ > git rev-list --no-walk fd5b13d707eeeddc87ca83ff5267669fbb07157f # timeout=10
+[pedver_build] $ /bin/sh -xe /tmp/jenkins7501069546848238229.sh
++ pwd
+/var/jenkins_home/workspace/pedver_build
++ ls -larth
+total 116K
+drwxr-xr-x  4 jenkins jenkins 4.0K Aug 13 23:53 ..
+-rw-r--r--  1 jenkins jenkins  474 Aug 13 23:55 confidentiality.txt
+-rw-r--r--  1 jenkins jenkins 1.5K Aug 13 23:55 backup_docker_to_hub.sh
+-rw-r--r--  1 jenkins jenkins 3.0K Aug 13 23:55 backup_data_bundle.sh
+-rw-r--r--  1 jenkins jenkins 1002 Aug 13 23:55 backup_crontab_jobs.template
+-rw-r--r--  1 jenkins jenkins   16 Aug 13 23:55 .gitignore
+drwxr-xr-x  4 jenkins jenkins 4.0K Aug 13 23:55 container_scripts
+-rw-r--r--  1 jenkins jenkins 4.8K Aug 13 23:55 gobiiconfig_wrapper.sh
+-rw-r--r--  1 jenkins jenkins 1.5K Aug 13 23:55 gadm_aliases
+drwxr-xr-x  6 jenkins jenkins 4.0K Aug 13 23:55 devops_files
+drwxr-xr-x  2 jenkins jenkins 4.0K Aug 13 23:55 utils
+-rw-r--r--  1 jenkins jenkins  25K Aug 13 23:55 the_gobii_ship.sh
+-rw-r--r--  1 jenkins jenkins 1.1K Aug 13 23:55 restore_data_bundle.sh
+-rw-r--r--  1 jenkins jenkins 5.0K Aug 13 23:55 readme.md
+drwxr-xr-x  2 jenkins jenkins 4.0K Aug 13 23:55 postgres_backup_scripts
+drwxr-xr-x  3 jenkins jenkins 4.0K Aug 13 23:55 params
+drwxr-xr-x  3 jenkins jenkins 4.0K Aug 13 23:55 logs
+-rw-r--r--  1 jenkins jenkins  911 Aug 13 23:55 install_cert.sh
+drwxr-xr-x  2 jenkins jenkins 4.0K Aug 13 23:55 icons
+drwxr-xr-x  8 jenkins jenkins 4.0K Aug 13 23:55 .git
+drwxr-xr-x 10 jenkins jenkins 4.0K Aug 13 23:55 .
+Finished: SUCCESS

@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: rsandell
+Build-Jdk: 1.8.0_211
+Extension-Name: build-failure-analyzer
+Specification-Title: Jenkins Build Failure Analyzer Plugin
+Implementation-Title: build-failure-analyzer
+Implementation-Version: 1.27.0
+Group-Id: com.sonyericsson.jenkins.plugins.bfa
+Short-Name: build-failure-analyzer
+Long-Name: Build Failure Analyzer
+Url: http://wiki.jenkins-ci.org/display/JENKINS/Build+Failure+Analyzer
+Minimum-Java-Version: 1.8
+Plugin-Version: 1.27.0
+Hudson-Version: 2.164.3
+Jenkins-Version: 2.164.3
+Plugin-Dependencies: downstream-build-cache:1.3;resolution:=optional,g
+ errit-trigger:2.27.5;resolution:=optional,mq-notifier:1.2.1;resolutio
+ n:=optional,apache-httpcomponents-client-4-api:4.5.3-2.0,cloudbees-fo
+ lder:5.12;resolution:=optional,credentials:2.2.0;resolution:=optional
+ ,jackson2-api:2.10.2,junit:1.28,matrix-auth:1.2;resolution:=optional,
+ matrix-project:1.14,slack:2.30;resolution:=optional,token-macro:2.2;r
+ esolution:=optional
+Plugin-Developers: Robert Sandell:rsandell:robert.sandell@cloudbees.co
+ m,Tomas Westling:t_westling:tomas.westling@axis.com
+Plugin-License-Name: MIT
+Plugin-License-Name-2: MIT
+Plugin-ScmUrl: https://github.com/jenkinsci/build-failure-analyzer-plu
+ gin
+

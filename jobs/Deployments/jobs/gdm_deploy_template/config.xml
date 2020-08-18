@@ -1,0 +1,735 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>This deployment project will deploy the 3 containers:&#xd;
+• gobii-db-node&#xd;
+• gobii-web-node&#xd;
+• gobii-compute-node</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
+      <doNotScan>false</doNotScan>
+    </com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.13">
+      <gitLabConnection></gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>BUNDLE_PARENT_PATH</name>
+          <description>Default data path /data</description>
+          <defaultValue>/data</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_NETWORK_NAME</name>
+          <description>Created Docker Network to connect all containers to. (gobii_net)</description>
+          <defaultValue>gobii_net</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>NDD_PATH</name>
+          <description>NFS or persistent storage for data (/storage/persistent_data)</description>
+          <defaultValue>/nfs_storage/virtual_env/cbsugobiixvm3_data/persistent_data</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_CROP1_NAME</name>
+          <description>This defines the crops and is the directory location in /data/gobii_bundle/crops/&lt;crop_name&gt; (dev)</description>
+          <defaultValue>dev</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_COMPUTE_HOST</name>
+          <description>This is the communication path used for the containers across the docker network.  If the deploy is multi-node and is not a swarm environment this should be set the the hosts external FQDN or IP. (gobii-compute-node)</description>
+          <defaultValue>gobii-compute-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_COMPUTE_NAME</name>
+          <description>This is the container name used by the docker engine. (gobii-compute-node)</description>
+          <defaultValue>gobii-compute-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_COMPUTE_SSH_PORT</name>
+          <description>The external port to connect to compute container ssh. (2222)</description>
+          <defaultValue>2222</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_CRON_FILE_AGE</name>
+          <description>Number of minutes a job must be for cron to run the job.  (+2)</description>
+          <defaultValue>+2</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_CRON_INTERVAL</name>
+          <description>Number of minutes between each cronjob execution. (2)</description>
+          <defaultValue>2</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_DB_HOST</name>
+          <description>This is the communication path used for the containers across the docker network.  If the deploy is multi-node and is not a swarm environment this should be set the the hosts external FQDN or IP. (gobii-db-node)</description>
+          <defaultValue>gobii-db-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_DB_NAME</name>
+          <description>This is the container name used by the docker engine. (gobii-db-node)</description>
+          <defaultValue>gobii-db-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_DB_PORT</name>
+          <description>External Port for Postgres DB. (5433)</description>
+          <defaultValue>5433</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_WEB_HOST</name>
+          <description>This is the communication path used for the containers across the docker network.  If the deploy is multi-node and is not a swarm environment this should be set the the hosts external FQDN or IP. (gobii-web-node)</description>
+          <defaultValue>gobii-web-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_WEB_NAME</name>
+          <description>This is the container name used by the docker engine. (gobii-web-node)</description>
+          <defaultValue>gobii-web-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_WEB_PORT</name>
+          <description>External Port for tomcat Web UI. (8081)</description>
+          <defaultValue>8081</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>GOBII_GID</name>
+          <description>The &apos;gobii&apos; group gid on the host it is deployed on. (1001)</description>
+          <defaultValue>1001</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>GOBII_UID</name>
+          <description>The &apos;gadm&apos; user uid on the host it is deployed on. (1000)</description>
+          <defaultValue>1000</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>DOCKER_GOBII_ADMIN_PASSWORD</name>
+          <description>The &apos;gadm&apos; host user password.</description>
+          <defaultValue>{AQAAABAAAAAQ2oghWHY8XqIEx8xDeTCh65thJtWtRunsfjwYFYCiopQ=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_HUB_COMPUTE_NAME</name>
+          <description>The dockerhub repo name (gobii_compute_vanilla_ubuntu)</description>
+          <defaultValue>gobii_compute_vanilla_ubuntu</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_HUB_DB_NAME</name>
+          <description>The dockerhub repo name (gobii_db_vanilla_ubuntu)</description>
+          <defaultValue>gobii_db_vanilla_ubuntu</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_HUB_WEB_NAME</name>
+          <description>The dockerhub repo name (gobii_web_vanilla_ubuntu)</description>
+          <defaultValue>gobii_web_vanilla_ubuntu</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_HUB_USERNAME</name>
+          <description>The dockerhub user that owns the image repos. (gadm01)</description>
+          <defaultValue>gadm01</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>DOCKER_HUB_PASSWORD</name>
+          <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
+          <defaultValue>{AQAAABAAAAAQwnKg7dq2cEJXD6fV+d+prwZZz3gmfBCibOYcxymhu+Y=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_SUDOER_USERNAME</name>
+          <description>The host username for sudo. (gadm)</description>
+          <defaultValue>gadm</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_BUNDLE_NAME</name>
+          <description>Name of the bundle directory for all GOBii data. (gobii_bundle)</description>
+          <defaultValue>gobii_bundle</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BUNDLE_TEMP_PATH</name>
+          <description>The default location the bundle is created in the gobii-db-node image. (/var/gobii_bundle)</description>
+          <defaultValue>/var/gobii_bundle</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>POSTGRES_ETC</name>
+          <description>The Postgres volume name for the gobii-db-node. (gobiipostgresetcubuntu)</description>
+          <defaultValue>gobiipostgresetcubuntu</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>POSTGRES_LOG</name>
+          <description>The Postgres volume name for the gobii-db-node. (gobiipostgreslogubuntu)</description>
+          <defaultValue>gobiipostgreslogubuntu</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>POSTGRES_LIB</name>
+          <description>The Postgres volume name for the gobii-db-node. (gobiipostgreslibubuntu)</description>
+          <defaultValue>gobiipostgreslibubuntu</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_COMPUTE_CONTAINER_HOSTNAME</name>
+          <description>This is the hostname set for the container internally. (compute-node)</description>
+          <defaultValue>compute-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_DB_CONTAINER_HOSTNAME</name>
+          <description>This is the hostname set for the container internally. (db-node)</description>
+          <defaultValue>db-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_WEB_CONTAINER_HOSTNAME</name>
+          <description>This is the hostname set for the container internally. (web-node)</description>
+          <defaultValue>web-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>ACTIVATE_ENCRYPTION</name>
+          <description>KDCompute Active Encryption. (false)</description>
+          <defaultValue>false</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LIQUIBASE_CROP1_CONTEXTS</name>
+          <description>Liquibase seed data. (general,seed_general,seed_crop1)</description>
+          <defaultValue>general,seed_general,seed_crop1</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LIQUIBASE_CROP2_CONTEXTS</name>
+          <description>Liquibase seed data. (general,seed_general,seed_crop2)</description>
+          <defaultValue>general,seed_general,seed_crop2</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_HUB_LOGIN_USERNAME</name>
+          <description>Dockerhub user used to login and pull images. (gadmreader)</description>
+          <defaultValue>gadmreader</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TIMESCOPER_USER</name>
+          <description>The internal user set for configuration of timescope. (timescoper)</description>
+          <defaultValue>timescoper</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>TIMESCOPER_PASS</name>
+          <description>Password for internal timescope user [timescoper] set from TIMESCOPER_USER.</description>
+          <defaultValue>{AQAAABAAAAAQ0YuL0E4pZSR9h288H7VbRopJoKYRIOIdCjIiitwhvP4=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TIMESCOPER_VERSION</name>
+          <description>Timescope Versioning. (2.2)</description>
+          <defaultValue>2.2</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_CONFIG_PATH</name>
+          <description>Internal location of the GOBii Portal configuration in the gobii-web-node. (/usr/local/tomcat/webapps/gobii-portal/config/launchers.xml)</description>
+          <defaultValue>/usr/local/tomcat/webapps/gobii-portal/config/launchers.xml</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_CROP1_URL_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring. (.//launcher[name=&apos;dev&apos;]/url)</description>
+          <defaultValue>.//launcher[name=&apos;dev&apos;]/url</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_CROP1_URL</name>
+          <description>The external link for the ExtractorUI. (http://localhost:8081/gobii-dev)</description>
+          <defaultValue>http://cbsugobiixvm03.biohpc.cornell.edu:8081/gobii-dev</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_CROP1_NAME_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring. (.//launcher[name=&apos;dev&apos;]/name)</description>
+          <defaultValue>.//launcher[name=&apos;dev&apos;]/name</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_CROP1_NAME</name>
+          <description>Name Displayed for the ExtractorUI Crop Link. (dev)</description>
+          <defaultValue>dev</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_TIMESCOPE_URL_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring. (.//launcher[name=&apos;Timescope&apos;]/url)</description>
+          <defaultValue>.//launcher[name=&apos;Timescope&apos;]/url</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_TIMESCOPE_URL</name>
+          <description>The external link for the Timescope UI. (http://localhost:8081/timescope)</description>
+          <defaultValue>http://cbsugobiixvm03.biohpc.cornell.edu:8081/timescope</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_OWNCLOUD_URL_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring. (.//launcher[name=&apos;File Browser&apos;]/url)</description>
+          <defaultValue>.//launcher[name=&apos;File Browser&apos;]/url</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_OWNCLOUD_URL</name>
+          <description>The external link for the ownCloud UI. (http://localhost:8084)</description>
+          <defaultValue>http://cbsugobiixvm03.biohpc.cornell.edu:8084</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_KDC_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring. (.//launcher[name=&apos;GDM Data QC&apos;]/url)</description>
+          <defaultValue>.//launcher[name=&apos;GDM Data QC&apos;]/url</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_KDC_URL</name>
+          <description>The external link for the KDCompute UI. (http://localhost:8083/kdcompute)</description>
+          <defaultValue>http://cbsugobiixvm03.biohpc.cornell.edu:8083/kdcompute</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_LOADER_URL_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring. (.//launcher[name=&apos;GDM Data Loader&apos;]/url)</description>
+          <defaultValue>.//launcher[name=&apos;GDM Data Loader&apos;]/url</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_LOADER_URL</name>
+          <description>Link to the download page. Usually windows LoaderUI.</description>
+          <defaultValue>https://bitbucket.org/gobiiproject/gobii.deploy.bash/downloads/distribution_release2-2_windows.zip</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_PORTAINER_URL_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring.  (.//launcher[name=&apos;Portainer&apos;]/url)</description>
+          <defaultValue>.//launcher[name=&apos;Portainer&apos;]/url</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_PORTAINER_URL</name>
+          <description>The external link for the Portainer UI. (http://localhost:9000)</description>
+          <defaultValue>http://cbsugobiixvm03.biohpc.cornell.edu:9000</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_HAPLOTOOL_URL_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring.  (.//launcher[name=&apos;Haplo Tool&apos;]/url)</description>
+          <defaultValue>.//launcher[name=&apos;Haplo Tool&apos;]/url</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_HAPLOTOOL_URL</name>
+          <description>The external link for the Haplo Tool UI. (http://localhost:8085)</description>
+          <defaultValue>http://cbsugobiixvm03.biohpc.cornell.edu:8085</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_PEDVER_URL_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring.  (.//launcher[name=&apos;PedVer&apos;]/url)</description>
+          <defaultValue>.//launcher[name=&apos;PedVer&apos;]/url</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_PEDVER_URL</name>
+          <description>The external link for the PedVer UI. (http://localhost:7000)</description>
+          <defaultValue>http://cbsugobiixvm03.biohpc.cornell.edu:7000</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_FLAPJACK_BYTZ_URL_XPATH</name>
+          <description>XPath pointer to xml block for reconfiguring.  (.//launcher[name=&apos;Flapjack Bytes&apos;]/url)</description>
+          <defaultValue>.//launcher[name=&apos;Flapjack Bytes&apos;]/url</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PORTAL_FLAPJACK_BYTZ_URL</name>
+          <description>The external link for the Flapjack Bytes UI. (https://gobiiproject.atlassian.net/wiki/spaces/GD/pages/238911510/Flapjack+Bytes)</description>
+          <defaultValue>https://gobiiproject.atlassian.net/wiki/spaces/GD/pages/238911510/Flapjack+Bytes</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>EXTERNAL_HOST_IP_HOSTNAME</name>
+          <description>External FQDN or IP of the host. </description>
+          <defaultValue>cbsugobiixvm03.biohpc.cornell.edu</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>ENV_NAME</name>
+          <description>The name of the environment which is shown on the emails. [Example: QA_TEST] 
+**THIS VARIABLE CAN NOT CONTAIN ANY SPACES!!!**</description>
+          <defaultValue>xvm03_test</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>GOBII_DEPLOY_VERSION</name>
+          <description>This version is displayed. (Release X.Y.Z)</description>
+          <defaultValue>Release X.Y.Z</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BUNDLE_PATH</name>
+          <description>Directory location of the gobii_bundle (/data/gobii_bundle)</description>
+          <defaultValue>/data/gobii_bundle</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>CONFIG_XML</name>
+          <description>File location of the gobii-web.xml is located. (/data/gobii_bundle/config/gobii-web.xml)</description>
+          <defaultValue>/data/gobii_bundle/config/gobii-web.xml</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>AUTH_TYPE</name>
+          <description>The authentication protocol used to connect to LDAP/AD. (LDAP_CONNECT_WITH_MANAGER)</description>
+          <defaultValue>LDAP_CONNECT_WITH_MANAGER</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LDAP_DN</name>
+          <description>Distinguished Name reference. (uid={0})</description>
+          <defaultValue>uid={0}</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LDAP_URL</name>
+          <description>Connection LDAP URL. (ldap://cbsugobiixvm06.biohpc.cornell.edu/dc=gobiiproject,dc=org)</description>
+          <defaultValue>ldap://cbsugobiixvm06.biohpc.cornell.edu/dc=gobiiproject,dc=org</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LDAP_BIND_USER</name>
+          <description>LDAP Administrator user string. (cn=admin,dc=gobiiproject,dc=org)</description>
+          <defaultValue>cn=admin,dc=gobiiproject,dc=org</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>LDAP_BIND_PASSWORD</name>
+          <description>LDAP_BIND_USER Password.</description>
+          <defaultValue>{AQAAABAAAAAQD3pTrICI6RYFkaTZTlbtOuquVlzAziv8SCnxReyPoq4=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LDAP_BACKGROUND_USER</name>
+          <description>LDAP background user used by webservices to query valid users. (gadm)</description>
+          <defaultValue>gadm</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>LDAP_BACKGROUND_PASSWORD</name>
+          <description>LDAP_BACKGROUND_USER Password.</description>
+          <defaultValue>{AQAAABAAAAAQMO0zROmRxcxASwIgVJv93CKjofxSMQ4g2YqgBt1gv3o=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>MAIL_HOST</name>
+          <description>Mail Host. (smtp.gmail.com)</description>
+          <defaultValue>smtp.gmail.com</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>MAIL_PORT</name>
+          <description>Mail server Port. (587)</description>
+          <defaultValue>587</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>MAIL_USERNAME</name>
+          <description>Mail user account (gobii.rhodes@gmail.com)</description>
+          <defaultValue>gobii.rhodes@gmail.com</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>MAIL_PASSWORD</name>
+          <description>MAIL_USERNAME Password.</description>
+          <defaultValue>{AQAAABAAAAAQRNRr+7DC//xKvZLZnmJJPXzC/AKBSUl2zmrMlcBaLuc=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>MAIL_TYPE</name>
+          <description>Mail server type. (SMTP)</description>
+          <defaultValue>SMTP</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>MAIL_HASH</name>
+          <description>Mail Server hash. (na)</description>
+          <defaultValue>na</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>CROP1</name>
+          <description>Crop # name, this should match what is set for DOCKER_CROP1_NAME (dev)</description>
+          <defaultValue>dev</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>WEB_HOST</name>
+          <description>The FQDN, IP or Docker Engine name given by DOCKER_WEB_NAME.  This is used in the gobii-web.xml for internal/external communications between containers. (gobii-web-node)</description>
+          <defaultValue>gobii-web-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>WEB_PORT</name>
+          <description>This is the gobii-web-node webservice port internally on the container. **If this is a multi-node deployment the external port set on DOCKER_WEB_PORT should be used instead.** (8080)</description>
+          <defaultValue>8080</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>CROP1_CONTEXT_PATH</name>
+          <description>The context path used on ExtractorUI URL. (/gobii-dev)</description>
+          <defaultValue>/gobii-dev</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DB_HOST</name>
+          <description>The FQDN, IP or Docker Engine name given by DOCKER_DB_NAME.  This is used in the gobii-web.xml for internal/external communications between containers. (gobii-db-node)</description>
+          <defaultValue>gobii-db-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DB_PORT</name>
+          <description>This is the gobii-db-node postgres port internally on the container. **If this is a multi-node deployment the external port set on DOCKER_WEB_PORT should be used instead.** (5432)</description>
+          <defaultValue>5432</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DB_USERNAME</name>
+          <description>The main GOBII database user. (appuser)</description>
+          <defaultValue>appuser</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>DB_PASS</name>
+          <description>DB_USERNAME Password. </description>
+          <defaultValue>{AQAAABAAAAAQYidKRD0DpCSf/c8ikCBv/F3VSW9upt2Aajutiqt+klo=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DB_NAME_CROP1</name>
+          <description>This is the name of the crop as it is referenced in the database tables. (gobii_dev)</description>
+          <defaultValue>gobii_dev</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_HOST</name>
+          <description>The FQDN, IP or Docker Engine name given by DOCKER_KDC_NAME.  This is used in the gobii-web.xml for internal/external communications between containers. (gobii-kdc-node)</description>
+          <defaultValue>gobii-kdc-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_PORT</name>
+          <description>This is the external port connected to the containers internal port. (8083)</description>
+          <defaultValue>8083</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_PORT_INTERNAL</name>
+          <description>This is the internal port connected to the containers external port. (8080)</description>
+          <defaultValue>8080</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_CONTEXT_PATH</name>
+          <description>kdcompute application context on server (kdcompute)</description>
+          <defaultValue>kdcompute</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_JOB_START</name>
+          <description>KDcompute job start param (qcStart)</description>
+          <defaultValue>qcStart</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_JOB_STATUS</name>
+          <description>KDcompute job status param (qcStatus)</description>
+          <defaultValue>qcStatus</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_JOB_DOWNLOAD</name>
+          <description>KDcompute job downloand (qcDownload)</description>
+          <defaultValue>qcDownload</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_JOB_CHECK_STATUS</name>
+          <description>Seconds to wait between status checks. (60)</description>
+          <defaultValue>60</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_JOB_FAIL_THRESHOLD</name>
+          <description>Minutes until job is hung (2880)</description>
+          <defaultValue>2880</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_PURGE</name>
+          <description>KDcompute purge the jobs. (qcPurge)</description>
+          <defaultValue>qcPurge</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KDC_ACTIVE</name>
+          <description>KDcompute is active (false|true) for gobii-web.xml. (true)</description>
+          <defaultValue>true</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LL_USER1</name>
+          <description>This is for the ownCloud LiveLinks Enablement. (admin)</description>
+          <defaultValue>admin</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>LL_USER1_PASS</name>
+          <description>LL_USER1 Password.</description>
+          <defaultValue>{AQAAABAAAAAQ+XBn0HaNJd3SHYgdmN812IPDQajKe/ASl2Ss8/AGEzY=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_LL_PORT</name>
+          <description>ownCloud  port used for pointing livelinks to files. (8084)</description>
+          <defaultValue>8084</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>GOBII_RELEASE_VERSION</name>
+          <description>This is the image tagged for the image deployment. (release_2.2.2_2)</description>
+          <defaultValue>release_2.2.2_2</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH</name>
+          <description>This is the branch being used for the gobii.deploy.bash repo. (release/2.2.2) (develop)</description>
+          <defaultValue>release/2.2.2</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>CONFIGURATOR_PARAM_FILE</name>
+          <description>Export all env vars into a temp file for sourcing. (gobii.parameters.tmp)</description>
+          <defaultValue>gobii.parameters.tmp</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@2.0.2">
+      <maxConcurrentPerNode>0</maxConcurrentPerNode>
+      <maxConcurrentTotal>0</maxConcurrentTotal>
+      <categories class="java.util.concurrent.CopyOnWriteArrayList"/>
+      <throttleEnabled>false</throttleEnabled>
+      <throttleOption>project</throttleOption>
+      <limitOneJobWithMatchingParams>false</limitOneJobWithMatchingParams>
+      <paramsToUseForLimit></paramsToUseForLimit>
+    </hudson.plugins.throttleconcurrents.ThrottleJobProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.3.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/$BRANCH</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>
+#--------------------------------------#
+
+set -e # Abort script at first error
+set -u # Attempt to use undefined variable outputs error message
+#set -x # Verbose with commands displayed
+
+#--------------------------------------#
+
+# Create temperary parameters file
+echo &quot;$WORKSPACE&quot;
+cd $WORKSPACE; printenv &gt;&gt; gobii.parameters.tmp
+
+#--------------------------------------#
+
+# Run gobii-db-node deployment
+bash container_scripts/jenkins_deploy/gobii_db_deploy.sh
+echo;
+
+echo &quot;Moving on to gobii-web-node deployment...&quot;
+echo;
+sleep 3
+
+#--------------------------------------#
+
+# Run gobii-web-node deployment
+bash container_scripts/jenkins_deploy/gobii_web_deploy.sh
+echo;
+
+echo &quot;Moving on to gobii-compute-node deployment...&quot;
+echo;
+sleep 3
+
+#--------------------------------------#
+
+# Run gobii-compute-node deployment
+bash container_scripts/jenkins_deploy/gobii_compute_deploy.sh
+echo;
+
+#--------------------------------------#
+
+cd $WORKSPACE; rm -f gobii.parameters.tmp
+echo;
+
+#--------------------------------------#
+
+echo &quot;GOBii Data Manager Deployment Completed!&quot;
+echo;
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.38">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
+      <disableDeferredWipeout>false</disableDeferredWipeout>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+  </buildWrappers>
+</project>

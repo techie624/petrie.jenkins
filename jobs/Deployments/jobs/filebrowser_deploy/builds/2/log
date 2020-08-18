@@ -1,0 +1,31 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/filebrowser_deploy
+[filebrowser_deploy] $ /bin/sh -xe /tmp/jenkins6691205479961278468.sh
++ docker run -dti --name filebrowser -h filebrowser -v /data:/srv -v /nfs_storage:/nfs_storage -p 8080:80 --restart=always filebrowser/filebrowser
+Unable to find image 'filebrowser/filebrowser:latest' locally
+latest: Pulling from filebrowser/filebrowser
+3c74b8b042bd: Pulling fs layer
+9c589e26e32d: Pulling fs layer
+c3db7ef18bbe: Pulling fs layer
+f993c1321d18: Pulling fs layer
+f993c1321d18: Waiting
+9c589e26e32d: Verifying Checksum
+9c589e26e32d: Download complete
+c3db7ef18bbe: Verifying Checksum
+c3db7ef18bbe: Download complete
+3c74b8b042bd: Download complete
+3c74b8b042bd: Pull complete
+9c589e26e32d: Pull complete
+c3db7ef18bbe: Pull complete
+f993c1321d18: Verifying Checksum
+f993c1321d18: Download complete
+f993c1321d18: Pull complete
+Digest: sha256:cc6f39a08fe3dc03568136283c981bb8d22e632e93dc383ccee3e4f977ab97d4
+Status: Downloaded newer image for filebrowser/filebrowser:latest
+cbff9e67d5805ca3623e8914060cbe2ab08eaf1048dbd66c7f4a7622831ec4ab
+[filebrowser_deploy] $ /bin/sh -xe /tmp/jenkins4230113422419952456.sh
++ cowsay -f tux Hello Boyo
+/tmp/jenkins4230113422419952456.sh: 2: /tmp/jenkins4230113422419952456.sh: cowsay: not found
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE
