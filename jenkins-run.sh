@@ -51,14 +51,6 @@ techie624/petrie.jenkins:$IMAGE_TAG
 echo;
 
 #-----------------------------------------------------------------------------#
-### Install vim
-
-docker exec -u root jenkins-node bash -c "
-apt update && apt install vim tree htop sudo -y;
-"
-echo;
-
-#-----------------------------------------------------------------------------#
 ### On initial setup display initialAdminPassword
 
 docker exec -u root jenkins-node bash -c '

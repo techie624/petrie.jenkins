@@ -30,5 +30,10 @@ RUN curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-c
     ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 #-----------------------------------------------------------------------------#
+
+RUN apt update && apt install vim tree htop sudo -y;
+
+#-----------------------------------------------------------------------------#
 # drop back to the regular jenkins user - good practice
+
 USER jenkins 
