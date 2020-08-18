@@ -162,13 +162,12 @@
         </entry>
       </causeBag>
     </hudson.model.CauseAction>
-    <org.jenkinsci.plugins.envinject.EnvInjectPluginAction plugin="envinject@2.3.0"/>
     <hudson.plugins.git.util.BuildData plugin="git@4.3.0">
       <buildsByBranchName>
         <entry>
           <string>refs/remotes/origin/release/2.2.2</string>
           <hudson.plugins.git.util.Build>
-            <marked plugin="git-client@3.3.2">
+            <marked plugin="git-client@3.4.1">
               <sha1>8c39a9219bbb42faa93eb91e5cd26cc6bce4587e</sha1>
               <branches class="list">
                 <hudson.plugins.git.Branch>
@@ -213,5 +212,5 @@
     <authorOrCommitter>false</authorOrCommitter>
     <showEntireCommitSummaryInChanges>true</showEntireCommitSummaryInChanges>
   </scm>
-  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+  <culprits class="com.google.common.collect.EmptyImmutableSet"/>
 </build>

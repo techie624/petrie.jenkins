@@ -11,7 +11,6 @@
         </entry>
       </causeBag>
     </hudson.model.CauseAction>
-    <org.jenkinsci.plugins.envinject.EnvInjectPluginAction plugin="envinject@2.3.0"/>
     <com.sonyericsson.rebuild.RebuildAction plugin="rebuild@1.31"/>
   </actions>
   <queueId>1</queueId>
@@ -25,5 +24,5 @@
   <workspace>/var/jenkins_home/workspace/filebrowser_deploy</workspace>
   <hudsonVersion>2.235.4</hudsonVersion>
   <scm class="hudson.scm.NullChangeLogParser"/>
-  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+  <culprits class="com.google.common.collect.EmptyImmutableSet"/>
 </build>
