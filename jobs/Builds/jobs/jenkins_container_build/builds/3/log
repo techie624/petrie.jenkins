@@ -1,0 +1,10 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Builds/jenkins_container_build
+[jenkins_container_build] $ /bin/sh -xe /tmp/jenkins7857148314816158597.sh
++ date + 3
+date: extra operand ‘3’
+Try 'date --help' for more information.
++ TAG=
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

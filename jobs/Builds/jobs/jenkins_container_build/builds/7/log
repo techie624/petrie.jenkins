@@ -1,0 +1,10 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4Cd95CoFQF2bWL8sJicJOC5dAU9TAv9F9VEy3PGkNJrWAAAArh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBk39rPwkfafSzJyUYjAzKzUvOzOvOB6ovSQxMy+1KD4JJKlvBgDvizgd3gAAAA==[0m6
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Builds/jenkins_container_build
+[jenkins_container_build] $ /bin/sh -xe /tmp/jenkins1344029051250839707.sh
++ date +%Y%m%d
++ TAG=20200818_7
++ echo Tag is set as: 20200818_7
+Tag is set as: 20200818_7
+Finished: SUCCESS

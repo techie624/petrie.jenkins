@@ -1,0 +1,71 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Builds/jenkins_container_build
+[jenkins_container_build] $ /bin/sh -xe /tmp/jenkins2525588661411594352.sh
++ date +4
++ TAG=4
++ echo Tag is set as: 4
+Tag is set as: 4
++ cd /var/jenkins_home/jenkins_container_build/
++ docker image build -t techie624petrie.jenkins:4 .
+Sending build context to Docker daemon   2.56kB
+Step 1/4 : from jenkins/jenkins:latest
+ ---> f32bd59f98fe
+Step 2/4 : USER root
+ ---> Using cache
+ ---> 31369e515e46
+Step 3/4 : RUN apt-get update &&     apt-get -y --no-install-recommends install apt-transport-https       ca-certificates       curl       gnupg2       software-properties-common &&     curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey &&     add-apt-repository       "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")       $(lsb_release -cs)       stable" &&    apt-get update &&    apt-get -y --no-install-recommends install docker-ce &&    apt-get clean &&    usermod -aG docker jenkins
+ ---> Using cache
+ ---> 38a77332fa06
+Step 4/4 : USER jenkins
+ ---> Using cache
+ ---> 02115cfbdb67
+Successfully built 02115cfbdb67
+Successfully tagged techie624petrie.jenkins:4
++ docker login -u techie624 -p NCC1337e!
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker push techie624petrie.jenkins:4
+The push refers to repository [docker.io/library/techie624petrie.jenkins]
+d1adb93ac51b: Preparing
+681e994246ac: Preparing
+f231f4e24137: Preparing
+44a7da71c1aa: Preparing
+df7cbc842c4c: Preparing
+006093a07d83: Preparing
+75381d5d1c80: Preparing
+6cb94555557f: Preparing
+95416b00e286: Preparing
+7f385d5dafc4: Preparing
+8581024035bb: Preparing
+1ff885d9f9d5: Preparing
+020ee6df4bbd: Preparing
+d81d8fa6dfd4: Preparing
+bd76253da83a: Preparing
+e43c0c41b833: Preparing
+01727b1a72df: Preparing
+69dfa7bd7a92: Preparing
+4d1ab3827f6b: Preparing
+7948c3e5790c: Preparing
+1ff885d9f9d5: Waiting
+020ee6df4bbd: Waiting
+6cb94555557f: Waiting
+95416b00e286: Waiting
+bd76253da83a: Waiting
+e43c0c41b833: Waiting
+69dfa7bd7a92: Waiting
+01727b1a72df: Waiting
+4d1ab3827f6b: Waiting
+006093a07d83: Waiting
+7f385d5dafc4: Waiting
+7948c3e5790c: Waiting
+8581024035bb: Waiting
+d81d8fa6dfd4: Waiting
+75381d5d1c80: Waiting
+denied: requested access to the resource is denied
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

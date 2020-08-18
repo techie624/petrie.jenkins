@@ -1,5 +1,6 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
+  <actions/>
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
@@ -29,6 +30,8 @@
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@2.0.2">
+      <maxConcurrentPerNode>0</maxConcurrentPerNode>
+      <maxConcurrentTotal>0</maxConcurrentTotal>
       <categories class="java.util.concurrent.CopyOnWriteArrayList"/>
       <throttleEnabled>false</throttleEnabled>
       <throttleOption>project</throttleOption>
@@ -45,15 +48,17 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd $JENKINS_HOME/jenkins_container_build/
+      <command>TAG=$(date +&quot;%Y%m%d&quot;)_$BUILD_NUMBER
+echo &quot;Tag is set as: $TAG&quot;;
 
-docker image build -t jenkins-build_$BUILD_NUMBER .
+cd $JENKINS_HOME/jenkins_container_build/
 
-docker commit -m &quot;Created Jenkins Image: jenkins-build_$BUILD_NUMBER&quot; jenkins-build_$BUILD_NUMBER techie624/petrie.jenkins:jenkins-build_$BUILD_NUMBER
+docker image build -t $DOCKERHUB_USERNAME/petrie.jenkins:$TAG .
 
-docker login -u $DOCKERHUB_USERNAME -p DOCKERHUB_USERPASS
+docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_USERPASS
 
-docker push techie624/petrie.jenkins:jenkins-build_$BUILD_NUMBER</command>
+docker push $DOCKERHUB_USERNAME/petrie.jenkins:$TAG</command>
+      <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

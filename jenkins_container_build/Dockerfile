@@ -1,7 +1,11 @@
 from jenkins/jenkins:latest
 
+#-----------------------------------------------------------------------------#
+# Perform as root
+
 USER root
 
+#-----------------------------------------------------------------------------#
 # Install the latest Docker CE binaries and add user `jenkins` to the docker group
 RUN apt-get update && \
     apt-get -y --no-install-recommends install apt-transport-https \
@@ -19,5 +23,12 @@ RUN apt-get update && \
    apt-get clean && \
    usermod -aG docker jenkins
 
+#-----------------------------------------------------------------------------#
+
+RUN curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
+    chmod +x /usr/local/bin/docker-compose && \
+    ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+#-----------------------------------------------------------------------------#
 # drop back to the regular jenkins user - good practice
 USER jenkins 

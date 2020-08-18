@@ -1,0 +1,451 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4DAMcWsc949Kg/n21i2dB9FnoA+JG9v2CkOwuMAd3mc1AAAArh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBk39rPwkfafSzJyUYjAzKzUvOzOvOB6ovSQxMy+1KD4JJKlvAQDopoD63gAAAA==[0m8
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Builds/jenkins_container_build
+[jenkins_container_build] $ /bin/sh -xe /tmp/jenkins7346433635452471393.sh
++ date +%Y%m%d
++ TAG=20200818_9
++ echo Tag is set as: 20200818_9
+Tag is set as: 20200818_9
++ cd /var/jenkins_home/jenkins_container_build/
++ docker image build -t techie624/petrie.jenkins:20200818_9 .
+Sending build context to Docker daemon   2.56kB
+Step 1/4 : from jenkins/jenkins:latest
+latest: Pulling from jenkins/jenkins
+3192219afd04: Already exists
+17c160265e75: Already exists
+cc4fe40d0e61: Already exists
+9d647f502a07: Already exists
+d108b8c498aa: Already exists
+1bfe918b8aa5: Already exists
+dafa1a7c0751: Already exists
+581ab8b61a09: Pulling fs layer
+b1a90bb495be: Pulling fs layer
+74166db6870f: Pulling fs layer
+8275c6c89a13: Pulling fs layer
+b2ed7361a08d: Pulling fs layer
+017299c03c54: Pulling fs layer
+29cadd4b97fd: Pulling fs layer
+240cf79934ac: Pulling fs layer
+a07cd4dcbfbc: Pulling fs layer
+a48be54213c4: Pulling fs layer
+7178806239f6: Pulling fs layer
+9253e0aa61ed: Pulling fs layer
+8275c6c89a13: Waiting
+a48be54213c4: Waiting
+7178806239f6: Waiting
+29cadd4b97fd: Waiting
+b2ed7361a08d: Waiting
+9253e0aa61ed: Waiting
+240cf79934ac: Waiting
+a07cd4dcbfbc: Waiting
+017299c03c54: Waiting
+b1a90bb495be: Download complete
+74166db6870f: Verifying Checksum
+74166db6870f: Download complete
+8275c6c89a13: Download complete
+b2ed7361a08d: Verifying Checksum
+b2ed7361a08d: Download complete
+29cadd4b97fd: Download complete
+240cf79934ac: Verifying Checksum
+240cf79934ac: Download complete
+a07cd4dcbfbc: Download complete
+a48be54213c4: Verifying Checksum
+a48be54213c4: Download complete
+7178806239f6: Download complete
+017299c03c54: Verifying Checksum
+017299c03c54: Download complete
+9253e0aa61ed: Verifying Checksum
+9253e0aa61ed: Download complete
+581ab8b61a09: Verifying Checksum
+581ab8b61a09: Download complete
+581ab8b61a09: Pull complete
+b1a90bb495be: Pull complete
+74166db6870f: Pull complete
+8275c6c89a13: Pull complete
+b2ed7361a08d: Pull complete
+017299c03c54: Pull complete
+29cadd4b97fd: Pull complete
+240cf79934ac: Pull complete
+a07cd4dcbfbc: Pull complete
+a48be54213c4: Pull complete
+7178806239f6: Pull complete
+9253e0aa61ed: Pull complete
+Digest: sha256:900f3dd87e3ae8df8ef8f31196c72c71475396762a4c4493e78b2366493eee9f
+Status: Downloaded newer image for jenkins/jenkins:latest
+ ---> f32bd59f98fe
+Step 2/4 : USER root
+ ---> Running in 914b4c1d3ca4
+Removing intermediate container 914b4c1d3ca4
+ ---> 245c50f5b9a3
+Step 3/4 : RUN apt-get update &&     apt-get -y --no-install-recommends install apt-transport-https       ca-certificates       curl       gnupg2       software-properties-common &&     curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey &&     add-apt-repository       "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")       $(lsb_release -cs)       stable" &&    apt-get update &&    apt-get -y --no-install-recommends install docker-ce &&    apt-get clean &&    usermod -aG docker jenkins
+ ---> Running in 0037802e19bf
+Ign:1 http://deb.debian.org/debian stretch InRelease
+Get:2 http://security.debian.org/debian-security stretch/updates InRelease [53.0 kB]
+Get:3 http://deb.debian.org/debian stretch-updates InRelease [93.6 kB]
+Get:4 http://deb.debian.org/debian stretch Release [118 kB]
+Get:5 http://deb.debian.org/debian stretch Release.gpg [2410 B]
+Get:6 http://security.debian.org/debian-security stretch/updates/main amd64 Packages [552 kB]
+Get:7 http://deb.debian.org/debian stretch-updates/main amd64 Packages [2596 B]
+Get:9 http://deb.debian.org/debian stretch/main amd64 Packages [7080 kB]
+Get:8 https://packagecloud.io/github/git-lfs/debian stretch InRelease [23.2 kB]
+Get:10 https://packagecloud.io/github/git-lfs/debian stretch/main amd64 Packages [4884 B]
+Fetched 7930 kB in 2s (3747 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+apt-transport-https is already the newest version (1.4.10).
+ca-certificates is already the newest version (20200601~deb9u1).
+curl is already the newest version (7.52.1-5+deb9u11).
+The following additional packages will be installed:
+  dh-python distro-info-data gir1.2-glib-2.0 gir1.2-packagekitglib-1.0
+  iso-codes libapt-inst2.0 libdbus-1-3 libdbus-glib-1-2 libgirepository-1.0-1
+  libglib2.0-0 libmpdec2 libpackagekit-glib2-18 libpython3-stdlib
+  libpython3.5-minimal libpython3.5-stdlib lsb-release python-apt-common
+  python3 python3-apt python3-dbus python3-gi python3-minimal python3-pycurl
+  python3-software-properties python3.5 python3.5-minimal
+Suggested packages:
+  libdpkg-perl isoquery lsb python3-doc python3-tk python3-venv
+  python3-apt-dbg python-apt-doc python-dbus-doc python3-dbus-dbg
+  libcurl4-gnutls-dev python-pycurl-doc python3-pycurl-dbg python3.5-venv
+  python3.5-doc binutils binfmt-support
+Recommended packages:
+  dbus libglib2.0-data shared-mime-info xdg-user-dirs packagekit
+  unattended-upgrades
+The following NEW packages will be installed:
+  dh-python distro-info-data gir1.2-glib-2.0 gir1.2-packagekitglib-1.0 gnupg2
+  iso-codes libapt-inst2.0 libdbus-1-3 libdbus-glib-1-2 libgirepository-1.0-1
+  libglib2.0-0 libmpdec2 libpackagekit-glib2-18 libpython3-stdlib
+  libpython3.5-minimal libpython3.5-stdlib lsb-release python-apt-common
+  python3 python3-apt python3-dbus python3-gi python3-minimal python3-pycurl
+  python3-software-properties python3.5 python3.5-minimal
+  software-properties-common
+0 upgraded, 28 newly installed, 0 to remove and 0 not upgraded.
+Need to get 12.4 MB of archives.
+After this operation, 54.5 MB of additional disk space will be used.
+Get:1 http://security.debian.org/debian-security stretch/updates/main amd64 libpython3.5-minimal amd64 3.5.3-1+deb9u2 [575 kB]
+Get:2 http://deb.debian.org/debian stretch/main amd64 python3-minimal amd64 3.5.3-1 [35.3 kB]
+Get:3 http://deb.debian.org/debian stretch/main amd64 libmpdec2 amd64 2.4.2-1 [85.2 kB]
+Get:4 http://deb.debian.org/debian stretch/main amd64 libpython3-stdlib amd64 3.5.3-1 [18.6 kB]
+Get:5 http://deb.debian.org/debian stretch/main amd64 dh-python all 2.20170125 [86.8 kB]
+Get:6 http://deb.debian.org/debian stretch/main amd64 python3 amd64 3.5.3-1 [21.6 kB]
+Get:7 http://deb.debian.org/debian stretch/main amd64 libapt-inst2.0 amd64 1.4.10 [191 kB]
+Get:8 http://security.debian.org/debian-security stretch/updates/main amd64 python3.5-minimal amd64 3.5.3-1+deb9u2 [1695 kB]
+Get:9 http://deb.debian.org/debian stretch/main amd64 distro-info-data all 0.36 [5810 B]
+Get:10 http://deb.debian.org/debian stretch/main amd64 libglib2.0-0 amd64 2.50.3-2+deb9u2 [2692 kB]
+Get:11 http://security.debian.org/debian-security stretch/updates/main amd64 libpython3.5-stdlib amd64 3.5.3-1+deb9u2 [2169 kB]
+Get:12 http://security.debian.org/debian-security stretch/updates/main amd64 python3.5 amd64 3.5.3-1+deb9u2 [230 kB]
+Get:13 http://deb.debian.org/debian stretch/main amd64 libgirepository-1.0-1 amd64 1.50.0-1+b1 [89.0 kB]
+Get:14 http://deb.debian.org/debian stretch/main amd64 gir1.2-glib-2.0 amd64 1.50.0-1+b1 [139 kB]
+Get:15 http://deb.debian.org/debian stretch/main amd64 libpackagekit-glib2-18 amd64 1.1.5-2+deb9u1 [114 kB]
+Get:16 http://deb.debian.org/debian stretch/main amd64 gir1.2-packagekitglib-1.0 amd64 1.1.5-2+deb9u1 [34.7 kB]
+Get:17 http://deb.debian.org/debian stretch/main amd64 gnupg2 all 2.1.18-8~deb9u4 [299 kB]
+Get:18 http://deb.debian.org/debian stretch/main amd64 iso-codes all 3.75-1 [2389 kB]
+Get:19 http://deb.debian.org/debian stretch/main amd64 libdbus-1-3 amd64 1.10.32-0+deb9u1 [196 kB]
+Get:20 http://deb.debian.org/debian stretch/main amd64 libdbus-glib-1-2 amd64 0.108-2 [206 kB]
+Get:21 http://deb.debian.org/debian stretch/main amd64 lsb-release all 9.20161125 [27.1 kB]
+Get:22 http://deb.debian.org/debian stretch/main amd64 python-apt-common all 1.4.1 [93.6 kB]
+Get:23 http://deb.debian.org/debian stretch/main amd64 python3-apt amd64 1.4.1 [174 kB]
+Get:24 http://deb.debian.org/debian stretch/main amd64 python3-dbus amd64 1.2.4-1+b1 [184 kB]
+Get:25 http://deb.debian.org/debian stretch/main amd64 python3-gi amd64 3.22.0-2 [473 kB]
+Get:26 http://deb.debian.org/debian stretch/main amd64 python3-pycurl amd64 7.43.0-2 [61.3 kB]
+Get:27 http://deb.debian.org/debian stretch/main amd64 python3-software-properties all 0.96.20.2-1 [49.5 kB]
+Get:28 http://deb.debian.org/debian stretch/main amd64 software-properties-common all 0.96.20.2-1 [83.6 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 12.4 MB in 1s (6413 kB/s)
+Selecting previously unselected package libpython3.5-minimal:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12466 files and directories currently installed.)
+Preparing to unpack .../0-libpython3.5-minimal_3.5.3-1+deb9u2_amd64.deb ...
+Unpacking libpython3.5-minimal:amd64 (3.5.3-1+deb9u2) ...
+Selecting previously unselected package python3.5-minimal.
+Preparing to unpack .../1-python3.5-minimal_3.5.3-1+deb9u2_amd64.deb ...
+Unpacking python3.5-minimal (3.5.3-1+deb9u2) ...
+Selecting previously unselected package python3-minimal.
+Preparing to unpack .../2-python3-minimal_3.5.3-1_amd64.deb ...
+Unpacking python3-minimal (3.5.3-1) ...
+Selecting previously unselected package libmpdec2:amd64.
+Preparing to unpack .../3-libmpdec2_2.4.2-1_amd64.deb ...
+Unpacking libmpdec2:amd64 (2.4.2-1) ...
+Selecting previously unselected package libpython3.5-stdlib:amd64.
+Preparing to unpack .../4-libpython3.5-stdlib_3.5.3-1+deb9u2_amd64.deb ...
+Unpacking libpython3.5-stdlib:amd64 (3.5.3-1+deb9u2) ...
+Selecting previously unselected package python3.5.
+Preparing to unpack .../5-python3.5_3.5.3-1+deb9u2_amd64.deb ...
+Unpacking python3.5 (3.5.3-1+deb9u2) ...
+Selecting previously unselected package libpython3-stdlib:amd64.
+Preparing to unpack .../6-libpython3-stdlib_3.5.3-1_amd64.deb ...
+Unpacking libpython3-stdlib:amd64 (3.5.3-1) ...
+Selecting previously unselected package dh-python.
+Preparing to unpack .../7-dh-python_2.20170125_all.deb ...
+Unpacking dh-python (2.20170125) ...
+Setting up libpython3.5-minimal:amd64 (3.5.3-1+deb9u2) ...
+Setting up python3.5-minimal (3.5.3-1+deb9u2) ...
+Setting up python3-minimal (3.5.3-1) ...
+Selecting previously unselected package python3.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 13380 files and directories currently installed.)
+Preparing to unpack .../00-python3_3.5.3-1_amd64.deb ...
+Unpacking python3 (3.5.3-1) ...
+Selecting previously unselected package libapt-inst2.0:amd64.
+Preparing to unpack .../01-libapt-inst2.0_1.4.10_amd64.deb ...
+Unpacking libapt-inst2.0:amd64 (1.4.10) ...
+Selecting previously unselected package distro-info-data.
+Preparing to unpack .../02-distro-info-data_0.36_all.deb ...
+Unpacking distro-info-data (0.36) ...
+Selecting previously unselected package libglib2.0-0:amd64.
+Preparing to unpack .../03-libglib2.0-0_2.50.3-2+deb9u2_amd64.deb ...
+Unpacking libglib2.0-0:amd64 (2.50.3-2+deb9u2) ...
+Selecting previously unselected package libgirepository-1.0-1:amd64.
+Preparing to unpack .../04-libgirepository-1.0-1_1.50.0-1+b1_amd64.deb ...
+Unpacking libgirepository-1.0-1:amd64 (1.50.0-1+b1) ...
+Selecting previously unselected package gir1.2-glib-2.0:amd64.
+Preparing to unpack .../05-gir1.2-glib-2.0_1.50.0-1+b1_amd64.deb ...
+Unpacking gir1.2-glib-2.0:amd64 (1.50.0-1+b1) ...
+Selecting previously unselected package libpackagekit-glib2-18:amd64.
+Preparing to unpack .../06-libpackagekit-glib2-18_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking libpackagekit-glib2-18:amd64 (1.1.5-2+deb9u1) ...
+Selecting previously unselected package gir1.2-packagekitglib-1.0.
+Preparing to unpack .../07-gir1.2-packagekitglib-1.0_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking gir1.2-packagekitglib-1.0 (1.1.5-2+deb9u1) ...
+Selecting previously unselected package gnupg2.
+Preparing to unpack .../08-gnupg2_2.1.18-8~deb9u4_all.deb ...
+Unpacking gnupg2 (2.1.18-8~deb9u4) ...
+Selecting previously unselected package iso-codes.
+Preparing to unpack .../09-iso-codes_3.75-1_all.deb ...
+Unpacking iso-codes (3.75-1) ...
+Selecting previously unselected package libdbus-1-3:amd64.
+Preparing to unpack .../10-libdbus-1-3_1.10.32-0+deb9u1_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.10.32-0+deb9u1) ...
+Selecting previously unselected package libdbus-glib-1-2:amd64.
+Preparing to unpack .../11-libdbus-glib-1-2_0.108-2_amd64.deb ...
+Unpacking libdbus-glib-1-2:amd64 (0.108-2) ...
+Selecting previously unselected package lsb-release.
+Preparing to unpack .../12-lsb-release_9.20161125_all.deb ...
+Unpacking lsb-release (9.20161125) ...
+Selecting previously unselected package python-apt-common.
+Preparing to unpack .../13-python-apt-common_1.4.1_all.deb ...
+Unpacking python-apt-common (1.4.1) ...
+Selecting previously unselected package python3-apt.
+Preparing to unpack .../14-python3-apt_1.4.1_amd64.deb ...
+Unpacking python3-apt (1.4.1) ...
+Selecting previously unselected package python3-dbus.
+Preparing to unpack .../15-python3-dbus_1.2.4-1+b1_amd64.deb ...
+Unpacking python3-dbus (1.2.4-1+b1) ...
+Selecting previously unselected package python3-gi.
+Preparing to unpack .../16-python3-gi_3.22.0-2_amd64.deb ...
+Unpacking python3-gi (3.22.0-2) ...
+Selecting previously unselected package python3-pycurl.
+Preparing to unpack .../17-python3-pycurl_7.43.0-2_amd64.deb ...
+Unpacking python3-pycurl (7.43.0-2) ...
+Selecting previously unselected package python3-software-properties.
+Preparing to unpack .../18-python3-software-properties_0.96.20.2-1_all.deb ...
+Unpacking python3-software-properties (0.96.20.2-1) ...
+Selecting previously unselected package software-properties-common.
+Preparing to unpack .../19-software-properties-common_0.96.20.2-1_all.deb ...
+Unpacking software-properties-common (0.96.20.2-1) ...
+Setting up python-apt-common (1.4.1) ...
+Setting up libapt-inst2.0:amd64 (1.4.10) ...
+Processing triggers for mime-support (3.60) ...
+Setting up iso-codes (3.75-1) ...
+Setting up libglib2.0-0:amd64 (2.50.3-2+deb9u2) ...
+No schema files found: doing nothing.
+Setting up distro-info-data (0.36) ...
+Setting up libpackagekit-glib2-18:amd64 (1.1.5-2+deb9u1) ...
+Setting up libgirepository-1.0-1:amd64 (1.50.0-1+b1) ...
+Setting up gnupg2 (2.1.18-8~deb9u4) ...
+Setting up gir1.2-glib-2.0:amd64 (1.50.0-1+b1) ...
+Processing triggers for libc-bin (2.24-11+deb9u4) ...
+Setting up gir1.2-packagekitglib-1.0 (1.1.5-2+deb9u1) ...
+Setting up libmpdec2:amd64 (2.4.2-1) ...
+Setting up libdbus-1-3:amd64 (1.10.32-0+deb9u1) ...
+Setting up libdbus-glib-1-2:amd64 (0.108-2) ...
+Setting up libpython3.5-stdlib:amd64 (3.5.3-1+deb9u2) ...
+Setting up python3.5 (3.5.3-1+deb9u2) ...
+Setting up libpython3-stdlib:amd64 (3.5.3-1) ...
+Setting up python3 (3.5.3-1) ...
+running python rtupdate hooks for python3.5...
+running python post-rtupdate hooks for python3.5...
+Setting up python3-gi (3.22.0-2) ...
+Setting up lsb-release (9.20161125) ...
+Setting up dh-python (2.20170125) ...
+Setting up python3-pycurl (7.43.0-2) ...
+Setting up python3-apt (1.4.1) ...
+Setting up python3-dbus (1.2.4-1+b1) ...
+Setting up python3-software-properties (0.96.20.2-1) ...
+Setting up software-properties-common (0.96.20.2-1) ...
+Processing triggers for libc-bin (2.24-11+deb9u4) ...
+[91mWarning: apt-key output should not be parsed (stdout is not a terminal)
+[0mOK
+Hit:1 http://security.debian.org/debian-security stretch/updates InRelease
+Ign:2 http://deb.debian.org/debian stretch InRelease
+Hit:3 http://deb.debian.org/debian stretch-updates InRelease
+Get:4 https://download.docker.com/linux/debian stretch InRelease [44.8 kB]
+Hit:5 http://deb.debian.org/debian stretch Release
+Get:7 https://download.docker.com/linux/debian stretch/stable amd64 Packages [14.4 kB]
+Hit:6 https://packagecloud.io/github/git-lfs/debian stretch InRelease
+Fetched 59.2 kB in 1s (43.8 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  containerd.io dmsetup docker-ce-cli iptables libdevmapper1.02.1 libip4tc0
+  libip6tc0 libiptc0 libnetfilter-conntrack3 libnfnetlink0 libseccomp2
+  libxtables12
+Suggested packages:
+  kmod
+Recommended packages:
+  aufs-tools cgroupfs-mount | cgroup-lite pigz libltdl7
+The following NEW packages will be installed:
+  containerd.io dmsetup docker-ce docker-ce-cli iptables libdevmapper1.02.1
+  libip4tc0 libip6tc0 libiptc0 libnetfilter-conntrack3 libnfnetlink0
+  libseccomp2 libxtables12
+0 upgraded, 13 newly installed, 0 to remove and 0 not upgraded.
+Need to get 86.0 MB of archives.
+After this operation, 384 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian stretch/main amd64 libnfnetlink0 amd64 1.0.1-3 [13.5 kB]
+Get:2 http://deb.debian.org/debian stretch/main amd64 libip4tc0 amd64 1.6.0+snapshot20161117-6 [67.8 kB]
+Get:3 https://download.docker.com/linux/debian stretch/stable amd64 containerd.io amd64 1.2.13-2 [21.4 MB]
+Get:4 http://deb.debian.org/debian stretch/main amd64 libip6tc0 amd64 1.6.0+snapshot20161117-6 [68.1 kB]
+Get:5 http://deb.debian.org/debian stretch/main amd64 libiptc0 amd64 1.6.0+snapshot20161117-6 [57.5 kB]
+Get:6 http://deb.debian.org/debian stretch/main amd64 libxtables12 amd64 1.6.0+snapshot20161117-6 [75.9 kB]
+Get:7 http://deb.debian.org/debian stretch/main amd64 libnetfilter-conntrack3 amd64 1.0.6-2 [38.7 kB]
+Get:8 http://deb.debian.org/debian stretch/main amd64 iptables amd64 1.6.0+snapshot20161117-6 [288 kB]
+Get:9 http://deb.debian.org/debian stretch/main amd64 libseccomp2 amd64 2.3.1-2.1+deb9u1 [40.7 kB]
+Get:10 http://deb.debian.org/debian stretch/main amd64 libdevmapper1.02.1 amd64 2:1.02.137-2 [170 kB]
+Get:11 http://deb.debian.org/debian stretch/main amd64 dmsetup amd64 2:1.02.137-2 [107 kB]
+Get:12 https://download.docker.com/linux/debian stretch/stable amd64 docker-ce-cli amd64 5:19.03.12~3-0~debian-stretch [41.2 MB]
+Get:13 https://download.docker.com/linux/debian stretch/stable amd64 docker-ce amd64 5:19.03.12~3-0~debian-stretch [22.5 MB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 86.0 MB in 16s (5169 kB/s)
+Selecting previously unselected package libnfnetlink0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 14757 files and directories currently installed.)
+Preparing to unpack .../00-libnfnetlink0_1.0.1-3_amd64.deb ...
+Unpacking libnfnetlink0:amd64 (1.0.1-3) ...
+Selecting previously unselected package libip4tc0:amd64.
+Preparing to unpack .../01-libip4tc0_1.6.0+snapshot20161117-6_amd64.deb ...
+Unpacking libip4tc0:amd64 (1.6.0+snapshot20161117-6) ...
+Selecting previously unselected package libip6tc0:amd64.
+Preparing to unpack .../02-libip6tc0_1.6.0+snapshot20161117-6_amd64.deb ...
+Unpacking libip6tc0:amd64 (1.6.0+snapshot20161117-6) ...
+Selecting previously unselected package libiptc0:amd64.
+Preparing to unpack .../03-libiptc0_1.6.0+snapshot20161117-6_amd64.deb ...
+Unpacking libiptc0:amd64 (1.6.0+snapshot20161117-6) ...
+Selecting previously unselected package libxtables12:amd64.
+Preparing to unpack .../04-libxtables12_1.6.0+snapshot20161117-6_amd64.deb ...
+Unpacking libxtables12:amd64 (1.6.0+snapshot20161117-6) ...
+Selecting previously unselected package libnetfilter-conntrack3:amd64.
+Preparing to unpack .../05-libnetfilter-conntrack3_1.0.6-2_amd64.deb ...
+Unpacking libnetfilter-conntrack3:amd64 (1.0.6-2) ...
+Selecting previously unselected package iptables.
+Preparing to unpack .../06-iptables_1.6.0+snapshot20161117-6_amd64.deb ...
+Unpacking iptables (1.6.0+snapshot20161117-6) ...
+Selecting previously unselected package libseccomp2:amd64.
+Preparing to unpack .../07-libseccomp2_2.3.1-2.1+deb9u1_amd64.deb ...
+Unpacking libseccomp2:amd64 (2.3.1-2.1+deb9u1) ...
+Selecting previously unselected package containerd.io.
+Preparing to unpack .../08-containerd.io_1.2.13-2_amd64.deb ...
+Unpacking containerd.io (1.2.13-2) ...
+Selecting previously unselected package libdevmapper1.02.1:amd64.
+Preparing to unpack .../09-libdevmapper1.02.1_2%3a1.02.137-2_amd64.deb ...
+Unpacking libdevmapper1.02.1:amd64 (2:1.02.137-2) ...
+Selecting previously unselected package dmsetup.
+Preparing to unpack .../10-dmsetup_2%3a1.02.137-2_amd64.deb ...
+Unpacking dmsetup (2:1.02.137-2) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../11-docker-ce-cli_5%3a19.03.12~3-0~debian-stretch_amd64.deb ...
+Unpacking docker-ce-cli (5:19.03.12~3-0~debian-stretch) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../12-docker-ce_5%3a19.03.12~3-0~debian-stretch_amd64.deb ...
+Unpacking docker-ce (5:19.03.12~3-0~debian-stretch) ...
+Setting up libip4tc0:amd64 (1.6.0+snapshot20161117-6) ...
+Processing triggers for libc-bin (2.24-11+deb9u4) ...
+Setting up libseccomp2:amd64 (2.3.1-2.1+deb9u1) ...
+Setting up libxtables12:amd64 (1.6.0+snapshot20161117-6) ...
+Setting up libnfnetlink0:amd64 (1.0.1-3) ...
+Setting up docker-ce-cli (5:19.03.12~3-0~debian-stretch) ...
+Setting up libip6tc0:amd64 (1.6.0+snapshot20161117-6) ...
+Setting up libnetfilter-conntrack3:amd64 (1.0.6-2) ...
+Setting up containerd.io (1.2.13-2) ...
+Setting up libiptc0:amd64 (1.6.0+snapshot20161117-6) ...
+Setting up iptables (1.6.0+snapshot20161117-6) ...
+Setting up libdevmapper1.02.1:amd64 (2:1.02.137-2) ...
+Setting up dmsetup (2:1.02.137-2) ...
+Setting up docker-ce (5:19.03.12~3-0~debian-stretch) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Processing triggers for libc-bin (2.24-11+deb9u4) ...
+Removing intermediate container 0037802e19bf
+ ---> 367a0f8d66ab
+Step 4/4 : USER jenkins
+ ---> Running in 71bbc61c1be1
+Removing intermediate container 71bbc61c1be1
+ ---> 4aa5b956f213
+Successfully built 4aa5b956f213
+Successfully tagged techie624/petrie.jenkins:20200818_9
++ docker login -u techie624 -p NCC1337e!
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker push techie624/petrie.jenkins:20200818_9
+The push refers to repository [docker.io/techie624/petrie.jenkins]
+c337cc2cd6aa: Preparing
+681e994246ac: Preparing
+f231f4e24137: Preparing
+44a7da71c1aa: Preparing
+df7cbc842c4c: Preparing
+006093a07d83: Preparing
+75381d5d1c80: Preparing
+6cb94555557f: Preparing
+95416b00e286: Preparing
+7f385d5dafc4: Preparing
+8581024035bb: Preparing
+1ff885d9f9d5: Preparing
+020ee6df4bbd: Preparing
+d81d8fa6dfd4: Preparing
+bd76253da83a: Preparing
+e43c0c41b833: Preparing
+01727b1a72df: Preparing
+006093a07d83: Waiting
+69dfa7bd7a92: Preparing
+4d1ab3827f6b: Preparing
+75381d5d1c80: Waiting
+7948c3e5790c: Preparing
+6cb94555557f: Waiting
+95416b00e286: Waiting
+7f385d5dafc4: Waiting
+8581024035bb: Waiting
+1ff885d9f9d5: Waiting
+020ee6df4bbd: Waiting
+69dfa7bd7a92: Waiting
+d81d8fa6dfd4: Waiting
+4d1ab3827f6b: Waiting
+bd76253da83a: Waiting
+7948c3e5790c: Waiting
+01727b1a72df: Waiting
+e43c0c41b833: Waiting
+f231f4e24137: Mounted from jenkins/jenkins
+44a7da71c1aa: Mounted from jenkins/jenkins
+681e994246ac: Mounted from jenkins/jenkins
+df7cbc842c4c: Mounted from jenkins/jenkins
+75381d5d1c80: Mounted from jenkins/jenkins
+6cb94555557f: Mounted from jenkins/jenkins
+006093a07d83: Mounted from jenkins/jenkins
+95416b00e286: Mounted from jenkins/jenkins
+7f385d5dafc4: Mounted from jenkins/jenkins
+8581024035bb: Mounted from jenkins/jenkins
+d81d8fa6dfd4: Layer already exists
+bd76253da83a: Layer already exists
+1ff885d9f9d5: Mounted from jenkins/jenkins
+e43c0c41b833: Layer already exists
+01727b1a72df: Layer already exists
+69dfa7bd7a92: Layer already exists
+020ee6df4bbd: Mounted from jenkins/jenkins
+4d1ab3827f6b: Layer already exists
+7948c3e5790c: Layer already exists
+c337cc2cd6aa: Pushed
+20200818_9: digest: sha256:68f5fd4d17f36efbb68dc41744a78617390c56e49d20732458477e3498e00764 size: 4512
+Finished: SUCCESS

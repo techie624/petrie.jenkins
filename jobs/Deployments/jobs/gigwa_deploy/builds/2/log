@@ -1,0 +1,12 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4CegXTqqSMCNTZpqxsnT4s6ub89fPbYECb0NgElLZFkWAAAAqB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBmX9rPwkfZfUgpz8ytzUvJJiMD89M708MT4FLKpvCABn7zpA2AAAAA==[0m1
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/gigwa_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+[gigwa_deploy] $ /bin/sh -xe /tmp/jenkins6435805216983937739.sh
++ cp /var/jenkins_home/gigwa_deploy/docker-compose.yml /var/jenkins_home/workspace/Deployments/gigwa_deploy/docker-compose.yml
+$ docker-compose -f /var/jenkins_home/workspace/Deployments/gigwa_deploy/docker-compose.yml up -d
+Build step 'Docker Compose Build Step' changed build result to FAILURE
+Finished: FAILURE

@@ -1,0 +1,18 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4GxaMl7IEQZmIxJQijRnok2V0ad/ZNdBaenaM5q76IG3AAAArh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBk39rPwkfafSzJyUYjAzKzUvOzOvOB6ovSQxMy+1KD4JJKlvCgBV2jGE3gAAAA==[0m5
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Builds/jenkins_container_build
+[jenkins_container_build] $ /bin/sh -xe /tmp/jenkins6159820369605134218.sh
++ date
++ TAG=Tue Aug 18 17:40:20 UTC 2020 +6
++ echo Tag is set as: Tue Aug 18 17:40:20 UTC 2020 +6
+Tag is set as: Tue Aug 18 17:40:20 UTC 2020 +6
++ docker push techie624petrie.jenkins:Tue Aug 18 17:40:20 UTC 2020 +6
+"docker push" requires exactly 1 argument.
+See 'docker push --help'.
+
+Usage:  docker push [OPTIONS] NAME[:TAG]
+
+Push an image or a repository to a registry
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

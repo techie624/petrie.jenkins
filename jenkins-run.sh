@@ -10,10 +10,10 @@
 #-----------------------------------------------------------------------------#
 ### verify proper arguments are passed
 
-if [ $# -lt 2 ];
+if [ $# -lt 3 ];
   then
     echo "No arguments supplied."
-    echo "Usage: bash <bash_script_name>.sh <NDD_PATH> <JENKINS_EXT_PORT>"
+    echo "Usage: bash <bash_script_name>.sh <NDD_PATH> <JENKINS_EXT_PORT> <IMAGE_TAG>"
     echo "/data directory is mounted which is normally a symlink which needs 
     to be mounted for the symlink pointer"
     exit 1
@@ -28,6 +28,8 @@ pwd="`pwd`" && echo $pwd
 
 NDD_PATH=$1
 JENKINS_EXT_PORT=$2
+IMAGE_TAG=$3
+
 
 #-----------------------------------------------------------------------------#
 
@@ -45,7 +47,7 @@ docker run -dti \
 -p $JENKINS_EXT_PORT:8080 \
 -p 50000:50000 \
 --restart=always \
-techie624/petrie.jenkins:v0.1
+techie624/petrie.jenkins:$IMAGE_TAG
 echo;
 
 #-----------------------------------------------------------------------------#
