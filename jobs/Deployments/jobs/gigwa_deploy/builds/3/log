@@ -1,0 +1,22 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/gigwa_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+[gigwa_deploy] $ /bin/sh -xe /tmp/jenkins2704321294441077295.sh
++ cp /var/jenkins_home/gigwa_deploy/docker-compose.yml /var/jenkins_home/workspace/Deployments/gigwa_deploy/docker-compose.yml
+$ docker-compose -f /var/jenkins_home/workspace/Deployments/gigwa_deploy/docker-compose.yml up -d
+Creating network "gigwa_deploy_default" with the default driver
+Pulling mongo (mongo:4.2.3)...
+4.2.3: Pulling from library/mongo
+Digest: sha256:58b25d51baa11a85b6aedf7c4e05710d12a27ddc2883e2692e7d58527d98bd73
+Status: Downloaded newer image for mongo:4.2.3
+Pulling tomcat (guilhemsempere/gigwa:2.3-RELEASE)...
+2.3-RELEASE: Pulling from guilhemsempere/gigwa
+Digest: sha256:f90354570a01b680228022a839c5d334625b728c479f8be8c75d9e502ba37f18
+Status: Downloaded newer image for guilhemsempere/gigwa:2.3-RELEASE
+Creating gigwa_deploy_mongo_1 ... 
+[1A[2KCreating gigwa_deploy_mongo_1 ... [32mdone[0m[1BCreating gigwa_deploy_tomcat_1 ... 
+[1A[2KCreating gigwa_deploy_tomcat_1 ... [32mdone[0m[1BBuild step 'Docker Compose Build Step' changed build result to SUCCESS
+Finished: SUCCESS
