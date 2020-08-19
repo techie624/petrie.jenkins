@@ -11,3 +11,29 @@ Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.d
  > git --version # timeout=10
  > git --version # 'git version 2.11.0'
  > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision 68c3c737281987a9ae7a5a7c17e534c856afae82 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 68c3c737281987a9ae7a5a7c17e534c856afae82 # timeout=10
+Commit message: "update with sherpa deploy"
+First time build. Skipping changelog.
+[sherpa_deploy] $ /bin/sh -xe /tmp/jenkins419165435471832782.sh
++ set -e
++ set -u
++ bash container_scripts/jenkins_deploy/gobii_portainer_deploy.sh
++ docker network create gobii_net
+Error response from daemon: network with name gobii_net already exists
++ true
++ set +x
+
+Starting the portainer-node deployment...
+
+container_scripts/jenkins_deploy/gobii_portainer_deploy.sh: line 35: DOCKER_PORTAINER_NAME: unbound variable
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

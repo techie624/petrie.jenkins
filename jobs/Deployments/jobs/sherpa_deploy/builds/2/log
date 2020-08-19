@@ -1,0 +1,113 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4KV+8g9gTfBl9T7zXhx8BU41PH34lof+0P6mIcBXLoXbAAAAqR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBhX9rPwkfZfUgpz8ytzUvJJiML84I7WoIDE+BSysbwgAqwhKedkAAAA=[0m1
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/sherpa_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/Deployments/sherpa_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision 68c3c737281987a9ae7a5a7c17e534c856afae82 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 68c3c737281987a9ae7a5a7c17e534c856afae82 # timeout=10
+Commit message: "update with sherpa deploy"
+ > git rev-list --no-walk 68c3c737281987a9ae7a5a7c17e534c856afae82 # timeout=10
+[sherpa_deploy] $ /bin/sh -xe /tmp/jenkins7119613089211797068.sh
++ set -e
++ set -u
++ bash container_scripts/jenkins_deploy/gobii_sherpa_deploy.sh
++ docker network create gobii_net
+Error response from daemon: network with name gobii_net already exists
++ true
++ set +x
+
+Starting the portainer-sherpa-node deployment...
+
++ docker rm -f gobii-sherpa-node
+Error: No such container: gobii-sherpa-node
++ true
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker pull djenriquez/sherpa:latest
+latest: Pulling from djenriquez/sherpa
+43c265008fae: Pulling fs layer
+aa9fe9b2de70: Pulling fs layer
+de9a4fb4cf68: Pulling fs layer
+e616be8cf129: Pulling fs layer
+dc49c7f081ed: Pulling fs layer
+5c5f528fec5b: Pulling fs layer
+4b263b62ecad: Pulling fs layer
+8439c935f4ca: Pulling fs layer
+0fce8a835cac: Pulling fs layer
+99f16fdbd26c: Pulling fs layer
+e616be8cf129: Waiting
+dc49c7f081ed: Waiting
+8439c935f4ca: Waiting
+5c5f528fec5b: Waiting
+99f16fdbd26c: Waiting
+0fce8a835cac: Waiting
+aa9fe9b2de70: Verifying Checksum
+aa9fe9b2de70: Download complete
+43c265008fae: Verifying Checksum
+43c265008fae: Download complete
+de9a4fb4cf68: Verifying Checksum
+de9a4fb4cf68: Download complete
+43c265008fae: Pull complete
+aa9fe9b2de70: Pull complete
+de9a4fb4cf68: Pull complete
+e616be8cf129: Verifying Checksum
+e616be8cf129: Pull complete
+5c5f528fec5b: Verifying Checksum
+5c5f528fec5b: Download complete
+dc49c7f081ed: Download complete
+dc49c7f081ed: Pull complete
+5c5f528fec5b: Pull complete
+4b263b62ecad: Verifying Checksum
+4b263b62ecad: Download complete
+4b263b62ecad: Pull complete
+0fce8a835cac: Verifying Checksum
+0fce8a835cac: Download complete
+8439c935f4ca: Verifying Checksum
+8439c935f4ca: Download complete
+8439c935f4ca: Pull complete
+99f16fdbd26c: Verifying Checksum
+99f16fdbd26c: Download complete
+0fce8a835cac: Pull complete
+99f16fdbd26c: Pull complete
+Digest: sha256:c7f7ee08f50143979467857f0a9ff9dcc06da3a98ac09818e76304fa5c02a977
+Status: Downloaded newer image for djenriquez/sherpa:latest
+docker.io/djenriquez/sherpa:latest
++ docker run -d --name gobii-sherpa-node -h sherpa-node -e 'CONFIG=[     {         "Path" : "/",         "Access": "allow",         "Addresses": [\"10.0.0.0/8\", \"192.168.0.0/16\", \"172.0.0.0/8\", \"132.236.81.0/24\", \"128.84.181.0/24\"]     } ]' -v /var/run/docker.sock:/tmp/docker.sock -p 4550:4550 --restart=always --network=gobii_net djenriquez/sherpa:latest --allow
+71766863cc7092f6c2429cbad9839f8caf59f496dc8edb5409bc37fb770a69dc
++ docker start gobii-sherpa-node
+gobii-sherpa-node
++ docker network connect bridge gobii-sherpa-node
++ set +x
+
+portainer-sherpa-node deployment script completion!
+
++ echo
+
++ echo Sherpa node deployment Completed!
+Sherpa node deployment Completed!
++ echo
+
+Finished: SUCCESS

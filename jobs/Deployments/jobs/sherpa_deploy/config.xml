@@ -1,5 +1,6 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
+  <actions/>
   <description>This deployment project will deploy the Sherpa Node:&#xd;
 • gobii-</description>
   <keepDependencies>false</keepDependencies>
@@ -37,7 +38,7 @@
         <hudson.model.PasswordParameterDefinition>
           <name>DOCKER_HUB_PASSWORD</name>
           <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
-          <defaultValue>{AQAAABAAAAAQWPLLckAY3Ib+gFo4f7s7FD9sy1C8AFrh18N/Tkiz5XY=}</defaultValue>
+          <defaultValue>{AQAAABAAAAAQuvdoY+QUYpFVw1jpps1mpf6cUZM7k6N9DPi4YDBapUc=}</defaultValue>
         </hudson.model.PasswordParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DOCKER_SHERPA_CONTAINER_HOSTNAME</name>
@@ -99,7 +100,7 @@ set -u # Attempt to use undefined variable outputs error message
 
 #--------------------------------------#
 
-bash container_scripts/jenkins_deploy/gobii_portainer_deploy.sh
+bash container_scripts/jenkins_deploy/gobii_sherpa_deploy.sh
 echo;
 
 #--------------------------------------#
