@@ -1,16 +1,12 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>****************************************&#xd;
-!!!                           WARNING                             !!!&#xd;
-****************************************&#xd;
-!!!       THIS BUILD WILL WIPE OUT ALL      !!!&#xd;
-!!!                 DOCKER RESOURCES                !!!&#xd;
-****************************************&#xd;
-&#xd;
-This build will delete all containers, images, volumes and networks!</description>
+  <description>This build will delete all containers, images, volumes and networks!</description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
+      <doNotScan>false</doNotScan>
+    </com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty>
     <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.13">
       <gitLabConnection></gitLabConnection>
     </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
@@ -102,8 +98,17 @@ docker volume rm gobiipostgreslibubuntu || true;
 docker volume rm gobiipostgreslogubuntu || true;
 echo -e &quot;y\n&quot; | docker system prune -a
 </command>
+      <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
-  <buildWrappers/>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.38">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
+      <disableDeferredWipeout>false</disableDeferredWipeout>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.5"/>
+  </buildWrappers>
 </project>

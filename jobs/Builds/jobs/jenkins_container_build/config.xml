@@ -123,5 +123,6 @@ echo &quot;Jenkins image build Completed!&quot;
       <externalDelete></externalDelete>
       <disableDeferredWipeout>false</disableDeferredWipeout>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.5"/>
   </buildWrappers>
 </project>
