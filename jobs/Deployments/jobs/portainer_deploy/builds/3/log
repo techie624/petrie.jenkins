@@ -1,0 +1,81 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4J7FR/TRtCHrCgR1iNRIgfZ9YXxsMjafrOajhjtrw3c4AAAArB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBnX9rPwkfZfUgpz8ytzUvJJiML8gv6gkMTMvtSg+BSyjbwQA4kNGP9wAAAA=[0m2
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/portainer_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/Deployments/portainer_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision 248e6ff2de6f7e458a4a6a29dad2f19df27c4282 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 248e6ff2de6f7e458a4a6a29dad2f19df27c4282 # timeout=10
+Commit message: "update script to not prompt"
+ > git rev-list --no-walk cbaccb7bb7cbcafda2038b6913dd62eac96ea37c # timeout=10
+[portainer_deploy] $ /bin/sh -xe /tmp/jenkins6963172345068606177.sh
++ set -e
++ set -u
++ bash container_scripts/jenkins_deploy/gobii_portainer_deploy.sh
++ docker network create gobii_net
+Error response from daemon: network with name gobii_net already exists
++ true
++ set +x
+
+Starting the portainer-node deployment...
+
++ docker stop gobii-portainer-node
+Error response from daemon: No such container: gobii-portainer-node
++ true
++ docker rm gobii-portainer-node
+Error: No such container: gobii-portainer-node
++ true
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker pull portainer/portainer
+Using default tag: latest
+latest: Pulling from portainer/portainer
+d1e017099d17: Pulling fs layer
+717377b83d5c: Pulling fs layer
+d1e017099d17: Verifying Checksum
+d1e017099d17: Download complete
+d1e017099d17: Pull complete
+717377b83d5c: Download complete
+717377b83d5c: Pull complete
+Digest: sha256:f8c2b0a9ca640edf508a8a0830cf1963a1e0d2fd9936a64104b3f658e120b868
+Status: Downloaded newer image for portainer/portainer:latest
+docker.io/portainer/portainer:latest
++ [[ -v DOCKER_PORTAINER_VERSION ]]
++ docker run -i --detach --name gobii-portainer-node -h portainer-node -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /storage/persistent_data:/storage/persistent_data -v /data:/data --network=gobii_net portainer/portainer:latest
+723aa4da24b802850eb1cc9e254459a73f4af3ba30820afbf4ec66bc79d2a835
++ docker start gobii-portainer-node
+gobii-portainer-node
++ docker network connect bridge gobii-portainer-node
++ set +x
+
+portainer-node deployment script completion!
+
++ echo
+
++ echo Portainer node deployment Completed!
+Portainer node deployment Completed!
++ echo
+
+Finished: SUCCESS
