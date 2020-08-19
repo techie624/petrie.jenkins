@@ -1,4 +1,4 @@
-Started at Tue Aug 18 22:15:15 UTC 2020
+Started at Wed Aug 19 17:36:58 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -13,168 +13,8 @@ Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
 Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
 Processing Hotfixes/Release_2.2.2_Hotfix
 Offering Hotfixes/Release_2.2.2_Hotfix to Project Build Discarder
-Processing Deployments/filebrowser_deploy
-Offering Deployments/filebrowser_deploy to Project Build Discarder
-Processing Deployments/gdm_deploy_localhost
-Offering Deployments/gdm_deploy_localhost to Project Build Discarder
-Processing Deployments/gdm_deploy_template
-Offering Deployments/gdm_deploy_template to Project Build Discarder
-Processing Deployments/gigwa_deploy
-Offering Deployments/gigwa_deploy to Project Build Discarder
-Processing Deployments/pedver_deploy
-Offering Deployments/pedver_deploy to Project Build Discarder
-Processing Builds/jenkins_container_build
-Offering Builds/jenkins_container_build to Project Build Discarder
-Processing Builds/pedver_build
-Offering Builds/pedver_build to Project Build Discarder
-Finished at Tue Aug 18 22:15:15 UTC 2020. 8ms
-Started at Tue Aug 18 23:15:15 UTC 2020
-Processing Tools/GOBii_Postgres_Restart
-Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
-Processing Tools/HaploTool_Start
-Offering Tools/HaploTool_Start to Project Build Discarder
-Processing Tools/LDAP_Start
-Offering Tools/LDAP_Start to Project Build Discarder
-Processing Tools/Test_Docker
-Offering Tools/Test_Docker to Project Build Discarder
-Processing Tools/tomcat_restart
-Offering Tools/tomcat_restart to Project Build Discarder
-Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
-Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
-Processing Hotfixes/Release_2.2.2_Hotfix
-Offering Hotfixes/Release_2.2.2_Hotfix to Project Build Discarder
-Processing Deployments/filebrowser_deploy
-Offering Deployments/filebrowser_deploy to Project Build Discarder
-Processing Deployments/gdm_deploy_localhost
-Offering Deployments/gdm_deploy_localhost to Project Build Discarder
-Processing Deployments/gdm_deploy_template
-Offering Deployments/gdm_deploy_template to Project Build Discarder
-Processing Deployments/gigwa_deploy
-Offering Deployments/gigwa_deploy to Project Build Discarder
-Processing Deployments/kdc_deploy
-Offering Deployments/kdc_deploy to Project Build Discarder
-Processing Deployments/pedver_deploy
-Offering Deployments/pedver_deploy to Project Build Discarder
-Processing Builds/jenkins_container_build
-Offering Builds/jenkins_container_build to Project Build Discarder
-Processing Builds/pedver_build
-Offering Builds/pedver_build to Project Build Discarder
-Finished at Tue Aug 18 23:15:15 UTC 2020. 2ms
-Started at Wed Aug 19 00:15:15 UTC 2020
-Processing Tools/GOBii_Postgres_Restart
-Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
-Processing Tools/HaploTool_Start
-Offering Tools/HaploTool_Start to Project Build Discarder
-Processing Tools/LDAP_Start
-Offering Tools/LDAP_Start to Project Build Discarder
-Processing Tools/Test_Docker
-Offering Tools/Test_Docker to Project Build Discarder
-Processing Tools/tomcat_restart
-Offering Tools/tomcat_restart to Project Build Discarder
-Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
-Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
-Processing Hotfixes/Release_2.2.2_Hotfix
-Offering Hotfixes/Release_2.2.2_Hotfix to Project Build Discarder
-Processing Deployments/filebrowser_deploy
-Offering Deployments/filebrowser_deploy to Project Build Discarder
-Processing Deployments/gdm_deploy_localhost
-Offering Deployments/gdm_deploy_localhost to Project Build Discarder
-Processing Deployments/gdm_deploy_template
-Offering Deployments/gdm_deploy_template to Project Build Discarder
-Processing Deployments/gigwa_deploy
-Offering Deployments/gigwa_deploy to Project Build Discarder
-Processing Deployments/kdc_deploy
-Offering Deployments/kdc_deploy to Project Build Discarder
-Processing Deployments/pedver_deploy
-Offering Deployments/pedver_deploy to Project Build Discarder
-Processing Builds/jenkins_container_build
-Offering Builds/jenkins_container_build to Project Build Discarder
-Processing Builds/pedver_build
-Offering Builds/pedver_build to Project Build Discarder
-Finished at Wed Aug 19 00:15:15 UTC 2020. 2ms
-Started at Wed Aug 19 01:15:15 UTC 2020
-Processing Tools/GOBii_Postgres_Restart
-Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
-Processing Tools/HaploTool_Start
-Offering Tools/HaploTool_Start to Project Build Discarder
-Processing Tools/LDAP_Start
-Offering Tools/LDAP_Start to Project Build Discarder
-Processing Tools/Test_Docker
-Offering Tools/Test_Docker to Project Build Discarder
-Processing Tools/tomcat_restart
-Offering Tools/tomcat_restart to Project Build Discarder
-Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
-Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
-Processing Hotfixes/Release_2.2.2_Hotfix
-Offering Hotfixes/Release_2.2.2_Hotfix to Project Build Discarder
-Processing Deployments/filebrowser_deploy
-Offering Deployments/filebrowser_deploy to Project Build Discarder
-Processing Deployments/gdm_deploy_localhost
-Offering Deployments/gdm_deploy_localhost to Project Build Discarder
-Processing Deployments/gdm_deploy_template
-Offering Deployments/gdm_deploy_template to Project Build Discarder
-Processing Deployments/gigwa_deploy
-Offering Deployments/gigwa_deploy to Project Build Discarder
-Processing Deployments/kdc_deploy
-Offering Deployments/kdc_deploy to Project Build Discarder
-Processing Deployments/pedver_deploy
-Offering Deployments/pedver_deploy to Project Build Discarder
-Processing Builds/jenkins_container_build
-Offering Builds/jenkins_container_build to Project Build Discarder
-Processing Builds/pedver_build
-Offering Builds/pedver_build to Project Build Discarder
-Finished at Wed Aug 19 01:15:15 UTC 2020. 1ms
-Started at Wed Aug 19 02:15:15 UTC 2020
-Processing Tools/GOBii_Postgres_Restart
-Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
-Processing Tools/HaploTool_Start
-Offering Tools/HaploTool_Start to Project Build Discarder
-Processing Tools/LDAP_Start
-Offering Tools/LDAP_Start to Project Build Discarder
-Processing Tools/Test_Docker
-Offering Tools/Test_Docker to Project Build Discarder
-Processing Tools/tomcat_restart
-Offering Tools/tomcat_restart to Project Build Discarder
-Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
-Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
-Processing Hotfixes/Release_2.2.2_Hotfix
-Offering Hotfixes/Release_2.2.2_Hotfix to Project Build Discarder
-Processing Deployments/filebrowser_deploy
-Offering Deployments/filebrowser_deploy to Project Build Discarder
-Processing Deployments/gdm_deploy_localhost
-Offering Deployments/gdm_deploy_localhost to Project Build Discarder
-Processing Deployments/gdm_deploy_template
-Offering Deployments/gdm_deploy_template to Project Build Discarder
-Processing Deployments/gigwa_deploy
-Offering Deployments/gigwa_deploy to Project Build Discarder
-Processing Deployments/haplo_deploy
-Offering Deployments/haplo_deploy to Project Build Discarder
-Processing Deployments/kdc_deploy
-Offering Deployments/kdc_deploy to Project Build Discarder
-Processing Deployments/pedver_deploy
-Offering Deployments/pedver_deploy to Project Build Discarder
-Processing Deployments/portainer_deploy
-Offering Deployments/portainer_deploy to Project Build Discarder
-Processing Builds/jenkins_container_build
-Offering Builds/jenkins_container_build to Project Build Discarder
-Processing Builds/pedver_build
-Offering Builds/pedver_build to Project Build Discarder
-Finished at Wed Aug 19 02:15:15 UTC 2020. 1ms
-Started at Wed Aug 19 03:15:15 UTC 2020
-Processing Tools/GOBii_Postgres_Restart
-Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
-Processing Tools/HaploTool_Start
-Offering Tools/HaploTool_Start to Project Build Discarder
-Processing Tools/LDAP_Start
-Offering Tools/LDAP_Start to Project Build Discarder
-Processing Tools/Test_Docker
-Offering Tools/Test_Docker to Project Build Discarder
-Processing Tools/tomcat_restart
-Offering Tools/tomcat_restart to Project Build Discarder
-Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
-Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
-Processing Hotfixes/Release_2.2.2_Hotfix
-Offering Hotfixes/Release_2.2.2_Hotfix to Project Build Discarder
+Processing Deployments/Show Hello World
+Offering Deployments/Show Hello World to Project Build Discarder
 Processing Deployments/filebrowser_deploy
 Offering Deployments/filebrowser_deploy to Project Build Discarder
 Processing Deployments/gdm_deploy_localhost
@@ -197,8 +37,8 @@ Processing Builds/jenkins_container_build
 Offering Builds/jenkins_container_build to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Wed Aug 19 03:15:15 UTC 2020. 2ms
-Started at Wed Aug 19 04:15:15 UTC 2020
+Finished at Wed Aug 19 17:36:58 UTC 2020. 12ms
+Started at Wed Aug 19 18:36:58 UTC 2020
 Processing Tools/GOBii_Postgres_Restart
 Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
 Processing Tools/HaploTool_Start
@@ -213,6 +53,8 @@ Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
 Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
 Processing Hotfixes/Release_2.2.2_Hotfix
 Offering Hotfixes/Release_2.2.2_Hotfix to Project Build Discarder
+Processing Deployments/Show Hello World
+Offering Deployments/Show Hello World to Project Build Discarder
 Processing Deployments/filebrowser_deploy
 Offering Deployments/filebrowser_deploy to Project Build Discarder
 Processing Deployments/gdm_deploy_localhost
@@ -225,6 +67,8 @@ Processing Deployments/haplo_deploy
 Offering Deployments/haplo_deploy to Project Build Discarder
 Processing Deployments/kdc_deploy
 Offering Deployments/kdc_deploy to Project Build Discarder
+Processing Deployments/keycloak_deploy
+Offering Deployments/keycloak_deploy to Project Build Discarder
 Processing Deployments/pedver_deploy
 Offering Deployments/pedver_deploy to Project Build Discarder
 Processing Deployments/portainer_deploy
@@ -233,6 +77,52 @@ Processing Deployments/sherpa_deploy
 Offering Deployments/sherpa_deploy to Project Build Discarder
 Processing Builds/jenkins_container_build
 Offering Builds/jenkins_container_build to Project Build Discarder
+Processing Builds/keycloak_build
+Offering Builds/keycloak_build to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
-Finished at Wed Aug 19 04:15:15 UTC 2020. 2ms
+Finished at Wed Aug 19 18:36:58 UTC 2020. 3ms
+Started at Wed Aug 19 19:36:58 UTC 2020
+Processing Tools/GOBii_Postgres_Restart
+Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
+Processing Tools/HaploTool_Start
+Offering Tools/HaploTool_Start to Project Build Discarder
+Processing Tools/LDAP_Start
+Offering Tools/LDAP_Start to Project Build Discarder
+Processing Tools/Test_Docker
+Offering Tools/Test_Docker to Project Build Discarder
+Processing Tools/tomcat_restart
+Offering Tools/tomcat_restart to Project Build Discarder
+Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
+Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
+Processing Hotfixes/Release_2.2.2_Hotfix
+Offering Hotfixes/Release_2.2.2_Hotfix to Project Build Discarder
+Processing Deployments/Show Hello World
+Offering Deployments/Show Hello World to Project Build Discarder
+Processing Deployments/filebrowser_deploy
+Offering Deployments/filebrowser_deploy to Project Build Discarder
+Processing Deployments/gdm_deploy_localhost
+Offering Deployments/gdm_deploy_localhost to Project Build Discarder
+Processing Deployments/gdm_deploy_template
+Offering Deployments/gdm_deploy_template to Project Build Discarder
+Processing Deployments/gigwa_deploy
+Offering Deployments/gigwa_deploy to Project Build Discarder
+Processing Deployments/haplo_deploy
+Offering Deployments/haplo_deploy to Project Build Discarder
+Processing Deployments/kdc_deploy
+Offering Deployments/kdc_deploy to Project Build Discarder
+Processing Deployments/keycloak_deploy
+Offering Deployments/keycloak_deploy to Project Build Discarder
+Processing Deployments/pedver_deploy
+Offering Deployments/pedver_deploy to Project Build Discarder
+Processing Deployments/portainer_deploy
+Offering Deployments/portainer_deploy to Project Build Discarder
+Processing Deployments/sherpa_deploy
+Offering Deployments/sherpa_deploy to Project Build Discarder
+Processing Builds/jenkins_container_build
+Offering Builds/jenkins_container_build to Project Build Discarder
+Processing Builds/keycloak_build
+Offering Builds/keycloak_build to Project Build Discarder
+Processing Builds/pedver_build
+Offering Builds/pedver_build to Project Build Discarder
+Finished at Wed Aug 19 19:36:58 UTC 2020. 1ms

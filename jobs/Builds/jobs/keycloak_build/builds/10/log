@@ -1,0 +1,180 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4BZr/5HVgrMgtGh0osfFrv2u7nJ40VIkIDOGQlxbxOO6AAAAph+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBgX9rPwkfafSzJyUYjAzO7UyOSc/MTs+CSSmbwkAW9eeK9UAAAA=[0m9
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Builds/keycloak_build
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git init /var/jenkins_home/workspace/Builds/keycloak_build # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision a5a1de796350ec695955c9a15afc5ef7065c3cab (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a5a1de796350ec695955c9a15afc5ef7065c3cab # timeout=10
+Commit message: "added verbosity to config.sh"
+ > git rev-list --no-walk a5a1de796350ec695955c9a15afc5ef7065c3cab # timeout=10
+[keycloak_build] $ /bin/sh -xe /tmp/jenkins8986515632481000109.sh
++ echo develop
+develop
++ date +%Y%m%d
++ BUILD_TAG=develop_20200819_build_10
++ echo BUILD_TAG is set as: develop_20200819_build_10
+BUILD_TAG is set as: develop_20200819_build_10
++ echo
+
++ export develop_20200819_build_10
++ docker build . -t gadm01/gobii_keycloak:develop_20200819_build_10
+Sending build context to Docker daemon  289.3kB
+Step 1/29 : FROM ubuntu:18.04
+ ---> 2eb2d388e1a2
+Step 2/29 : ENV keycloak_local_admin_user=admin
+ ---> Using cache
+ ---> 6b4d30a0a580
+Step 3/29 : ENV keycloak_local_admin_password=@dm1np@55
+ ---> Using cache
+ ---> 2982f8756b04
+Step 4/29 : ENV keycloak_db_schema=keycloak_schema
+ ---> Using cache
+ ---> c9c4145fb0e8
+Step 5/29 : ENV home_location=/root
+ ---> Using cache
+ ---> 19330ff041b4
+Step 6/29 : ENV dbms=postgresql
+ ---> Using cache
+ ---> 5afa97e22041
+Step 7/29 : ENV dbms_jdbc_download_url=https://repo1.maven.org/maven2/org/postgresql/postgresql/42.2.8/postgresql-42.2.8.jar
+ ---> Using cache
+ ---> 309802c3ed10
+Step 8/29 : ENV dbms_host=localhost
+ ---> Using cache
+ ---> 5a7a67e705ef
+Step 9/29 : ENV dbms_port=5432
+ ---> Using cache
+ ---> 2ed15ba29d33
+Step 10/29 : ENV dbms_db=keycloak_db
+ ---> Using cache
+ ---> 982006e61173
+Step 11/29 : ENV dbms_db_user=keycloakdbadmin
+ ---> Using cache
+ ---> 32096aa209fb
+Step 12/29 : ENV dbms_db_user_pw=k8yc10@#
+ ---> Using cache
+ ---> 7fd5fa8d723a
+Step 13/29 : ENV application_db_schema=gdm_schema
+ ---> Using cache
+ ---> 629080683afe
+Step 14/29 : ENV keycloak_dbclass=org.postgresql.xa.PGXADataSource
+ ---> Using cache
+ ---> be5e73e51715
+Step 15/29 : ENV application_user_table=contacts
+ ---> Using cache
+ ---> acea3ce9a889
+Step 16/29 : RUN apt-get update -y
+ ---> Using cache
+ ---> 1036ea830847
+Step 17/29 : RUN apt-get install -y locales locales-all tar
+ ---> Using cache
+ ---> f63f342276b9
+Step 18/29 : ENV LC_ALL=C.UTF-8
+ ---> Using cache
+ ---> f78b0fb7a754
+Step 19/29 : ENV LANG=C.UTF-8
+ ---> Using cache
+ ---> b461f696db0f
+Step 20/29 : RUN apt-get install -y sudo screen wget curl
+ ---> Using cache
+ ---> 2f00a4aec026
+Step 21/29 : RUN export DEBIAN_FRONTEND=noninteractive; apt-get install -y tzdata
+ ---> Using cache
+ ---> c617002b62f8
+Step 22/29 : COPY dep_installation_scripts /root/dep_installation_scripts
+ ---> Using cache
+ ---> 032f6092cbed
+Step 23/29 : COPY dep_initialization_scripts /root/dep_initialization_scripts
+ ---> Using cache
+ ---> facea4b6a80b
+Step 24/29 : COPY config.sh /root
+ ---> Using cache
+ ---> 9f6673924a10
+Step 25/29 : RUN /root/dep_installation_scripts/java1.8/java8_install.sh
+ ---> Using cache
+ ---> 2fccbadd88be
+Step 26/29 : RUN /root/dep_installation_scripts/postgres/postgres_install.sh
+ ---> Using cache
+ ---> bc4fbed745f5
+Step 27/29 : RUN /root/dep_installation_scripts/keycloak/keycloak_server_install.sh -C $keycloak_dbclass -K $home_location -s $keycloak_db_schema -B $dbms -X $dbms_jdbc_download_url -H $dbms_host -p $dbms_port -D $dbms_db -U $dbms_db_user -P $dbms_db_user_pw -u $keycloak_local_admin_user -w $keycloak_local_admin_password
+ ---> Using cache
+ ---> 254325e0ac40
+Step 28/29 : RUN chmod 755 /root/config.sh
+ ---> Using cache
+ ---> 9f73b7d3da0b
+Step 29/29 : ENTRYPOINT ["bash" , "-c", "/root/config.sh"]
+ ---> Using cache
+ ---> 4970304da531
+Successfully built 4970304da531
+Successfully tagged gadm01/gobii_keycloak:develop_20200819_build_10
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker push gadm01/gobii_keycloak:develop_20200819_build_10
+The push refers to repository [docker.io/gadm01/gobii_keycloak]
+f7d45856d39d: Preparing
+14e5a4adc1aa: Preparing
+537693d23e9b: Preparing
+cc04e6c56cf9: Preparing
+042d5ce063b0: Preparing
+dd0fc200933f: Preparing
+dd8a7b4a1e70: Preparing
+3eae912e816f: Preparing
+fe854df05af2: Preparing
+be818c1f445b: Preparing
+34b366057fad: Preparing
+8682f9a74649: Preparing
+d3a6da143c91: Preparing
+83f4287e1f04: Preparing
+dd8a7b4a1e70: Waiting
+7ef368776582: Preparing
+3eae912e816f: Waiting
+8682f9a74649: Waiting
+d3a6da143c91: Waiting
+fe854df05af2: Waiting
+34b366057fad: Waiting
+83f4287e1f04: Waiting
+dd0fc200933f: Waiting
+f7d45856d39d: Pushed
+042d5ce063b0: Pushed
+dd0fc200933f: Pushed
+dd8a7b4a1e70: Pushed
+3eae912e816f: Pushed
+537693d23e9b: Pushed
+fe854df05af2: Pushed
+8682f9a74649: Mounted from gadm01/gobii_pedver_web
+d3a6da143c91: Mounted from gadm01/gobii_pedver_web
+83f4287e1f04: Mounted from gadm01/gobii_pedver_web
+7ef368776582: Mounted from gadm01/gobii_pedver_web
+34b366057fad: Pushed
+be818c1f445b: Pushed
+cc04e6c56cf9: Pushed
+14e5a4adc1aa: Pushed
+develop_20200819_build_10: digest: sha256:34bd932c0a7b61d71e69aec99cf88a9a5e6a79ee701f2c67c245a81e666b321b size: 3465
++ echo Keycloak Build Completed.
+Keycloak Build Completed.
++ echo
+
+Finished: SUCCESS

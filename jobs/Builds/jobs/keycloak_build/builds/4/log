@@ -1,0 +1,41 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4DOPJ8deu+dEnLI/TMhJyyK78QeQXf0PnYA16I1zRYwhAAAAph+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBgX9rPwkfafSzJyUYjAzO7UyOSc/MTs+CSSmbwwART5Ly9UAAAA=[0m3
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Builds/keycloak_build
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git init /var/jenkins_home/workspace/Builds/keycloak_build # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision a5a1de796350ec695955c9a15afc5ef7065c3cab (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a5a1de796350ec695955c9a15afc5ef7065c3cab # timeout=10
+Commit message: "added verbosity to config.sh"
+ > git rev-list --no-walk a5a1de796350ec695955c9a15afc5ef7065c3cab # timeout=10
+[keycloak_build] $ /bin/sh -xe /tmp/jenkins6666093037645173665.sh
++ echo develop
+develop
++ date +%Y%m%d
++ TAG=20200819_build_4
++ echo Tag is set as: 20200819_build_4
+Tag is set as: 20200819_build_4
++ echo
+
++ echo Keycloak Build Completed.
+Keycloak Build Completed.
++ echo
+
+Finished: SUCCESS

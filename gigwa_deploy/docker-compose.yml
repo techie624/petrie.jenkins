@@ -25,8 +25,8 @@ services:
     ports:
       - 59393:27017 # You may amend the external port only (left hand side), which must match the above MONGO_PORT
     environment:
-      MONGO_INITDB_ROOT_USERNAME: yourMongoRootUser
-      MONGO_INITDB_ROOT_PASSWORD: yourMongoRootPassword
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: mongoadminpass
     volumes:
       - type: volume
         source: mongo

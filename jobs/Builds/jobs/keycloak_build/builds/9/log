@@ -1,0 +1,132 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4J9Jr8ppJsVlrUmkOzOsUcowHdr3EteOEJsHV0qstCadAAAAph+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBgX9rPwkfafSzJyUYjAzO7UyOSc/MTs+CSSmbwEAzeeZXNUAAAA=[0m8
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Builds/keycloak_build
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git init /var/jenkins_home/workspace/Builds/keycloak_build # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision a5a1de796350ec695955c9a15afc5ef7065c3cab (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a5a1de796350ec695955c9a15afc5ef7065c3cab # timeout=10
+Commit message: "added verbosity to config.sh"
+ > git rev-list --no-walk a5a1de796350ec695955c9a15afc5ef7065c3cab # timeout=10
+[keycloak_build] $ /bin/sh -xe /tmp/jenkins502872089848473750.sh
++ echo develop
+develop
++ date +%Y%m%d
++ BUILD_TAG=develop_20200819_build_9
++ echo BUILD_TAG is set as: develop_20200819_build_9
+BUILD_TAG is set as: develop_20200819_build_9
++ echo
+
++ export develop_20200819_build_9
++ docker build . -t gadm01/gobii_keycloak:develop_20200819_build_9
+Sending build context to Docker daemon  289.3kB
+Step 1/29 : FROM ubuntu:18.04
+ ---> 2eb2d388e1a2
+Step 2/29 : ENV keycloak_local_admin_user=admin
+ ---> Using cache
+ ---> 6b4d30a0a580
+Step 3/29 : ENV keycloak_local_admin_password=@dm1np@55
+ ---> Using cache
+ ---> 2982f8756b04
+Step 4/29 : ENV keycloak_db_schema=keycloak_schema
+ ---> Using cache
+ ---> c9c4145fb0e8
+Step 5/29 : ENV home_location=/root
+ ---> Using cache
+ ---> 19330ff041b4
+Step 6/29 : ENV dbms=postgresql
+ ---> Using cache
+ ---> 5afa97e22041
+Step 7/29 : ENV dbms_jdbc_download_url=https://repo1.maven.org/maven2/org/postgresql/postgresql/42.2.8/postgresql-42.2.8.jar
+ ---> Using cache
+ ---> 309802c3ed10
+Step 8/29 : ENV dbms_host=localhost
+ ---> Using cache
+ ---> 5a7a67e705ef
+Step 9/29 : ENV dbms_port=5432
+ ---> Using cache
+ ---> 2ed15ba29d33
+Step 10/29 : ENV dbms_db=keycloak_db
+ ---> Using cache
+ ---> 982006e61173
+Step 11/29 : ENV dbms_db_user=keycloakdbadmin
+ ---> Using cache
+ ---> 32096aa209fb
+Step 12/29 : ENV dbms_db_user_pw=k8yc10@#
+ ---> Using cache
+ ---> 7fd5fa8d723a
+Step 13/29 : ENV application_db_schema=gdm_schema
+ ---> Using cache
+ ---> 629080683afe
+Step 14/29 : ENV keycloak_dbclass=org.postgresql.xa.PGXADataSource
+ ---> Using cache
+ ---> be5e73e51715
+Step 15/29 : ENV application_user_table=contacts
+ ---> Using cache
+ ---> acea3ce9a889
+Step 16/29 : RUN apt-get update -y
+ ---> Using cache
+ ---> 1036ea830847
+Step 17/29 : RUN apt-get install -y locales locales-all tar
+ ---> Using cache
+ ---> f63f342276b9
+Step 18/29 : ENV LC_ALL=C.UTF-8
+ ---> Using cache
+ ---> f78b0fb7a754
+Step 19/29 : ENV LANG=C.UTF-8
+ ---> Using cache
+ ---> b461f696db0f
+Step 20/29 : RUN apt-get install -y sudo screen wget curl
+ ---> Using cache
+ ---> 2f00a4aec026
+Step 21/29 : RUN export DEBIAN_FRONTEND=noninteractive; apt-get install -y tzdata
+ ---> Using cache
+ ---> c617002b62f8
+Step 22/29 : COPY dep_installation_scripts /root/dep_installation_scripts
+ ---> Using cache
+ ---> 032f6092cbed
+Step 23/29 : COPY dep_initialization_scripts /root/dep_initialization_scripts
+ ---> Using cache
+ ---> facea4b6a80b
+Step 24/29 : COPY config.sh /root
+ ---> Using cache
+ ---> 9f6673924a10
+Step 25/29 : RUN /root/dep_installation_scripts/java1.8/java8_install.sh
+ ---> Using cache
+ ---> 2fccbadd88be
+Step 26/29 : RUN /root/dep_installation_scripts/postgres/postgres_install.sh
+ ---> Using cache
+ ---> bc4fbed745f5
+Step 27/29 : RUN /root/dep_installation_scripts/keycloak/keycloak_server_install.sh -C $keycloak_dbclass -K $home_location -s $keycloak_db_schema -B $dbms -X $dbms_jdbc_download_url -H $dbms_host -p $dbms_port -D $dbms_db -U $dbms_db_user -P $dbms_db_user_pw -u $keycloak_local_admin_user -w $keycloak_local_admin_password
+ ---> Using cache
+ ---> 254325e0ac40
+Step 28/29 : RUN chmod 755 /root/config.sh
+ ---> Using cache
+ ---> 9f73b7d3da0b
+Step 29/29 : ENTRYPOINT ["bash" , "-c", "/root/config.sh"]
+ ---> Using cache
+ ---> 4970304da531
+Successfully built 4970304da531
+Successfully tagged gadm01/gobii_keycloak:develop_20200819_build_9
++ docker login -u gadm01 -p g0b11Admin
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Error response from daemon: Get https://registry-1.docker.io/v2/: unauthorized: incorrect username or password
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

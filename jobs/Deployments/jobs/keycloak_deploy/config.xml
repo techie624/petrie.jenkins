@@ -1,0 +1,141 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;b&gt;This will deploy the Keycloak Container Image.&lt;/b&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
+      <doNotScan>false</doNotScan>
+    </com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.13">
+      <gitLabConnection></gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_NETWORK_NAME</name>
+          <description>Created Docker Network to connect all containers to. (gobii_net)</description>
+          <defaultValue>gobii_net</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BUNDLE_PARENT_PATH</name>
+          <description>Default data path /data</description>
+          <defaultValue>/data</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_HUB_USERNAME</name>
+          <description>The dockerhub user that owns the image repos. (gadm01)</description>
+          <defaultValue>gadm01</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_HUB_REPO_NAME</name>
+          <description>Repo name in Dockerhub. (gobii_keycloak)</description>
+          <defaultValue>gobii_keycloak</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_KEYCLOAK_CONTAINER_HOSTNAME</name>
+          <description>This is the hostname set for the container internally. (keycloak-node)</description>
+          <defaultValue>keycloak-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KEYCLOAK_PORT</name>
+          <description>The external port used for the Keycloak Web UI. (8086)</description>
+          <defaultValue>8086</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_KEYCLOAK_CONTAINER_HOSTNAME</name>
+          <description>This is the hostname set for the container internally. (keycloak-node)</description>
+          <defaultValue>keycloak-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>KEYCLOAK_IMAGE_TAG</name>
+          <description>This is the container image tag. (develop_yyyymmdd_build_#)</description>
+          <defaultValue>develop_yyyymmdd_build_#</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>DOCKER_HUB_PASSWORD</name>
+          <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
+          <defaultValue>{AQAAABAAAAAQca3Zqmg++vhX/OPyO0ezRaxK57OqbNbbiSnfV77jJWk=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH</name>
+          <description>This is the branch being used for the gobii.deploy.keycloak repo. (release/x.y.z) (develop)</description>
+          <defaultValue>develop</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@2.0.2">
+      <maxConcurrentPerNode>0</maxConcurrentPerNode>
+      <maxConcurrentTotal>0</maxConcurrentTotal>
+      <categories class="java.util.concurrent.CopyOnWriteArrayList"/>
+      <throttleEnabled>false</throttleEnabled>
+      <throttleOption>project</throttleOption>
+      <limitOneJobWithMatchingParams>false</limitOneJobWithMatchingParams>
+      <paramsToUseForLimit></paramsToUseForLimit>
+    </hudson.plugins.throttleconcurrents.ThrottleJobProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.3.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/$BRANCH</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#--------------------------------------#
+
+set -e # Abort script at first error
+set -u # Attempt to use undefined variable outputs error message
+#set -x # Verbose with commands displayed
+
+#--------------------------------------#
+
+# Run keycloak-node deployment 
+time bash jenkins_deploy/gobii_keycloak_deploy.sh
+
+#--------------------------------------#
+
+echo &quot;Keycloak Deployment Completed!&quot;
+echo;</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.38">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
+      <disableDeferredWipeout>false</disableDeferredWipeout>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+  </buildWrappers>
+</project>

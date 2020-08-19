@@ -1,9 +1,12 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>&lt;b&gt;This will build the docker images needed for PedVer.&lt;/b&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
+      <doNotScan>false</doNotScan>
+    </com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty>
     <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.13">
       <gitLabConnection></gitLabConnection>
     </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
@@ -14,9 +17,9 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>BUILD_TAG</name>
-          <description></description>
-          <defaultValue>rel2.2.2_test</defaultValue>
+          <name>BRANCH</name>
+          <description>This is the branch being used for gobii.markerapp. (develop) (release/x.y.z)</description>
+          <defaultValue>develop</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.PasswordParameterDefinition>
@@ -60,27 +63,22 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command># Building PedVer Docker images
+      <command>echo &quot;$BRANCH&quot;
+BUILD_TAG=&quot;$BRANCH&quot;_$(date +&quot;%Y%m%d&quot;)_build_$BUILD_NUMBER
+echo &quot;BUILD_TAG is set as: $BUILD_TAG&quot;;
+echo;
+
+#-----------------------------------------------------------------------------#
+
+export $BUILD_TAG
+
+# Building PedVer Docker images
 bash container_scripts/jenkins_build/gobii_pedver_build.sh
 
 #-----------------------------------------------------------------------------#
 
-echo &quot;
- _________________________
-&lt;                         &gt;
-&lt; PedVer Build Completed! &gt;
-&lt;                         &gt;
- -------------------------
-   \
-    \
-        .--.
-       |o_o |
-       |:_/ |
-      //   \ \
-     (|     | )
-    /&apos;\_   _/`\
-    \___)=(___/
-&quot;;</command>
+</command>
+      <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

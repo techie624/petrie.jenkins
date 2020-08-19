@@ -47,3 +47,5 @@ docker-compose -f /var/jenkins_home/workspace/Deployments/gigwa_deploy/docker-co
 htop
 vim
 docker ps -a
+cd
+time cat jenkins_container_build/Dockerfile 

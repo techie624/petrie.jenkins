@@ -1,10 +1,10 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>This deployment project will deploy the 3 containers:&#xd;
-• gobii-db-node&#xd;
-• gobii-web-node&#xd;
-• gobii-compute-node</description>
+  <description>&lt;p&gt;&lt;b&gt;This deployment project will deploy the 3 containers:&lt;/b&gt;&lt;/p&gt;&#xd;
+&lt;p&gt;• gobii-db-node&lt;/p&gt;&#xd;
+&lt;p&gt;• gobii-web-node&lt;/p&gt;&#xd;
+&lt;p&gt;• gobii-compute-node&lt;/p&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">

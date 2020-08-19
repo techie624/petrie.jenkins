@@ -1,0 +1,37 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4HU2zwYoHxBoSFtgF2XluQnCumOaxe96GsltvFjGh1OgAAAAqx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBjX9rPwkfZfUgpz8ytzUvJJiMD87tTI5Jz8xOz4FLKFvCAC0PfD72wAAAA==[0m1
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/keycloak_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git init /var/jenkins_home/workspace/Deployments/keycloak_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision a5a1de796350ec695955c9a15afc5ef7065c3cab (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a5a1de796350ec695955c9a15afc5ef7065c3cab # timeout=10
+Commit message: "added verbosity to config.sh"
+ > git rev-list --no-walk a5a1de796350ec695955c9a15afc5ef7065c3cab # timeout=10
+[keycloak_deploy] $ /bin/sh -xe /tmp/jenkins8443118697182310996.sh
++ set -e
++ set -u
++ time bash jenkins_deploy/gobii_keycloak_deploy.sh
+bash: jenkins_deploy/gobii_keycloak_deploy.sh: No such file or directory
+Command exited with non-zero status 127
+0.00user 0.00system 0:00.00elapsed 100%CPU (0avgtext+0avgdata 3324maxresident)k
+0inputs+0outputs (0major+173minor)pagefaults 0swaps
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE
