@@ -38,7 +38,7 @@
         <hudson.model.PasswordParameterDefinition>
           <name>DOCKER_HUB_PASSWORD</name>
           <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
-          <defaultValue>{AQAAABAAAAAQ7ZC81mZi7e3CKVApN9oRNAtyOzYs4cKw36JCNiB6F/I=}</defaultValue>
+          <defaultValue>{AQAAABAAAAAQ++NCJNAl5+un50ws+IgFxgYi81Q6n24oP7tIDEGP8+0=}</defaultValue>
         </hudson.model.PasswordParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DOCKER_BROWSER_CONTAINER_NAME</name>
@@ -62,6 +62,12 @@
           <name>BROWSER_PORT</name>
           <description>The external port to connect to the File Browser Web UI. (8084)</description>
           <defaultValue>8084</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH</name>
+          <description>This is the branch being used for the gobii.deploy.bash repo. (release/2.2.2) (develop)</description>
+          <defaultValue>develop</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>

@@ -1,0 +1,64 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4B2XUAxSFIF41aZ6ljajBO8z74secuzwo3QsU5d5jit8AAAArh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBk39rPwkfZfUgpz8ytzUvJJiMD8tMyc1qSi/vDi1KD4FLKdvAgAqELc83gAAAA==[0m4
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/filebrowser_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/Deployments/filebrowser_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision 46e851cd7a53235d7cd5adb0a4496e36826e3cc0 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 46e851cd7a53235d7cd5adb0a4496e36826e3cc0 # timeout=10
+Commit message: "asdf"
+ > git rev-list --no-walk dfc0f07c5c8c94f1c51a48b2e2c73808d05d5669 # timeout=10
+[filebrowser_deploy] $ /bin/sh -xe /tmp/jenkins1399480086698672316.sh
++ set -e
++ set -u
++ bash container_scripts/jenkins_deploy/gobii_browser_deploy.sh
++ docker network create gobii_net
+Error response from daemon: network with name gobii_net already exists
++ true
++ set +x
+
+Starting the gobii-browser-node deployment...
+
++ docker rm -f gobii-browser-node
+gobii-browser-node
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker pull filebrowser/filebrowser:latest
+latest: Pulling from filebrowser/filebrowser
+Digest: sha256:cc6f39a08fe3dc03568136283c981bb8d22e632e93dc383ccee3e4f977ab97d4
+Status: Image is up to date for filebrowser/filebrowser:latest
+docker.io/filebrowser/filebrowser:latest
++ docker run -dti --name gobii-browser-node -h browser-node -v /storage/persistent_data:/storage/persistent_data -v /data:/srv -p 8084:80 --network=gobii_net --restart=always filebrowser/filebrowser:latest
+534ed067719535824b481d555121aed1d2ca33cd1b976afe75dd4743199001e8
++ docker start gobii-browser-node
+gobii-browser-node
++ docker network connect bridge gobii-browser-node
++ echo
+
++ echo GOBii File Browser node deployment Completed!
+GOBii File Browser node deployment Completed!
++ echo
+
+Finished: SUCCESS

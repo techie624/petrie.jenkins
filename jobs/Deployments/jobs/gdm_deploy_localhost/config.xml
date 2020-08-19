@@ -390,12 +390,6 @@
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>GOBII_DEPLOY_VERSION</name>
-          <description>This version is displayed. (Release X.Y.Z)</description>
-          <defaultValue>Release X.Y.Z</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
           <name>BUNDLE_PATH</name>
           <description>Directory location of the gobii_bundle (/data/gobii_bundle)</description>
           <defaultValue>/data/gobii_bundle</defaultValue>
@@ -619,6 +613,18 @@
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
+          <name>GOBII_DEPLOY_VERSION</name>
+          <description>This version is displayed. (Release X.Y.Z)</description>
+          <defaultValue>Release X.Y.Z</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>CONFIGURATOR_PARAM_FILE</name>
+          <description>Export all env vars into a temp file for sourcing. (gobii.parameters.tmp)</description>
+          <defaultValue>gobii.parameters.tmp</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>GOBII_RELEASE_VERSION</name>
           <description>This is the image tagged for the image deployment. (release_2.2.2_2)</description>
           <defaultValue>release_2.2.2_2</defaultValue>
@@ -628,12 +634,6 @@
           <name>BRANCH</name>
           <description>This is the branch being used for the gobii.deploy.bash repo. (release/2.2.2) (develop)</description>
           <defaultValue>release/2.2.2</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>CONFIGURATOR_PARAM_FILE</name>
-          <description>Export all env vars into a temp file for sourcing. (gobii.parameters.tmp)</description>
-          <defaultValue>gobii.parameters.tmp</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
