@@ -1,9 +1,16 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>This will deploy pedver containers</description>
+  <description>&lt;p&gt;&lt;b&gt;This will deploy pedver containers&lt;/b&gt;&lt;/p&gt;&#xd;
+&lt;p&gt;• gobii-pedver-redis&lt;/p&gt;&#xd;
+&lt;p&gt;• gobii-pedver-web&lt;/p&gt;&#xd;
+&lt;p&gt;• gobii-pedver-worker&lt;/p&gt;&#xd;
+</description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
+      <doNotScan>false</doNotScan>
+    </com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty>
     <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.13">
       <gitLabConnection></gitLabConnection>
     </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
@@ -198,28 +205,22 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command># Running PedVer Deployment
-bash container_scripts/jenkins_deploy/pedver_deploy.sh
-echo;
+      <command>#--------------------------------------#
+
+set -e # Abort script at first error
+set -u # Attempt to use undefined variable outputs error message
+#set -x # Verbose with commands displayed
+
+#--------------------------------------#
+# Running PedVer Deployment
+
+time bash container_scripts/jenkins_deploy/pedver_deploy.sh
 
 #-----------------------------------------------------------------------------#
 
-echo &quot;
- ______________________________
-&lt;                              &gt;
-&lt; PedVer Deployment Completed! &gt;
-&lt;                              &gt;
- ------------------------------
-   \
-    \
-        .--.
-       |o_o |
-       |:_/ |
-      //   \ \
-     (|     | )
-    /&apos;\_   _/`\
-    \___)=(___/
-&quot;;</command>
+echo &quot;PedVer Deployment Completed!&quot;
+</command>
+      <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

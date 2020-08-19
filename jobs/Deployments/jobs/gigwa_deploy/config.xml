@@ -1,7 +1,7 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Initial deployment of gigwa images.</description>
+  <description>&lt;b&gt;Initial deployment of gigwa images.&lt;/b&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
@@ -33,7 +33,15 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cp $JENKINS_HOME/gigwa_deploy/docker-compose.yml $JENKINS_HOME/workspace/Deployments/gigwa_deploy/docker-compose.yml</command>
+      <command>#--------------------------------------#
+
+set -e # Abort script at first error
+set -u # Attempt to use undefined variable outputs error message
+#set -x # Verbose with commands displayed
+
+#--------------------------------------#
+
+cp $JENKINS_HOME/gigwa_deploy/docker-compose.yml $JENKINS_HOME/workspace/Deployments/gigwa_deploy/docker-compose.yml</command>
       <configuredLocalRules/>
     </hudson.tasks.Shell>
     <jenkins.plugins.docker__compose.DockerComposeBuilder plugin="docker-compose-build-step@1.0">
@@ -41,6 +49,23 @@
       <dockerComposeFile>docker-compose.yml</dockerComposeFile>
       <option class="jenkins.plugins.docker_compose.StartAllServices"/>
     </jenkins.plugins.docker__compose.DockerComposeBuilder>
+    <hudson.tasks.Shell>
+      <command>#--------------------------------------#
+
+set -e # Abort script at first error
+set -u # Attempt to use undefined variable outputs error message
+#set -x # Verbose with commands displayed
+
+#--------------------------------------#
+
+docker ps -a
+
+#--------------------------------------#
+
+echo &quot;GIGWA Deployment Completed!&quot;
+echo;</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers>

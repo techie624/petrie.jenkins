@@ -49,3 +49,5 @@ vim
 docker ps -a
 cd
 time cat jenkins_container_build/Dockerfile 
+cd
+time cat jenkins_container_build/Dockerfile 

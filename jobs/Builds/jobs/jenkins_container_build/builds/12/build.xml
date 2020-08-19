@@ -1,0 +1,67 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.ParametersAction>
+      <safeParameters class="sorted-set"/>
+      <parameters>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HUB_USERNAME</name>
+          <description>Dockerhub repo owner.  
+**In GOBii this is gadm01 where as the login is gadmreader.**</description>
+          <value>techie624</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.PasswordParameterValue>
+          <name>DOCKER_HUB_PASSWORD</name>
+          <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
+          <value>{AQAAABAAAAAQnmxMeX2r+xnjK7S9wWOVJEwzDV3DdITFtVMZfI+XFmQ=}</value>
+        </hudson.model.PasswordParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HUB_REPO_NAME</name>
+          <description>Repo name in Dockerhub. (petrie.jenkins)</description>
+          <value>petrie.jenkins</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>BRANCH</name>
+          <description>The branch from the jenkins repo used for the build.</description>
+          <value>develop</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HUB_LOGIN_USERNAME</name>
+          <description>This is the username used to log into Dockerhub. (techie624)
+**This is different from DOCKER_HUB_USERNAME as in GOBii gadm01 is the owner where as gadmreader is the collaborator with access to the repos.**</description>
+          <value>techie624</value>
+        </hudson.model.StringParameterValue>
+      </parameters>
+      <parameterDefinitionNames>
+        <string>DOCKER_HUB_USERNAME</string>
+        <string>DOCKER_HUB_PASSWORD</string>
+        <string>DOCKER_HUB_REPO_NAME</string>
+        <string>BRANCH</string>
+        <string>DOCKER_HUB_LOGIN_USERNAME</string>
+      </parameterDefinitionNames>
+    </hudson.model.ParametersAction>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>techie624</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <com.sonyericsson.rebuild.RebuildAction plugin="rebuild@1.31"/>
+  </actions>
+  <queueId>15</queueId>
+  <timestamp>1597869233291</timestamp>
+  <startTime>1597869233720</startTime>
+  <result>SUCCESS</result>
+  <duration>196475</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn></builtOn>
+  <workspace>/var/jenkins_home/workspace/Builds/jenkins_container_build</workspace>
+  <hudsonVersion>2.253</hudsonVersion>
+  <scm class="hudson.scm.NullChangeLogParser"/>
+  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+</build>

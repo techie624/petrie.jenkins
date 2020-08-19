@@ -1,0 +1,10 @@
+commit e29c2e34aec2a6a66a6ca9c2f6625b078748c181
+tree 6d2b7bdbc45319389c10d37da9735c6f72f0da81
+parent dc4f96278cd276ad301da272ddd3fd290c38ccc9
+author rlp243 <rlp243@cornell.edu> 2020-08-19 17:16:52 -0400
+committer rlp243 <rlp243@cornell.edu> 2020-08-19 17:16:52 -0400
+
+    updated for deploy
+
+
+:100755 100755 fcde2aae8c5575e0779de0c89539bb71568fd78c bb116f606b0b7e05110939749368990e2bc6624b M	jenkins_deploy/gobii_keycloak_deploy.sh

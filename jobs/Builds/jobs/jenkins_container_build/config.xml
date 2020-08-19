@@ -76,7 +76,15 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>echo &quot;$BRANCH&quot;
+      <command>#--------------------------------------#
+
+set -e # Abort script at first error
+set -u # Attempt to use undefined variable outputs error message
+#set -x # Verbose with commands displayed
+
+#--------------------------------------#
+
+echo &quot;$BRANCH&quot;
 BUILD_TAG=&quot;$BRANCH&quot;_$(date +&quot;%Y%m%d&quot;)_build_$BUILD_NUMBER
 echo &quot;BUILD_TAG is set as: $BUILD_TAG&quot;;
 echo;
@@ -86,13 +94,24 @@ echo;
 
 cd $JENKINS_HOME/jenkins_container_build/
 
-docker image build -t $DOCKER_HUB_USERNAME/$DOCKER_HUB_REPO_NAME:$BUILD_TAG .
+time docker image build -t $DOCKER_HUB_USERNAME/$DOCKER_HUB_REPO_NAME:$BUILD_TAG .
+
+#--------------------------------------#
+# log into dockerhub
 
 set +x # Turning down verbosity as the password is echoed to stdout
 docker login -u $DOCKER_HUB_LOGIN_USERNAME -p $DOCKER_HUB_PASSWORD
 set -x
 
-docker push $DOCKER_HUB_USERNAME/$DOCKER_HUB_REPO_NAME:$BUILD_TAG</command>
+#--------------------------------------#
+# push image
+
+time docker push $DOCKER_HUB_USERNAME/$DOCKER_HUB_REPO_NAME:$BUILD_TAG
+
+#--------------------------------------#
+
+echo &quot;Jenkins image build Completed!&quot;
+</command>
       <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>

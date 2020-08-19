@@ -646,7 +646,6 @@
       <throttleOption>project</throttleOption>
       <limitOneJobWithMatchingParams>false</limitOneJobWithMatchingParams>
       <paramsToUseForLimit></paramsToUseForLimit>
-      <configVersion>1</configVersion>
     </hudson.plugins.throttleconcurrents.ThrottleJobProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@4.3.0">
@@ -673,8 +672,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>
-#--------------------------------------#
+      <command>#--------------------------------------#
 
 set -e # Abort script at first error
 set -u # Attempt to use undefined variable outputs error message
@@ -689,7 +687,7 @@ cd $WORKSPACE; printenv &gt;&gt; gobii.parameters.tmp
 #--------------------------------------#
 
 # Run gobii-db-node deployment
-bash container_scripts/jenkins_deploy/gobii_db_deploy.sh
+time bash container_scripts/jenkins_deploy/gobii_db_deploy.sh
 echo;
 
 echo &quot;Moving on to gobii-web-node deployment...&quot;
@@ -699,7 +697,7 @@ sleep 3
 #--------------------------------------#
 
 # Run gobii-web-node deployment
-bash container_scripts/jenkins_deploy/gobii_web_deploy.sh
+time bash container_scripts/jenkins_deploy/gobii_web_deploy.sh
 echo;
 
 echo &quot;Moving on to gobii-compute-node deployment...&quot;
@@ -709,7 +707,7 @@ sleep 3
 #--------------------------------------#
 
 # Run gobii-compute-node deployment
-bash container_scripts/jenkins_deploy/gobii_compute_deploy.sh
+time bash container_scripts/jenkins_deploy/gobii_compute_deploy.sh
 echo;
 
 #--------------------------------------#

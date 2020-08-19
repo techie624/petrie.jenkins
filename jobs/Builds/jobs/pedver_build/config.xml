@@ -63,20 +63,27 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>echo &quot;$BRANCH&quot;
+      <command>#--------------------------------------#
+
+set -e # Abort script at first error
+set -u # Attempt to use undefined variable outputs error message
+#set -x # Verbose with commands displayed
+
+#--------------------------------------#
+
+echo &quot;$BRANCH&quot;
 BUILD_TAG=&quot;$BRANCH&quot;_$(date +&quot;%Y%m%d&quot;)_build_$BUILD_NUMBER
 echo &quot;BUILD_TAG is set as: $BUILD_TAG&quot;;
 echo;
 
-#-----------------------------------------------------------------------------#
+#--------------------------------------#
 
 export $BUILD_TAG
 
 # Building PedVer Docker images
-bash container_scripts/jenkins_build/gobii_pedver_build.sh
+time bash container_scripts/jenkins_build/gobii_pedver_build.sh
 
-#-----------------------------------------------------------------------------#
-
+#--------------------------------------#
 </command>
       <configuredLocalRules/>
     </hudson.tasks.Shell>

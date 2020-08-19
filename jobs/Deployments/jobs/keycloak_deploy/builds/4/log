@@ -1,0 +1,43 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/keycloak_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git init /var/jenkins_home/workspace/Deployments/keycloak_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision e29c2e34aec2a6a66a6ca9c2f6625b078748c181 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f e29c2e34aec2a6a66a6ca9c2f6625b078748c181 # timeout=10
+Commit message: "updated for deploy"
+ > git rev-list --no-walk dc4f96278cd276ad301da272ddd3fd290c38ccc9 # timeout=10
+[keycloak_deploy] $ /bin/sh -xe /tmp/jenkins8790981499941110908.sh
++ set -e
++ set -u
++ time bash jenkins_deploy/gobii_keycloak_deploy.sh
+Error response from daemon: network with name gobii_net already exists
+Error: Cannot perform an interactive login from a non TTY device
++ echo
+
++ docker run -dti --name keycloak-node -h keycloak-node -p 8086:8081 -v /data:/data --restart=always --network=gobii_net gadm01/gobii_keycloak:develop_20200819_build_10
+a21dfaa1ea827157d3808669211937c9b66579c3c9aa745f85ce289e0ec97355
+0.08user 0.08system 0:01.23elapsed 13%CPU (0avgtext+0avgdata 60444maxresident)k
+0inputs+0outputs (0major+21758minor)pagefaults 0swaps
++ echo Keycloak Deployment Completed!
+Keycloak Deployment Completed!
++ echo
+
+Finished: SUCCESS

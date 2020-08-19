@@ -1,7 +1,8 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>&lt;b&gt;This will deploy the Keycloak Container Image.&lt;/b&gt;</description>
+  <description>&lt;p&gt;&lt;b&gt;This will deploy the Keycloak Container Image.&lt;/b&gt;&lt;/p&gt;&#xd;
+&lt;p&gt;• keycloak-node&lt;/p&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
@@ -118,8 +119,8 @@ set -u # Attempt to use undefined variable outputs error message
 #set -x # Verbose with commands displayed
 
 #--------------------------------------#
-
 # Run keycloak-node deployment 
+
 time bash jenkins_deploy/gobii_keycloak_deploy.sh
 
 #--------------------------------------#

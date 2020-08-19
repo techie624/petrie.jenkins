@@ -1,0 +1,39 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/keycloak_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git init /var/jenkins_home/workspace/Deployments/keycloak_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision dc4f96278cd276ad301da272ddd3fd290c38ccc9 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f dc4f96278cd276ad301da272ddd3fd290c38ccc9 # timeout=10
+Commit message: "update iwth jenkins scripts"
+ > git rev-list --no-walk a5a1de796350ec695955c9a15afc5ef7065c3cab # timeout=10
+[keycloak_deploy] $ /bin/sh -xe /tmp/jenkins2909152524419481361.sh
++ set -e
++ set -u
++ time bash jenkins_deploy/gobii_keycloak_deploy.sh
+be96c7c8dece173204da587483ba94ff8ca56c4bfa0ae89fe2d456554eabe166
+Error: Cannot perform an interactive login from a non TTY device
+docker: invalid reference format.
+See 'docker run --help'.
+Command exited with non-zero status 125
+0.07user 0.08system 0:00.21elapsed 73%CPU (0avgtext+0avgdata 60348maxresident)k
+0inputs+0outputs (0major+21496minor)pagefaults 0swaps
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE
