@@ -124,3 +124,39 @@ Offering Builds/jenkins_container_build to Project Build Discarder
 Processing Builds/pedver_build
 Offering Builds/pedver_build to Project Build Discarder
 Finished at Wed Aug 19 01:15:15 UTC 2020. 1ms
+Started at Wed Aug 19 02:15:15 UTC 2020
+Processing Tools/GOBii_Postgres_Restart
+Offering Tools/GOBii_Postgres_Restart to Project Build Discarder
+Processing Tools/HaploTool_Start
+Offering Tools/HaploTool_Start to Project Build Discarder
+Processing Tools/LDAP_Start
+Offering Tools/LDAP_Start to Project Build Discarder
+Processing Tools/Test_Docker
+Offering Tools/Test_Docker to Project Build Discarder
+Processing Tools/tomcat_restart
+Offering Tools/tomcat_restart to Project Build Discarder
+Processing Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL
+Offering Tools/WARNING_DOCKER_DELETIONS/DOCKER_CLEAN_ALL to Project Build Discarder
+Processing Hotfixes/Release_2.2.2_Hotfix
+Offering Hotfixes/Release_2.2.2_Hotfix to Project Build Discarder
+Processing Deployments/filebrowser_deploy
+Offering Deployments/filebrowser_deploy to Project Build Discarder
+Processing Deployments/gdm_deploy_localhost
+Offering Deployments/gdm_deploy_localhost to Project Build Discarder
+Processing Deployments/gdm_deploy_template
+Offering Deployments/gdm_deploy_template to Project Build Discarder
+Processing Deployments/gigwa_deploy
+Offering Deployments/gigwa_deploy to Project Build Discarder
+Processing Deployments/haplo_deploy
+Offering Deployments/haplo_deploy to Project Build Discarder
+Processing Deployments/kdc_deploy
+Offering Deployments/kdc_deploy to Project Build Discarder
+Processing Deployments/pedver_deploy
+Offering Deployments/pedver_deploy to Project Build Discarder
+Processing Deployments/portainer_deploy
+Offering Deployments/portainer_deploy to Project Build Discarder
+Processing Builds/jenkins_container_build
+Offering Builds/jenkins_container_build to Project Build Discarder
+Processing Builds/pedver_build
+Offering Builds/pedver_build to Project Build Discarder
+Finished at Wed Aug 19 02:15:15 UTC 2020. 1ms

@@ -1,8 +1,8 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>This deployment project will deploy the Haplo node.&#xd;
-• gobii-haplo-node</description>
+  <description>This deployment project will deploy the Portainer Node.&#xd;
+• gobii-portainer-node</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
@@ -17,17 +17,17 @@
     </com.sonyericsson.rebuild.RebuildSettings>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>BUNDLE_PARENT_PATH</name>
+          <description>Default data path /data</description>
+          <defaultValue>/data</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
         <hudson.model.PasswordParameterDefinition>
           <name>DOCKER_HUB_PASSWORD</name>
           <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
-          <defaultValue>{AQAAABAAAAAQyjqtxMXJk7td8dWNqt2w2PjQkD63W2AefI6Ad86Gy0Q=}</defaultValue>
+          <defaultValue>{AQAAABAAAAAQL0PR41pTLorET1vBaLjtNO9M/da5cdGVDLGObo9DMM8=}</defaultValue>
         </hudson.model.PasswordParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>DOCKER_HUB_HAPLO_TAG</name>
-          <description>The Dockerhub image tag. (v0.4)</description>
-          <defaultValue>v0.4</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DOCKER_NETWORK_NAME</name>
           <description>Created Docker Network to connect all containers to. (gobii_net)</description>
@@ -35,9 +35,9 @@
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>DOCKER_HAPLO_NAME</name>
-          <description>This is the container name used by the docker engine. (gobii-haplo-node)</description>
-          <defaultValue>gobii-haplo-node</defaultValue>
+          <name>DOCKER_PORTAINER_NAME</name>
+          <description>This is the container name used by the docker engine. (gobii-portainer-node)</description>
+          <defaultValue>gobii-portainer-node</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -47,15 +47,9 @@
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>DOCKER_HUB_USERNAME</name>
-          <description>The dockerhub user that owns the image repos. (gadm01)</description>
-          <defaultValue>gadm01</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>DOCKER_HUB_HAPLO_NAME</name>
-          <description>The dockerhub repo name (haplotool)</description>
-          <defaultValue>haplotool</defaultValue>
+          <name>DOCKER_PORTAINER_CONTAINER_HOSTNAME</name>
+          <description>This is the hostname set for the container internally. (portainer-node)</description>
+          <defaultValue>portainer-node</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -65,21 +59,15 @@
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>DOCKER_HAPLO_CONTAINER_HOSTNAME</name>
-          <description>This is the hostname set for the container internally. (haplo-node)</description>
-          <defaultValue>haplo-node</defaultValue>
+          <name>DOCKER_PORTAINER_VERSION</name>
+          <description>The Dockerhub image tag. (latest) (linux-amd64-1.19.0)</description>
+          <defaultValue>latest</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>DOCKER_HAPLO_PORT</name>
-          <description>External Web UI connection port. (8085)</description>
-          <defaultValue>8085</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>BUNDLE_PARENT_PATH</name>
-          <description>Default data path /data</description>
-          <defaultValue>/data</defaultValue>
+          <name>PORTAINER_PORT</name>
+          <description>The external Web UI connection port. (9000)</description>
+          <defaultValue>9000</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -91,6 +79,8 @@
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@2.0.2">
+      <maxConcurrentPerNode>0</maxConcurrentPerNode>
+      <maxConcurrentTotal>0</maxConcurrentTotal>
       <categories class="java.util.concurrent.CopyOnWriteArrayList"/>
       <throttleEnabled>false</throttleEnabled>
       <throttleOption>project</throttleOption>
@@ -130,12 +120,12 @@ set -u # Attempt to use undefined variable outputs error message
 
 #--------------------------------------#
 
-bash container_scripts/jenkins_deploy/gobii_haplo_deploy.sh
+bash container_scripts/jenkins_deploy/gobii_portainer_deploy.sh
 echo;
 
 #--------------------------------------#
 
-echo &quot;HaploTool node deployment Completed!&quot;
+echo &quot;Portainer node deployment Completed!&quot;
 echo;</command>
       <configuredLocalRules/>
     </hudson.tasks.Shell>

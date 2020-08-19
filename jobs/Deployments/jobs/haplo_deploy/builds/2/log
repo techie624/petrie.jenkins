@@ -1,0 +1,121 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4EmcPb4a6hwvsjrlJq9J68x6vndnp6gTelpr0HKW8L4+AAAApx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBmX9rPwkfZfUgpz8ytzUvJJiMD8jEciPTwGL6hsCALP/M6fYAAAA[0m1
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/haplo_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/Deployments/haplo_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision 9c876d4da413bdc55dfb6a4ce8182b89a1300b89 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9c876d4da413bdc55dfb6a4ce8182b89a1300b89 # timeout=10
+Commit message: "haplo jenkins deploy script"
+First time build. Skipping changelog.
+[haplo_deploy] $ /bin/sh -xe /tmp/jenkins7874184970338177299.sh
++ set -e
++ set -u
++ bash container_scripts/jenkins_deploy/gobii_haplo_deploy.sh
++ docker network create gobii_net
+Error response from daemon: network with name gobii_net already exists
++ true
++ set +x
+
+Starting the haplo-node deployment...
+
++ docker rm -f gobii-haplo-node
+Error: No such container: gobii-haplo-node
++ true
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker pull gadm01/haplotool:v0.4
+v0.4: Pulling from gadm01/haplotool
+05d1a5232b46: Pulling fs layer
+4788dbfd7cb2: Pulling fs layer
+5e30b0ef2301: Pulling fs layer
+7236b45bf9ae: Pulling fs layer
+45ca0d437839: Pulling fs layer
+50c2827de35d: Pulling fs layer
+df449cb030bf: Pulling fs layer
+74c43a548f9a: Pulling fs layer
+a3ace4e2080e: Pulling fs layer
+3afda9052384: Pulling fs layer
+b00acb9dc1f1: Pulling fs layer
+2745b6193f77: Pulling fs layer
+b21fc18683a1: Pulling fs layer
+8f0b793ef335: Pulling fs layer
+549a30c33163: Pulling fs layer
+50c2827de35d: Waiting
+7236b45bf9ae: Waiting
+df449cb030bf: Waiting
+45ca0d437839: Waiting
+74c43a548f9a: Waiting
+2745b6193f77: Waiting
+b21fc18683a1: Waiting
+549a30c33163: Waiting
+a3ace4e2080e: Waiting
+b00acb9dc1f1: Waiting
+3afda9052384: Waiting
+05d1a5232b46: Verifying Checksum
+05d1a5232b46: Download complete
+05d1a5232b46: Pull complete
+7236b45bf9ae: Verifying Checksum
+7236b45bf9ae: Download complete
+45ca0d437839: Download complete
+5e30b0ef2301: Verifying Checksum
+5e30b0ef2301: Download complete
+50c2827de35d: Verifying Checksum
+50c2827de35d: Download complete
+74c43a548f9a: Verifying Checksum
+74c43a548f9a: Download complete
+df449cb030bf: Download complete
+4788dbfd7cb2: Download complete
+b00acb9dc1f1: Verifying Checksum
+b00acb9dc1f1: Download complete
+3afda9052384: Verifying Checksum
+3afda9052384: Download complete
+2745b6193f77: Verifying Checksum
+2745b6193f77: Download complete
+b21fc18683a1: Verifying Checksum
+b21fc18683a1: Download complete
+4788dbfd7cb2: Pull complete
+5e30b0ef2301: Pull complete
+549a30c33163: Verifying Checksum
+549a30c33163: Download complete
+7236b45bf9ae: Pull complete
+45ca0d437839: Pull complete
+50c2827de35d: Pull complete
+df449cb030bf: Pull complete
+74c43a548f9a: Pull complete
+a3ace4e2080e: Pull complete
+3afda9052384: Pull complete
+b00acb9dc1f1: Pull complete
+2745b6193f77: Pull complete
+b21fc18683a1: Pull complete
+8f0b793ef335: Download complete
+8f0b793ef335: Pull complete
+549a30c33163: Pull complete
+Digest: sha256:d63ff6b8ce6b33682022f2eeb922f6910880b65bc6d9faf5a13bc5bd5efea4a4
+Status: Downloaded newer image for gadm01/haplotool:v0.4
+docker.io/gadm01/haplotool:v0.4
+container_scripts/jenkins_deploy/gobii_haplo_deploy.sh: line 50: BUNDLE_PARENT_PATH: unbound variable
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

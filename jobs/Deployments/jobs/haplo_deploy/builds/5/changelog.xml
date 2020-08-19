@@ -1,0 +1,10 @@
+commit 5d8992984245b98470393021dd25efb508eb28ab
+tree 1a8aa9a89f05ce0150e2a3ff5cc4d40eecb6df03
+parent 9c876d4da413bdc55dfb6a4ce8182b89a1300b89
+author rlp243 <rlp243@cornell.edu> 2020-08-18 22:00:27 -0400
+committer rlp243 <rlp243@cornell.edu> 2020-08-18 22:00:27 -0400
+
+    exit true starting haplo
+
+
+:100644 100644 124a4387009f7bbfd45b26182e22ad88f81e3a3f 6077bc250541ccc938d9083bb6047857e748ab1d M	container_scripts/jenkins_deploy/gobii_haplo_deploy.sh

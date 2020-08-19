@@ -1,0 +1,72 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4KRCKJgr/oTmfMVBa4EjjUD0L257YLmT/Jpojzc/9uDfAAAApx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBmX9rPwkfZfUgpz8ytzUvJJiMD8jEciPTwGL6hsDAJ+ePUnYAAAA[0m3
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/haplo_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/Deployments/haplo_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision 9c876d4da413bdc55dfb6a4ce8182b89a1300b89 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9c876d4da413bdc55dfb6a4ce8182b89a1300b89 # timeout=10
+Commit message: "haplo jenkins deploy script"
+ > git rev-list --no-walk 9c876d4da413bdc55dfb6a4ce8182b89a1300b89 # timeout=10
+[haplo_deploy] $ /bin/sh -xe /tmp/jenkins369724105945441529.sh
++ set -e
++ set -u
++ bash container_scripts/jenkins_deploy/gobii_haplo_deploy.sh
++ docker network create gobii_net
+Error response from daemon: network with name gobii_net already exists
++ true
++ set +x
+
+Starting the haplo-node deployment...
+
++ docker rm -f gobii-haplo-node
+Error: No such container: gobii-haplo-node
++ true
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker pull gadm01/haplotool:v0.4
+v0.4: Pulling from gadm01/haplotool
+Digest: sha256:d63ff6b8ce6b33682022f2eeb922f6910880b65bc6d9faf5a13bc5bd5efea4a4
+Status: Image is up to date for gadm01/haplotool:v0.4
+docker.io/gadm01/haplotool:v0.4
++ docker run -dti --name gobii-haplo-node -h haplo-node -v /storage/persistent_data:/storage/persistent_data --entrypoint /bin/bash --user shiny -v /data:/data -p 8085:3838 --restart=always --network=gobii_net gadm01/haplotool:v0.4
+52f220599ece3498ef049645ec771da1eb554013bb1cd17ba2ac5a214de4842e
++ docker start gobii-haplo-node
+gobii-haplo-node
++ docker network connect bridge gobii-haplo-node
++ echo 'Starting Shiny Service...'
+Starting Shiny Service...
++ echo
+
++ docker exec -u root gobii-haplo-node bash -c '
+sudo -H -u shiny /usr/bin/shiny-server.sh;
+exit;
+'
+tail: error reading '/var/log/shiny-server/': Is a directory
+[2020-08-19T01:59:01.636] [INFO] shiny-server - Shiny Server v1.5.9.923 (Node.js v8.11.3)
+[2020-08-19T01:59:01.638] [INFO] shiny-server - Using config file "/etc/shiny-server/shiny-server.conf"
+[2020-08-19T01:59:01.692] [INFO] shiny-server - Starting listener on http://[::]:3838
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

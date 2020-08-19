@@ -1,0 +1,173 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>techie624</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+        <entry>
+          <com.sonyericsson.rebuild.RebuildCause plugin="rebuild@1.31">
+            <upstreamProject>Deployments/haplo_deploy</upstreamProject>
+            <upstreamUrl>job/Deployments/job/haplo_deploy/</upstreamUrl>
+            <upstreamBuild>1</upstreamBuild>
+            <upstreamCauses>
+              <hudson.model.Cause_-UserIdCause>
+                <userId>techie624</userId>
+              </hudson.model.Cause_-UserIdCause>
+            </upstreamCauses>
+          </com.sonyericsson.rebuild.RebuildCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <hudson.model.ParametersAction>
+      <safeParameters class="sorted-set"/>
+      <parameters>
+        <hudson.model.PasswordParameterValue>
+          <name>DOCKER_HUB_PASSWORD</name>
+          <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
+          <value>{AQAAABAAAAAQbIelKPFTxDj8nPFfyo1p+QbRSPt5LquUcfaycdYkBr8=}</value>
+        </hudson.model.PasswordParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HUB_HAPLO_TAG</name>
+          <description>The Dockerhub image tag. (v0.4)</description>
+          <value>v0.4</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_NETWORK_NAME</name>
+          <description>Created Docker Network to connect all containers to. (gobii_net)</description>
+          <value>gobii_net</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HAPLO_NAME</name>
+          <description>This is the container name used by the docker engine. (gobii-haplo-node)</description>
+          <value>gobii-haplo-node</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HUB_LOGIN_USERNAME</name>
+          <description>Dockerhub user used to login and pull images. (gadmreader)</description>
+          <value>gadmreader</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HUB_USERNAME</name>
+          <description>The dockerhub user that owns the image repos. (gadm01)</description>
+          <value>gadm01</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HUB_HAPLO_NAME</name>
+          <description>The dockerhub repo name (haplotool)</description>
+          <value>haplotool</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>NDD_PATH</name>
+          <description>NFS or persistent storage for data (/storage/persistent_data)</description>
+          <value>/storage/persistent_data</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HAPLO_CONTAINER_HOSTNAME</name>
+          <description>This is the hostname set for the container internally. (haplo-node)</description>
+          <value>haplo-node</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DOCKER_HAPLO_PORT</name>
+          <description>External Web UI connection port. (8085)</description>
+          <value>8085</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>BRANCH</name>
+          <description>This is the branch being used for the gobii.deploy.bash repo.</description>
+          <value>develop</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>$BRANCH</name>
+          <description>This is the branch being used for the gobii.deploy.bash repo.</description>
+          <value>develop</value>
+        </hudson.model.StringParameterValue>
+      </parameters>
+      <parameterDefinitionNames>
+        <string>DOCKER_HUB_PASSWORD</string>
+        <string>DOCKER_HUB_HAPLO_TAG</string>
+        <string>DOCKER_NETWORK_NAME</string>
+        <string>DOCKER_HAPLO_NAME</string>
+        <string>DOCKER_HUB_LOGIN_USERNAME</string>
+        <string>DOCKER_HUB_USERNAME</string>
+        <string>DOCKER_HUB_HAPLO_NAME</string>
+        <string>NDD_PATH</string>
+        <string>DOCKER_HAPLO_CONTAINER_HOSTNAME</string>
+        <string>DOCKER_HAPLO_PORT</string>
+        <string>BRANCH</string>
+      </parameterDefinitionNames>
+    </hudson.model.ParametersAction>
+    <hudson.plugins.git.util.BuildData plugin="git@4.3.0">
+      <buildsByBranchName>
+        <entry>
+          <string>refs/remotes/origin/develop</string>
+          <hudson.plugins.git.util.Build>
+            <marked plugin="git-client@3.4.1">
+              <sha1>9c876d4da413bdc55dfb6a4ce8182b89a1300b89</sha1>
+              <branches class="list">
+                <hudson.plugins.git.Branch>
+                  <sha1 reference="../../../sha1"/>
+                  <name>refs/remotes/origin/develop</name>
+                </hudson.plugins.git.Branch>
+              </branches>
+            </marked>
+            <revision reference="../marked"/>
+            <hudsonBuildNumber>2</hudsonBuildNumber>
+          </hudson.plugins.git.util.Build>
+        </entry>
+      </buildsByBranchName>
+      <lastBuild reference="../buildsByBranchName/entry/hudson.plugins.git.util.Build"/>
+      <remoteUrls>
+        <string>https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git</string>
+      </remoteUrls>
+    </hudson.plugins.git.util.BuildData>
+    <hudson.plugins.git.GitTagAction plugin="git@4.3.0">
+      <tags class="hudson.util.CopyOnWriteMap$Tree">
+        <entry>
+          <string>refs/remotes/origin/develop</string>
+          <list/>
+        </entry>
+      </tags>
+      <ws>/var/jenkins_home/workspace/Deployments/haplo_deploy</ws>
+    </hudson.plugins.git.GitTagAction>
+    <hudson.scm.SCMRevisionState_-None/>
+    <com.sonyericsson.jenkins.plugins.bfa.ScanLogAction plugin="build-failure-analyzer@1.27.0"/>
+    <com.sonyericsson.jenkins.plugins.bfa.model.FailureCauseBuildAction plugin="build-failure-analyzer@1.27.0">
+      <foundFailureCauses class="java.util.Collections$SynchronizedRandomAccessList" resolves-to="java.util.Collections$SynchronizedList" serialization="custom">
+        <java.util.Collections_-SynchronizedCollection>
+          <default>
+            <c class="list"/>
+            <mutex class="java.util.Collections$SynchronizedList" reference="../../.."/>
+          </default>
+        </java.util.Collections_-SynchronizedCollection>
+        <java.util.Collections_-SynchronizedList>
+          <default>
+            <list reference="../../../java.util.Collections_-SynchronizedCollection/default/c"/>
+          </default>
+        </java.util.Collections_-SynchronizedList>
+      </foundFailureCauses>
+      <build class="build" reference="../../.."/>
+    </com.sonyericsson.jenkins.plugins.bfa.model.FailureCauseBuildAction>
+    <com.sonyericsson.rebuild.RebuildAction plugin="rebuild@1.31"/>
+  </actions>
+  <queueId>58</queueId>
+  <timestamp>1597801297377</timestamp>
+  <startTime>1597801298191</startTime>
+  <result>FAILURE</result>
+  <duration>239774</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn></builtOn>
+  <workspace>/var/jenkins_home/workspace/Deployments/haplo_deploy</workspace>
+  <hudsonVersion>2.253</hudsonVersion>
+  <scm class="hudson.plugins.git.GitChangeLogParser" plugin="git@4.3.0">
+    <authorOrCommitter>false</authorOrCommitter>
+    <showEntireCommitSummaryInChanges>true</showEntireCommitSummaryInChanges>
+  </scm>
+  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+</build>
