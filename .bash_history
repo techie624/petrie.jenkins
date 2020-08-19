@@ -46,3 +46,4 @@ ll
 docker-compose -f /var/jenkins_home/workspace/Deployments/gigwa_deploy/docker-compose.yml up -d
 htop
 vim
+docker ps -a
