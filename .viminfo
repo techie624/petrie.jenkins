@@ -11,6 +11,8 @@
 # hlsearch on (H) or off (h):
 ~h
 # Command Line History (newest to oldest):
+:q
+|2,0,1597787976,,"q"
 
 # Search String History (newest to oldest):
 
@@ -29,6 +31,10 @@
 # Jumplist (newest first):
 -'  21  0  ~/jenkins_container_build/Dockerfile
 |4,39,21,0,1597774664,"~/jenkins_container_build/Dockerfile"
+-'  21  0  ~/jenkins_container_build/Dockerfile
+|4,39,21,0,1597774664,"~/jenkins_container_build/Dockerfile"
+-'  1  0  ~/jenkins_container_build/Dockerfile
+|4,39,1,0,1597774642,"~/jenkins_container_build/Dockerfile"
 -'  1  0  ~/jenkins_container_build/Dockerfile
 |4,39,1,0,1597774642,"~/jenkins_container_build/Dockerfile"
 

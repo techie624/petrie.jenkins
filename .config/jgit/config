@@ -1,0 +1,3 @@
+[filesystem "Oracle Corporation|1.8.0_242|/dev/sde1"]
+	timestampResolution = 1001 microseconds
+	minRacyThreshold = 3742 microseconds

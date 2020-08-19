@@ -1,0 +1,33 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4H4pr6I79c/qJ+hj6M5zizO4gj65rr9OxsLpIDPgnITFAAAAph+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBkX9rPwkfZfUgpz8ytzUvJJiMD87JTk+BSymbwQAbbFAMdYAAAA=[0m2
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/kdc_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/Deployments/kdc_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/release/2.2.2^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/release/2.2.2^{commit} # timeout=10
+Checking out Revision c657bf99b7a5e0d5706415d71b8e03ee55fcc1fa (refs/remotes/origin/release/2.2.2)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c657bf99b7a5e0d5706415d71b8e03ee55fcc1fa # timeout=10
+Commit message: "asdf"
+ > git rev-list --no-walk c657bf99b7a5e0d5706415d71b8e03ee55fcc1fa # timeout=10
+[kdc_deploy] $ /bin/sh -xe /tmp/jenkins1962298728099399080.sh
++ set -e
++ set -u
+/tmp/jenkins1962298728099399080.sh: 10: /tmp/jenkins1962298728099399080.sh: JERNKINS_HOME: parameter not set
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE
