@@ -1,0 +1,46 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4BB4Pm8IFJPK2l8B6dAMhMYBTFB937szWcaOW+I/v0waAAAAph+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBkX9rPwkfZfUgpz8ytzUvJJiMD87JTk+BSymbwoAziQkr9YAAAA=[0m5
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/kdc_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/Deployments/kdc_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision 74a16399bc63b7415ec7cce226b63fca7d2e61e2 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 74a16399bc63b7415ec7cce226b63fca7d2e61e2 # timeout=10
+Commit message: "update with kdc jenkins scripts"
+First time build. Skipping changelog.
+[kdc_deploy] $ /bin/sh -xe /tmp/jenkins4243738909309542234.sh
++ set -e
++ set -u
++ pwd
+/var/jenkins_home/workspace/Deployments/kdc_deploy
++ bash container_scripts/jenkins_deploy/gobii_kdc_deploy.sh
++ docker network create gobii_net
+b81a41e7064f96e49b9230151994f93b8d4a8e40a84f53ee10401f3e299f0c5b
++ set +x
+
+Starting KDCompute deployment...
+
++ docker rm -f gobii-kdc-node
+Error: No such container: gobii-kdc-node
++ true
++ set +x
+container_scripts/jenkins_deploy/gobii_kdc_deploy.sh: line 41: DOCKER_HUB_LOGIN_USERNAME: unbound variable
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

@@ -1,0 +1,304 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Rebuilds build #[8mha:////4CTBgRocFNy+jnEL/E7dyNZRKBmPuYpf8aGFejqntu3OAAAAph+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBkX9rPwkfZfUgpz8ytzUvJJiMD87JTk+BSymbw4A4kUqQdYAAAA=[0m7
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Deployments/kdc_deploy
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git init /var/jenkins_home/workspace/Deployments/kdc_deploy # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.11.0'
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git # timeout=10
+Fetching upstream changes from https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git
+ > git fetch --tags --progress -- https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision 74a16399bc63b7415ec7cce226b63fca7d2e61e2 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 74a16399bc63b7415ec7cce226b63fca7d2e61e2 # timeout=10
+Commit message: "update with kdc jenkins scripts"
+ > git rev-list --no-walk 74a16399bc63b7415ec7cce226b63fca7d2e61e2 # timeout=10
+[kdc_deploy] $ /bin/sh -xe /tmp/jenkins4770995374177442631.sh
++ set -e
++ set -u
++ pwd
+/var/jenkins_home/workspace/Deployments/kdc_deploy
++ bash container_scripts/jenkins_deploy/gobii_kdc_deploy.sh
++ docker network create gobii_net
+Error response from daemon: network with name gobii_net already exists
++ true
++ set +x
+
+Starting KDCompute deployment...
+
++ docker rm -f gobii-kdc-node
+Error: No such container: gobii-kdc-node
++ true
++ set +x
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker pull gadm01/gobii_kdc_ubuntu:server_1.6.1-plugin_0.14.3-build_110
+server_1.6.1-plugin_0.14.3-build_110: Pulling from gadm01/gobii_kdc_ubuntu
+aafe6b5e13de: Pulling fs layer
+0a2b43a72660: Pulling fs layer
+18bdd1e546d2: Pulling fs layer
+8198342c3e05: Pulling fs layer
+f56970a44fd4: Pulling fs layer
+3ae5078cd751: Pulling fs layer
+5350180cb96a: Pulling fs layer
+33798983f65a: Pulling fs layer
+f4ef69d621c3: Pulling fs layer
+38ea64409c1f: Pulling fs layer
+aa7fc0a75c74: Pulling fs layer
+e1d475d7795a: Pulling fs layer
+8198342c3e05: Waiting
+af6ec2d1ddc6: Pulling fs layer
+684bbd1d17ba: Pulling fs layer
+3ae5078cd751: Waiting
+3e6a57db2224: Pulling fs layer
+f56970a44fd4: Waiting
+f059fa18bdba: Pulling fs layer
+5350180cb96a: Waiting
+d278966e5186: Pulling fs layer
+a3b96beb3878: Pulling fs layer
+1009aa219469: Pulling fs layer
+70b3d3bc41fd: Pulling fs layer
+f4431a1f4138: Pulling fs layer
+1cea6eabd95f: Pulling fs layer
+792b5a0e4858: Pulling fs layer
+56886e44ede9: Pulling fs layer
+138c7a15adaf: Pulling fs layer
+af4a5c383b64: Pulling fs layer
+d4ef0e55b26f: Pulling fs layer
+835271d6f182: Pulling fs layer
+4400b887bf70: Pulling fs layer
+088f7d9caf80: Pulling fs layer
+1f7f1431d4c2: Pulling fs layer
+8f137c10d8ae: Pulling fs layer
+9e73eb7a886e: Pulling fs layer
+573ef0f40349: Pulling fs layer
+b418d400abc4: Pulling fs layer
+2b7ee853dc6a: Pulling fs layer
+475ea356de18: Pulling fs layer
+fb498ef9c820: Pulling fs layer
+33798983f65a: Waiting
+f4ef69d621c3: Waiting
+38ea64409c1f: Waiting
+138c7a15adaf: Waiting
+aa7fc0a75c74: Waiting
+af4a5c383b64: Waiting
+e1d475d7795a: Waiting
+af6ec2d1ddc6: Waiting
+573ef0f40349: Waiting
+fb498ef9c820: Waiting
+b418d400abc4: Waiting
+684bbd1d17ba: Waiting
+d4ef0e55b26f: Waiting
+2b7ee853dc6a: Waiting
+475ea356de18: Waiting
+835271d6f182: Waiting
+3e6a57db2224: Waiting
+a3b96beb3878: Waiting
+70b3d3bc41fd: Waiting
+4400b887bf70: Waiting
+f059fa18bdba: Waiting
+f4431a1f4138: Waiting
+d278966e5186: Waiting
+1009aa219469: Waiting
+1cea6eabd95f: Waiting
+56886e44ede9: Waiting
+792b5a0e4858: Waiting
+088f7d9caf80: Waiting
+1f7f1431d4c2: Waiting
+9e73eb7a886e: Waiting
+18bdd1e546d2: Verifying Checksum
+18bdd1e546d2: Download complete
+0a2b43a72660: Verifying Checksum
+0a2b43a72660: Download complete
+f56970a44fd4: Verifying Checksum
+f56970a44fd4: Download complete
+8198342c3e05: Verifying Checksum
+8198342c3e05: Download complete
+5350180cb96a: Verifying Checksum
+5350180cb96a: Download complete
+aafe6b5e13de: Verifying Checksum
+aafe6b5e13de: Download complete
+33798983f65a: Verifying Checksum
+33798983f65a: Download complete
+3ae5078cd751: Verifying Checksum
+3ae5078cd751: Download complete
+aa7fc0a75c74: Verifying Checksum
+aa7fc0a75c74: Download complete
+aafe6b5e13de: Pull complete
+0a2b43a72660: Pull complete
+18bdd1e546d2: Pull complete
+8198342c3e05: Pull complete
+f56970a44fd4: Pull complete
+3ae5078cd751: Pull complete
+f4ef69d621c3: Verifying Checksum
+f4ef69d621c3: Download complete
+5350180cb96a: Pull complete
+33798983f65a: Pull complete
+f4ef69d621c3: Pull complete
+af6ec2d1ddc6: Download complete
+e1d475d7795a: Verifying Checksum
+e1d475d7795a: Download complete
+684bbd1d17ba: Verifying Checksum
+684bbd1d17ba: Download complete
+38ea64409c1f: Download complete
+3e6a57db2224: Verifying Checksum
+3e6a57db2224: Download complete
+f059fa18bdba: Verifying Checksum
+d278966e5186: Verifying Checksum
+d278966e5186: Download complete
+38ea64409c1f: Pull complete
+aa7fc0a75c74: Pull complete
+a3b96beb3878: Download complete
+1009aa219469: Verifying Checksum
+1009aa219469: Download complete
+e1d475d7795a: Pull complete
+af6ec2d1ddc6: Pull complete
+684bbd1d17ba: Pull complete
+3e6a57db2224: Pull complete
+70b3d3bc41fd: Verifying Checksum
+70b3d3bc41fd: Download complete
+f059fa18bdba: Pull complete
+d278966e5186: Pull complete
+a3b96beb3878: Pull complete
+1009aa219469: Pull complete
+70b3d3bc41fd: Pull complete
+f4431a1f4138: Verifying Checksum
+f4431a1f4138: Download complete
+f4431a1f4138: Pull complete
+1cea6eabd95f: Download complete
+1cea6eabd95f: Pull complete
+56886e44ede9: Verifying Checksum
+56886e44ede9: Download complete
+792b5a0e4858: Verifying Checksum
+792b5a0e4858: Download complete
+792b5a0e4858: Pull complete
+56886e44ede9: Pull complete
+af4a5c383b64: Verifying Checksum
+af4a5c383b64: Download complete
+d4ef0e55b26f: Verifying Checksum
+d4ef0e55b26f: Download complete
+835271d6f182: Verifying Checksum
+835271d6f182: Download complete
+088f7d9caf80: Download complete
+1f7f1431d4c2: Download complete
+4400b887bf70: Verifying Checksum
+4400b887bf70: Download complete
+9e73eb7a886e: Verifying Checksum
+9e73eb7a886e: Download complete
+8f137c10d8ae: Download complete
+138c7a15adaf: Download complete
+2b7ee853dc6a: Verifying Checksum
+2b7ee853dc6a: Download complete
+475ea356de18: Verifying Checksum
+475ea356de18: Download complete
+573ef0f40349: Verifying Checksum
+573ef0f40349: Download complete
+138c7a15adaf: Pull complete
+af4a5c383b64: Pull complete
+d4ef0e55b26f: Pull complete
+835271d6f182: Pull complete
+4400b887bf70: Pull complete
+088f7d9caf80: Pull complete
+1f7f1431d4c2: Pull complete
+8f137c10d8ae: Pull complete
+9e73eb7a886e: Pull complete
+573ef0f40349: Pull complete
+b418d400abc4: Download complete
+b418d400abc4: Pull complete
+2b7ee853dc6a: Pull complete
+475ea356de18: Pull complete
+fb498ef9c820: Verifying Checksum
+fb498ef9c820: Download complete
+fb498ef9c820: Pull complete
+Digest: sha256:11e72ddb2d1b9dc7dd467b095e850e3c2312e470deeb964d723a8c4e68b7b45a
+Status: Downloaded newer image for gadm01/gobii_kdc_ubuntu:server_1.6.1-plugin_0.14.3-build_110
+docker.io/gadm01/gobii_kdc_ubuntu:server_1.6.1-plugin_0.14.3-build_110
++ rm -rf /data/server.admin
++ docker run -i --detach --name gobii-kdc-node -h kdc-node -v /nfs_storage/virtual_env/cbsugobiixvm3_data/persistent_data:/nfs_storage/virtual_env/cbsugobiixvm3_data/persistent_data -v /data:/data -v /data:/usr/local/tomcat/kdcompute_file_storage/TestOutput_UserDirs -p 8083:8080 -p 3308:3306 -p 2228:22 --restart=always --network=gobii_net gadm01/gobii_kdc_ubuntu:server_1.6.1-plugin_0.14.3-build_110
+d2e86aa2ef3135d0ba42bdca4899cc8ae7fe7873df04d00de1f83a9eb0191cce
++ docker start gobii-kdc-node
+gobii-kdc-node
++ docker network connect bridge gobii-kdc-node
++ set +x
+
+Matching the docker gadm account to that of the host's and changing file ownerships...
+
++ DOCKER_CMD='usermod -u 1000 gadm;'
++ eval docker exec gobii-kdc-node bash -c '"usermod' -u 1000 'gadm;"'
+++ docker exec gobii-kdc-node bash -c 'usermod -u 1000 gadm;'
+usermod: no changes
++ DOCKER_CMD='groupmod -g 1001 gobii;'
++ eval docker exec gobii-kdc-node bash -c '"groupmod' -g 1001 'gobii;"'
+++ docker exec gobii-kdc-node bash -c 'groupmod -g 1001 gobii;'
++ DOCKER_CMD='find / -user 1000 -exec chown -h gadm {} \; || :'
++ eval docker exec gobii-kdc-node bash -c '"find' / -user 1000 -exec chown -h gadm '{}' '\;' '||' ':"'
+++ docker exec gobii-kdc-node bash -c 'find / -user 1000 -exec chown -h gadm {} \; || :'
+find: '/proc/27/task/27/fd/5': No such file or directory
+find: '/proc/27/task/27/fdinfo/5': No such file or directory
+find: '/proc/27/fd/6': No such file or directory
+find: '/proc/27/fdinfo/6': No such file or directory
++ DOCKER_CMD='find / -group 1001 -exec chgrp -h gobii {} \; || :'
++ eval docker exec gobii-kdc-node bash -c '"find' / -group 1001 -exec chgrp -h gobii '{}' '\;' '||' ':"'
+++ docker exec gobii-kdc-node bash -c 'find / -group 1001 -exec chgrp -h gobii {} \; || :'
+find: '/proc/2487/task/2487/fd/5': No such file or directory
+find: '/proc/2487/task/2487/fdinfo/5': No such file or directory
+find: '/proc/2487/fd/6': No such file or directory
+find: '/proc/2487/fdinfo/6': No such file or directory
+find: '/proc/2488': No such file or directory
++ set +x
+
+Restarting tomcat as gadm...
+
++ docker exec -i -u gadm gobii-kdc-node bash -c '
+/usr/local/tomcat/bin/shutdown.sh;
+sleep 3;
+/usr/local/tomcat/bin/startup.sh;
+sleep 3
+exit;
+'
+Aug 19, 2020 1:11:40 AM org.apache.catalina.startup.Catalina stopServer
+SEVERE: Could not contact localhost:8005. Tomcat may not be running.
+Aug 19, 2020 1:11:40 AM org.apache.catalina.startup.Catalina stopServer
+SEVERE: Catalina.stop: 
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:211)
+	at org.apache.catalina.startup.Catalina.stopServer(Catalina.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.catalina.startup.Bootstrap.stopServer(Bootstrap.java:343)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:430)
+
+Tomcat started.
++ echo
+
++ echo KDCompute QC node deployment Completed!
+KDCompute QC node deployment Completed!
++ echo
+
+Finished: SUCCESS
