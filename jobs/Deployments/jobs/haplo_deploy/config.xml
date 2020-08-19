@@ -19,7 +19,7 @@
         <hudson.model.PasswordParameterDefinition>
           <name>DOCKER_HUB_PASSWORD</name>
           <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
-          <defaultValue>{AQAAABAAAAAQGr8xHQMrgiQj91PIOO3ZzHv7f3DIZrhAllwpjFCo7Iw=}</defaultValue>
+          <defaultValue>{AQAAABAAAAAQGWyNIVUh8E+kRgb67DzpxwBLSSgKvIOtwX9P9Inh0Y4=}</defaultValue>
         </hudson.model.PasswordParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DOCKER_HUB_HAPLO_TAG</name>
