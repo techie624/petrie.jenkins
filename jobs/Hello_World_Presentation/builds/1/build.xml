@@ -1,0 +1,45 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>techie624</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <com.sonyericsson.jenkins.plugins.bfa.ScanLogAction plugin="build-failure-analyzer@1.27.0"/>
+    <com.sonyericsson.jenkins.plugins.bfa.model.FailureCauseBuildAction plugin="build-failure-analyzer@1.27.0">
+      <foundFailureCauses class="java.util.Collections$SynchronizedRandomAccessList" resolves-to="java.util.Collections$SynchronizedList" serialization="custom">
+        <java.util.Collections_-SynchronizedCollection>
+          <default>
+            <c class="list"/>
+            <mutex class="java.util.Collections$SynchronizedList" reference="../../.."/>
+          </default>
+        </java.util.Collections_-SynchronizedCollection>
+        <java.util.Collections_-SynchronizedList>
+          <default>
+            <list reference="../../../java.util.Collections_-SynchronizedCollection/default/c"/>
+          </default>
+        </java.util.Collections_-SynchronizedList>
+      </foundFailureCauses>
+      <build class="build" reference="../../.."/>
+    </com.sonyericsson.jenkins.plugins.bfa.model.FailureCauseBuildAction>
+    <com.sonyericsson.rebuild.RebuildAction plugin="rebuild@1.31"/>
+  </actions>
+  <queueId>1</queueId>
+  <timestamp>1597882900834</timestamp>
+  <startTime>1597882901961</startTime>
+  <result>FAILURE</result>
+  <duration>38</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn></builtOn>
+  <workspace>/var/jenkins_home/workspace/Hello_World_Presentation</workspace>
+  <hudsonVersion>2.253</hudsonVersion>
+  <scm class="hudson.scm.NullChangeLogParser"/>
+  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+</build>

@@ -1,0 +1,48 @@
+Started by user [8mha:////4OaDUJI9lMUGoRu/oPIWHFsWseBm2XWVYNESektvz4hkAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZ+/dLi1CL9ktTkjMxUMyMTAJNAJaDEAAAA[0mRoy Petrie
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Hello_World_Presentation
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+[Hello_World_Presentation] $ /bin/sh -xe /tmp/jenkins1409141660917141157.sh
++ docker ps -a
+CONTAINER ID        IMAGE                                                COMMAND                  CREATED             STATUS              PORTS                                              NAMES
+79fb880941ec        hello-world                                          "--name=helloworld"      41 seconds ago      Created                                                                wonderful_merkle
+810e87381c4d        techie624/petrie.jenkins:develop_20200819_build_12   "/sbin/tini -- /usr/…"   10 minutes ago      Up 10 minutes       0.0.0.0:50000->50000/tcp, 0.0.0.0:8090->8080/tcp   jenkins-node
++ echo
+
++ docker run --name=helloworld hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
++ echo
+
++ docker ps -a
+CONTAINER ID        IMAGE                                                COMMAND                  CREATED             STATUS                              PORTS                                              NAMES
+4398ec0ac23d        hello-world                                          "/hello"                 1 second ago        Exited (0) Less than a second ago                                                      helloworld
+79fb880941ec        hello-world                                          "--name=helloworld"      42 seconds ago      Created                                                                                wonderful_merkle
+810e87381c4d        techie624/petrie.jenkins:develop_20200819_build_12   "/sbin/tini -- /usr/…"   10 minutes ago      Up 10 minutes                       0.0.0.0:50000->50000/tcp, 0.0.0.0:8090->8080/tcp   jenkins-node
++ echo
+
++ docker rm -f helloworld
+helloworld
+Finished: SUCCESS
