@@ -35,35 +35,6 @@
     <hudson.tasks.Shell>
       <command># Completely remove all docker resources
 
-echo &apos;	
-###############################################################################
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
-#!                                                                           !#
-#!           #     #    #    ######  #     # ### #     #  #####              !#
-#!           #  #  #   # #   #     # ##    #  #  ##    # #     #             !#
-#!           #  #  #  #   #  #     # # #   #  #  # #   # #                   !#
-#!           #  #  # #     # ######  #  #  #  #  #  #  # #  ####             !#
-#!           #  #  # ####### #   #   #   # #  #  #   # # #     #             !#
-#!           #  #  # #     # #    #  #    ##  #  #    ## #     #             !#
-#!            ## ##  #     # #     # #     # ### #     #  #####              !#
-#!                                                                           !#
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
-###############################################################################
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
-#!                                                                           !#
-#!       #    ####### ####### ####### #     # ####### ### ####### #     #    !#
-#!      # #      #       #    #       ##    #    #     #  #     # ##    #    !#
-#!     #   #     #       #    #       # #   #    #     #  #     # # #   #    !#
-#!    #     #    #       #    #####   #  #  #    #     #  #     # #  #  #    !#
-#!    #######    #       #    #       #   # #    #     #  #     # #   # #    !#
-#!    #     #    #       #    #       #    ##    #     #  #     # #    ##    !#
-#!    #     #    #       #    ####### #     #    #    ### ####### #     #    !#
-#!                                                                           !#
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
-###############################################################################
-&apos;
-echo;
-
 echo &quot;All containers:&quot;
 docker ps -a
 echo;
@@ -73,7 +44,7 @@ docker images
 echo;
 
 echo &quot;All volumes:&quot;
-docker volumes ls
+docker volume ls
 echo;
 
 echo &quot;All docker networks:&quot;
@@ -89,15 +60,16 @@ echo;
 
 sleep 30;
 
-docker rm -f $(docker ps -qa)
-docker image rm $(docker images)
-docker volume rm $(docker volume ls)
-docker network rm $(docker network ls)
+docker image rm $(docker images) || true;
+docker volume rm $(docker volume ls) || true;
+docker network rm $(docker network ls) || true;
 docker volume rm gobiipostgresetcubuntu || true;
 docker volume rm gobiipostgreslibubuntu || true;
 docker volume rm gobiipostgreslogubuntu || true;
-echo -e &quot;y\n&quot; | docker system prune -a
-</command>
+echo -e &quot;y\n&quot; | docker system prune -a || true;
+docker rm -f $(docker ps -qa) || true;
+
+echo &quot;Completed!&quot;</command>
       <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>

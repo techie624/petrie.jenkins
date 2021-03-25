@@ -7,13 +7,13 @@ Extension-Name: jackson2-api
 Specification-Title: This plugin exposes the Jackson 2 JSON APIs to ot
  her Jenkins plugins.
 Implementation-Title: jackson2-api
-Implementation-Version: 2.11.2
+Implementation-Version: 2.11.3
 Group-Id: org.jenkins-ci.plugins
 Short-Name: jackson2-api
 Long-Name: Jackson 2 API Plugin
 Url: https://github.com/jenkinsci/jackson2-api-plugin
 Minimum-Java-Version: 1.8
-Plugin-Version: 2.11.2
+Plugin-Version: 2.11.3
 Hudson-Version: 2.222.4
 Jenkins-Version: 2.222.4
 Plugin-Dependencies: snakeyaml-api:1.26.4

@@ -1,92 +1,37 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>&lt;p&gt;&lt;b&gt;This deployment project will deploy the KDCompute QC node:&lt;/b&gt;&lt;/p&gt;&#xd;
-&lt;p&gt;• gobii-browser-node&lt;/p&gt;</description>
+  <description>&lt;b&gt;This deployment project will deploy gobii-browser-node container.&lt;/b&gt;&#xd;
+</description>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
-      <doNotScan>false</doNotScan>
-    </com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty>
-    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.13">
-      <gitLabConnection></gitLabConnection>
-    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
-    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
-      <autoRebuild>false</autoRebuild>
-      <rebuildDisabled>false</rebuildDisabled>
-    </com.sonyericsson.rebuild.RebuildSettings>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
-        <hudson.model.StringParameterDefinition>
-          <name>DOCKER_NETWORK_NAME</name>
-          <description>Created Docker Network to connect all containers to. (gobii_net)</description>
-          <defaultValue>gobii_net</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>DOCKER_BROWSER_NAME</name>
-          <description>This is the container name used by the docker engine. (gobii-browser-node)</description>
-          <defaultValue>gobii-browser-node</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>DOCKER_HUB_LOGIN_USERNAME</name>
-          <description>Dockerhub user used to login and pull images. (gadmreader)</description>
-          <defaultValue>gadmreader</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
         <hudson.model.PasswordParameterDefinition>
           <name>DOCKER_HUB_PASSWORD</name>
           <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
-          <defaultValue>{AQAAABAAAAAQ++NCJNAl5+un50ws+IgFxgYi81Q6n24oP7tIDEGP8+0=}</defaultValue>
+          <defaultValue>{AQAAABAAAAAQH9VYL/sNT3GCkPGCvzAcPVdC3bGacCdZePwW0UVhzWk=}</defaultValue>
         </hudson.model.PasswordParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>DOCKER_BROWSER_CONTAINER_NAME</name>
-          <description>This is the hostname set for the container internally. (browser-node)</description>
-          <defaultValue>browser-node</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>NDD_PATH</name>
-          <description>NFS or persistent storage for data (/storage/persistent_data)</description>
-          <defaultValue>/storage/persistent_data</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>BUNDLE_PARENT_PATH</name>
-          <description>Default data path /data</description>
-          <defaultValue>/data</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>BROWSER_PORT</name>
-          <description>The external port to connect to the File Browser Web UI. (8084)</description>
-          <defaultValue>8084</defaultValue>
+          <name>BROWSER_HOME_MNT</name>
+          <description>Sets mount for the parent directory shown in Web UI. (/data/gobii_bundle)</description>
+          <defaultValue>/data/gobii_bundle</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>BRANCH</name>
-          <description>This is the branch being used for the gobii.deploy.bash repo. (release/2.2.2) (develop)</description>
+          <description>This is the branch being used for the &lt;b&gt;gobii.deploy.bash&lt;/b&gt; repo. (release/2.2.2) (develop)</description>
           <defaultValue>develop</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
-    <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@2.0.2">
-      <maxConcurrentPerNode>0</maxConcurrentPerNode>
-      <maxConcurrentTotal>0</maxConcurrentTotal>
-      <categories class="java.util.concurrent.CopyOnWriteArrayList"/>
-      <throttleEnabled>false</throttleEnabled>
-      <throttleOption>project</throttleOption>
-      <limitOneJobWithMatchingParams>false</limitOneJobWithMatchingParams>
-      <paramsToUseForLimit></paramsToUseForLimit>
-    </hudson.plugins.throttleconcurrents.ThrottleJobProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.3.0">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.4.5">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.bash.git</url>
+        <url>https://bitbucket.org/gobiiproject/gobii.deploy.bash.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -96,7 +41,15 @@
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.CloneOption>
+        <shallow>true</shallow>
+        <noTags>false</noTags>
+        <reference></reference>
+        <depth>1</depth>
+        <honorRefspec>false</honorRefspec>
+      </hudson.plugins.git.extensions.impl.CloneOption>
+    </extensions>
   </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
@@ -106,7 +59,9 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>#--------------------------------------#
+      <command>#!/usr/bin/env bash
+
+#--------------------------------------#
 
 set -e # Abort script at first error
 set -u # Attempt to use undefined variable outputs error message
@@ -114,13 +69,18 @@ set -u # Attempt to use undefined variable outputs error message
 
 #--------------------------------------#
 
-time bash container_scripts/jenkins_deploy/gobii_browser_deploy.sh
+set -x
+
+time bash container_scripts/auto_deploy/gobii_browser_deploy.sh
 echo;
 
-#--------------------------------------#
+set +x
 
-echo &quot;GOBii File Browser node deployment Completed!&quot;
-echo;</command>
+echo &quot;#--------------------------------------#&quot;;
+/usr/games/fortune |/usr/games/cowsay -f tux &quot;Deployment Completed!&quot;
+echo &quot;#--------------------------------------#&quot;;
+
+</command>
       <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
@@ -132,6 +92,6 @@ echo;</command>
       <externalDelete></externalDelete>
       <disableDeferredWipeout>false</disableDeferredWipeout>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
-    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.5"/>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.8"/>
   </buildWrappers>
 </project>

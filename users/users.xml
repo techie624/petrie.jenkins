@@ -3,16 +3,16 @@
   <version>1</version>
   <idToDirectoryNameMap class="concurrent-hash-map">
     <entry>
+      <string>gadm</string>
+      <string>gadm_6545244030413002944</string>
+    </entry>
+    <entry>
       <string>rlp243</string>
-      <string>rlp243_1715290591361461183</string>
+      <string>rlp243_3069924457801241808</string>
     </entry>
     <entry>
-      <string>techie624</string>
-      <string>techie624_4614638146213793905</string>
-    </entry>
-    <entry>
-      <string>gobiiuser</string>
-      <string>gobiiuser_171505131065470256</string>
+      <string>vg249</string>
+      <string>vg249_4920155170897742146</string>
     </entry>
   </idToDirectoryNameMap>
 </hudson.model.UserIdMapper>

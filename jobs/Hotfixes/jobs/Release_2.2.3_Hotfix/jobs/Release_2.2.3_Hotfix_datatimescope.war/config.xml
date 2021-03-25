@@ -1,0 +1,115 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_WEB_NAME</name>
+          <description>This is the container name used by the docker engine. (gobii-web-node)</description>
+          <defaultValue>gobii-web-node</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TIMESCOPE_WAR_DOWNLOAD_URL</name>
+          <description>The download link for the datatimescope.war file. These downloads are hosted in the gobii.deploy.bash dowloads link.</description>
+          <defaultValue>https://bitbucket.org/gobiiproject/gobii.deploy.bash/downloads/datatimescope.war_hotfix223_20201118</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>HOTFIX_FILE_LOCATION</name>
+          <description>This will sit under /data (BUNDLE_PARENT_PATH) [/hotfix/release222_hotfix_files]</description>
+          <defaultValue>hotfix/release223_hotfix_files</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DATATIMESCOPE_WAR_HOTFIX_FILE_NAME</name>
+          <description>The name of the file downloaded as the gobii-web.war from bitbucket. (datatimescope.war_222hotfix_20200812)</description>
+          <defaultValue>datatimescope.war_hotfix223_20201118</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TIMESCOPER_VERSION</name>
+          <description>Timescope Versioning. (2.2.3)</description>
+          <defaultValue>2.2.3</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>TIMESCOPER_PASS</name>
+          <description>The timescoper user password.</description>
+          <defaultValue>{AQAAABAAAABA59DspsXcr5YRCFbRX083ZeN7hIXsvyF01htUj+7wOYc9JloRc4rMjrXrXGMpCYngctfK+WHhPQP0SwhFKDHskrCSvSlYiLrIuU+lT7nT1/0=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH</name>
+          <description>This is the branch being used for the &lt;b&gt;gobii.deploy.bash&lt;/b&gt; repo. (release/2.2.2) (develop)</description>
+          <defaultValue>release/2.2.3</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.4.5">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://bitbucket.org/gobiiproject/gobii.deploy.bash.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/$BRANCH</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.CloneOption>
+        <shallow>true</shallow>
+        <noTags>false</noTags>
+        <reference></reference>
+        <depth>1</depth>
+        <honorRefspec>false</honorRefspec>
+      </hudson.plugins.git.extensions.impl.CloneOption>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/env bash
+
+#--------------------------------------#
+
+set -e # Abort script at first error
+set -u # Attempt to use undefined variable outputs error message
+#set -x # Verbose with commands displayed
+
+#--------------------------------------#
+
+# run crop war replacement scripts
+time bash hotfix/hotfix_scripts/hotfix_replace_datatimescope_war.sh
+
+#--------------------------------------#
+
+echo &quot;GOBii Hotfix Complete. Good Bye.&quot;
+echo; </command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.38">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
+      <disableDeferredWipeout>false</disableDeferredWipeout>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.8"/>
+  </buildWrappers>
+</project>

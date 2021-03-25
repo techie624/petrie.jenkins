@@ -216,7 +216,7 @@ var FormChecker = {
     },
 
     sendRequest : function(url, params) {
-        if (params.method == "post") {
+        if (params.method != "get") {
             var idx = url.indexOf('?');
             params.parameters = url.substring(idx + 1);
             url = url.substring(0, idx);
@@ -500,12 +500,16 @@ var tooltip;
 //========================================================
 // using tag names in CSS selector makes the processing faster
 function registerValidator(e) {
+
+    // Retrieve the validation error area
     var tr = findFollowingTR(e, "validation-error-area");
-    if (!tr || !tr.firstChild) {
-      console.warn("Couldn't register validator, start element was", e);
-      return;
+    if (!tr) {
+        console.warn("Couldn't find the expected parent element (.setting-main) for element", e)
+        return;
     }
+    // find the validation-error-area
     e.targetElement = tr.firstChild.nextSibling;
+
     e.targetUrl = function() {
         var url = this.getAttribute("checkUrl");
         var depends = this.getAttribute("checkDependsOn");
@@ -514,8 +518,8 @@ function registerValidator(e) {
             try {
                 return eval(url); // need access to 'this', so no 'geval'
             } catch (e) {
-                if (window.console!=null)  console.warn("Legacy checkUrl '" + url + "' is not valid Javascript: "+e);
-                if (window.YUI!=null)      YUI.log("Legacy checkUrl '" + url + "' is not valid Javascript: "+e,"warn");
+                if (window.console!=null)  console.warn("Legacy checkUrl '" + url + "' is not valid JavaScript: "+e);
+                if (window.YUI!=null)      YUI.log("Legacy checkUrl '" + url + "' is not valid JavaScript: "+e,"warn");
                 return url; // return plain url as fallback
             }
         } else {
@@ -527,7 +531,7 @@ function registerValidator(e) {
             return url+ q.toString();
         }
     };
-    var method = e.getAttribute("checkMethod") || "get";
+    var method = e.getAttribute("checkMethod") || "post";
 
     var url = e.targetUrl();
     try {
@@ -544,7 +548,14 @@ function registerValidator(e) {
         FormChecker.sendRequest(this.targetUrl(), {
             method : method,
             onComplete : function(x) {
-                target.innerHTML = x.responseText;
+                if (x.status == 200) {
+                    // All FormValidation responses are 200
+                    target.innerHTML = x.responseText;
+                } else {
+                    // Content is taken from FormValidation#_errorWithMarkup
+                    // TODO Add i18n support
+                    target.innerHTML = "<div class='error'>An internal error occurred during form field validation (HTTP " + x.status + "). Please reload the page and if the problem persists, ask the administrator for help.</div>";
+                }
                 Behaviour.applySubtree(target);
             }
         });
@@ -610,13 +621,27 @@ function makeButton(e,onclick) {
     var h = e.onclick;
     var clsName = e.className;
     var n = e.name;
-    var btn = new YAHOO.widget.Button(e,{});
+
+    var attributes = {};
+    // YUI Button class interprets value attribute of <input> as HTML
+    // similar to how the child nodes of a <button> are treated as HTML.
+    // in standard HTML, we wouldn't expect the former case, yet here we are!
+    if (e.tagName === 'INPUT') {
+        attributes.label = e.value.escapeHTML();
+    }
+    var btn = new YAHOO.widget.Button(e, attributes);
     if(onclick!=null)
         btn.addListener("click",onclick);
     if(h!=null)
         btn.addListener("click",h);
     var be = btn.get("element");
-    Element.addClassName(be,clsName);
+    var classesSeparatedByWhitespace = clsName.split(' ');
+    for (var i = 0; i < classesSeparatedByWhitespace.length; i++) {
+        var singleClass = classesSeparatedByWhitespace[i];
+        if (singleClass) {
+            be.classList.add(singleClass);
+        }
+    }
     if(n) // copy the name
         be.setAttribute("name",n);
 
@@ -746,7 +771,8 @@ function labelAttachPreviousOnClick() {
 
 function helpButtonOnClick() {
     var tr = findFollowingTR(this, "help-area", "help-sibling") ||
-             findFollowingTR(this, "help-area", "setting-help");
+             findFollowingTR(this, "help-area", "setting-help") ||
+             findFollowingTR(this, "help-area");
     var div = $(tr).down();
     if (!div.hasClassName("help"))
         div = div.next().down();
@@ -870,18 +896,48 @@ function rowvgStartEachRow(recursive,f) {
     Behaviour.specify("INPUT.required", "input-required", ++p, function(e) { registerRegexpValidator(e,/./,"Field is required"); });
 
     // validate form values to be an integer
-    Behaviour.specify("INPUT.number", "input-number", ++p, function(e) { registerRegexpValidator(e,/^(\d+|)$/,"Not an integer"); });
-    Behaviour.specify("INPUT.number-required", "input-number-required", ++p, function(e) { registerRegexpValidator(e,/^\-?(\d+)$/,"Not an integer"); });
+    Behaviour.specify("INPUT.number", "input-number", ++p, function(e) {
+        e.addEventListener('keypress', function (event) {
+            if (event.which === 69 || event.which === 101) { // Prevent user input 'e' or 'E'
+                event.preventDefault();
+            }
+        })
+        registerRegexpValidator(e,/^((\-?\d+)|)$/,"Not an integer");
+    });
+
+    Behaviour.specify("INPUT.number-required", "input-number-required", ++p, function(e) {
+        e.addEventListener('keypress', function (event) {
+            if (event.which === 69 || event.which === 101) { // Prevent user input 'e' or 'E'
+                event.preventDefault();
+            }
+        })
+        registerRegexpValidator(e,/^\-?(\d+)$/,"Not an integer");
+    });
 
     Behaviour.specify("INPUT.non-negative-number-required", "input-non-negative-number-required", ++p, function(e) {
+        e.addEventListener('keypress', function (event) {
+            if (event.which === 69 || event.which === 101) { // Prevent user input 'e' or 'E'
+                event.preventDefault();
+            }
+        })
         registerRegexpValidator(e,/^\d+$/,"Not a non-negative number");
     });
 
     Behaviour.specify("INPUT.positive-number", "input-positive-number", ++p, function(e) {
+        e.addEventListener('keypress', function (event) {
+            if (event.which === 69 || event.which === 101) { // Prevent user input 'e' or 'E'
+                event.preventDefault();
+            }
+        })
         registerRegexpValidator(e,/^(\d*[1-9]\d*|)$/,"Not a positive integer");
     });
 
     Behaviour.specify("INPUT.positive-number-required", "input-positive-number-required", ++p, function(e) {
+        e.addEventListener('keypress', function (event) {
+            if (event.which === 69 || event.which === 101) { // Prevent user input 'e', 'E', '.'
+                event.preventDefault();
+            }
+        })
         registerRegexpValidator(e,/^[1-9]\d*$/,"Not a positive integer");
     });
 
@@ -1781,30 +1837,30 @@ function updateBuildHistory(ajaxUrl,nBuild) {
             return;
         }
 
-        if (Element.hasClassName(row, "overflow-checked")) {
+        if (row.classList.contains('overflow-checked')) {
             // already done.
             return;
         }
 
         function markSingleline() {
-            Element.addClassName(row, "single-line");
-            Element.removeClassName(row, "multi-line");
+            row.classList.add('single-line');
+            row.classList.remove('multi-line');
         }
         function markMultiline() {
-            Element.removeClassName(row, "single-line");
-            Element.addClassName(row, "multi-line");
+            row.classList.remove('single-line');
+            row.classList.add('multi-line');
         }
         function indentMultiline(element) {
-            Element.addClassName(element, "indent-multiline");
+            element.classList.add('indent-multiline');
         }
 
         function blockWrap(el1, el2) {
             var div = document.createElement('div');
 
-            Element.addClassName(div, "block");
-            Element.addClassName(div, "wrap");
-            Element.addClassName(el1, "wrapped");
-            Element.addClassName(el2, "wrapped");
+            div.classList.add('block');
+            div.classList.add('wrap');
+            el1.classList.add('wrapped');
+            el2.classList.add('wrapped');
 
             el1.parentNode.insertBefore(div, el1);
             el1.parentNode.removeChild(el1);
@@ -1820,7 +1876,7 @@ function updateBuildHistory(ajaxUrl,nBuild) {
                 var wrappedEl = wrapped[i];
                 wrappedEl.parentNode.removeChild(wrappedEl);
                 element.parentNode.insertBefore(wrappedEl, element);
-                Element.removeClassName(wrappedEl, "wrapped");
+                wrappedEl.classList.remove('wrapped');
             }
             element.parentNode.removeChild(element);
         }
@@ -1850,14 +1906,12 @@ function updateBuildHistory(ajaxUrl,nBuild) {
                 blockUnwrap(blockWraps[i]);
             }
 
-            removeZeroWidthSpaces(displayName);
-            removeZeroWidthSpaces(desc);
-            Element.removeClassName(buildName, "block");
+            buildName.classList.remove('block');
             buildName.removeAttribute('style');
-            Element.removeClassName(buildDetails, "block");
+            buildDetails.classList.remove('block');
             buildDetails.removeAttribute('style');
             if (buildControls) {
-                Element.removeClassName(buildControls, "block");
+                buildControls.classList.remove('block');
                 buildDetails.removeAttribute('style');
             }
         }
@@ -1865,10 +1919,8 @@ function updateBuildHistory(ajaxUrl,nBuild) {
         // Undo everything from the previous poll.
         resetCellOverflows();
 
-        // Insert zero-width spaces so as to allow text to wrap, allowing us to get the true clientWidth.
-        insertZeroWidthSpacesInElementText(displayName, 2);
+        // Mark the text as multiline, if it has more than one line
         if (desc) {
-            insertZeroWidthSpacesInElementText(desc, 30);
             markMultiline();
         }
 
@@ -1880,13 +1932,6 @@ function updateBuildHistory(ajaxUrl,nBuild) {
         var controlsOverflowParams;
         if (buildControls) {
             controlsOverflowParams = getElementOverflowParams(buildControls);
-        }
-
-        if (nameOverflowParams.isOverflowed) {
-            // If the name is overflowed, lets remove the zero-width spaces we added above and
-            // re-add zero-width spaces with a bigger max word sizes.
-            removeZeroWidthSpaces(displayName);
-            insertZeroWidthSpacesInElementText(displayName, 20);
         }
 
         function fitToControlsHeight(element) {
@@ -1911,7 +1956,7 @@ function updateBuildHistory(ajaxUrl,nBuild) {
                         // Minus 24 for the buildStop width,
                         // minus 4 for left+right padding in the controls container
                         buildBadgeWidth = (buildControlsWidth - 24 - leftRightPadding);
-                        if (Element.hasClassName(buildControls, "indent-multiline")) {
+                        if (buildControls.classList.contains('indent-multiline')) {
                             buildBadgeWidth = buildBadgeWidth - 20;
                         }
                         $(buildBadge).setStyle({width: (buildBadgeWidth) + 'px'});
@@ -1978,11 +2023,11 @@ function updateBuildHistory(ajaxUrl,nBuild) {
                     // to a row of its own (second row) by making it a block element, forcing it to wrap. If there
                     // are controls, we move them up to position them after the build name by inserting before the
                     // build details.
-                    Element.addClassName(buildDetails, "block");
+                    buildDetails.classList.add('block');
                     buildControls.parentNode.removeChild(buildControls);
                     buildDetails.parentNode.insertBefore(buildControls, buildDetails);
                     var wrap = blockWrap(buildName, buildControls);
-                    Element.addClassName(wrap, "build-name-controls");
+                    wrap.classList.add('build-name-controls');
                     indentMultiline(buildDetails);
                     nameOverflowParams = getElementOverflowParams(buildName); // recalculate
                     expandLeftWithRight(nameOverflowParams, controlsOverflowParams);
@@ -1993,19 +2038,19 @@ function updateBuildHistory(ajaxUrl,nBuild) {
                     // Build details and controls can go on one row. Need to make the
                     // build name (first field) a block element, forcing the details and controls to wrap
                     // onto the next row (creating a second row).
-                    Element.addClassName(buildName, "block");
+                    buildName.classList.add('block');
                     var wrap = blockWrap(buildDetails, buildControls);
                     indentMultiline(wrap);
-                    Element.addClassName(wrap, "build-details-controls");
+                    wrap.classList.add('build-details-controls');
                     detailsOverflowParams = getElementOverflowParams(buildDetails); // recalculate
                     expandLeftWithRight(detailsOverflowParams, controlsOverflowParams);
                     setBuildControlWidths();
                     fitToControlsHeight(buildDetails);
                 } else {
                     // No suitable combo fits on a row. All need to go on rows of their own.
-                    Element.addClassName(buildName, "block");
-                    Element.addClassName(buildDetails, "block");
-                    Element.addClassName(buildControls, "block");
+                    buildName.classList.add('block');
+                    buildDetails.classList.add('block');
+                    buildControls.classList.add('block');
                     indentMultiline(buildDetails);
                     indentMultiline(buildControls);
                     nameOverflowParams = getElementOverflowParams(buildName); // recalculate
@@ -2014,8 +2059,8 @@ function updateBuildHistory(ajaxUrl,nBuild) {
                 }
                 controlsRepositioned = true;
             } else {
-                Element.addClassName(buildName, "block");
-                Element.addClassName(buildDetails, "block");
+                buildName.classList.add('block');
+                buildDetails.classList.add('block');
                 indentMultiline(buildDetails);
             }
         }
@@ -2028,7 +2073,7 @@ function updateBuildHistory(ajaxUrl,nBuild) {
                 if (badgeOverflowParams.isOverflowed) {
                     markMultiline();
                     indentMultiline(buildControls);
-                    Element.addClassName(buildControls, "block");
+                    buildControls.classList.add('block');
                     controlsRepositioned = true;
                     setBuildControlWidths();
                 }
@@ -2040,7 +2085,7 @@ function updateBuildHistory(ajaxUrl,nBuild) {
             fitToControlsHeight(buildDetails);
         }
 
-        Element.addClassName(row, "overflow-checked");
+        row.classList.add('overflow-checked');
     }
 
     function checkAllRowCellOverflows() {
@@ -2051,16 +2096,6 @@ function updateBuildHistory(ajaxUrl,nBuild) {
         var bh = $('buildHistory');
         var dataTable = getDataTable(bh);
         var rows = dataTable.rows;
-
-        // Insert zero-width spaces in text that may cause overflow distortions.
-        var displayNames = $(bh).getElementsBySelector('.display-name');
-        for (var i = 0; i < displayNames.length; i++) {
-            insertZeroWidthSpacesInElementText(displayNames[i], 2);
-        }
-        var descriptions = $(bh).getElementsBySelector('.desc');
-        for (var i = 0; i < descriptions.length; i++) {
-            insertZeroWidthSpacesInElementText(descriptions[i], 30);
-        }
 
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
@@ -2083,10 +2118,10 @@ function updateBuildHistory(ajaxUrl,nBuild) {
 
                     //delete rows with transitive data
                     var firstBuildRow = 0;
-                    if (Element.hasClassName(rows[firstBuildRow], "build-search-row")) {
+                    if (rows[firstBuildRow].classList.contains('build-search-row')) {
                         firstBuildRow++;
                     }
-                    while (rows.length > 0 && Element.hasClassName(rows[firstBuildRow], "transitive")) {
+                    while (rows.length > 0 && rows[firstBuildRow].classList.contains('transitive')) {
                         Element.remove(rows[firstBuildRow]);
                     }
 
@@ -2109,7 +2144,7 @@ function updateBuildHistory(ajaxUrl,nBuild) {
 			            }
 			        }
 
-                    if (Element.hasClassName(newDataTable, 'hasPageData')) {
+                    if (newDataTable.classList.contains('hasPageData')) {
                         buildHistoryPage.setAttribute('page-entry-newest', newDataTable.getAttribute('page-entry-newest'));
                     }
 
@@ -2150,16 +2185,16 @@ function updateBuildHistory(ajaxUrl,nBuild) {
 
         // Show/hide the nav as the mouse moves into the sidepanel and build history.
         sidePanel.observe('mouseover', function() {
-            Element.addClassName($(buildHistoryPageNav), "mouseOverSidePanel");
+            buildHistoryPageNav.classList.add('mouseOverSidePanel');
         });
         sidePanel.observe('mouseout', function() {
-            Element.removeClassName($(buildHistoryPageNav), "mouseOverSidePanel");
+            buildHistoryPageNav.classList.remove('mouseOverSidePanel');
         });
         bh.observe('mouseover', function() {
-            Element.addClassName($(buildHistoryPageNav), "mouseOverSidePanelBuildHistory");
+            buildHistoryPageNav.classList.add('mouseOverSidePanelBuildHistory');
         });
         bh.observe('mouseout', function() {
-            Element.removeClassName($(buildHistoryPageNav), "mouseOverSidePanelBuildHistory");
+            buildHistoryPageNav.classList.remove('mouseOverSidePanelBuildHistory');
         });
 
         var pageSearchInput = Element.getElementsBySelector(bh, '.build-search-row input')[0];
@@ -2187,22 +2222,14 @@ function updateBuildHistory(ajaxUrl,nBuild) {
             buildHistoryPage.setAttribute('page-entry-oldest', dataTable.getAttribute('page-entry-oldest'));
         }
         function togglePageUpDown() {
-            Element.removeClassName($(buildHistoryPageNav), "hasUpPage");
-            Element.removeClassName($(buildHistoryPageNav), "hasDownPage");
+            buildHistoryPageNav.classList.remove('hasUpPage');
+            buildHistoryPageNav.classList.remove('hasDownPage');
             if (hasPageUp()) {
-                Element.addClassName($(buildHistoryPageNav), "hasUpPage");
+                buildHistoryPageNav.classList.add('hasUpPage');
             }
             if (hasPageDown()) {
-                Element.addClassName($(buildHistoryPageNav), "hasDownPage");
+                buildHistoryPageNav.classList.add('hasDownPage');
             }
-        }
-        function logPageParams() {
-            console.log('-----');
-            console.log('Has up: '   + hasPageUp());
-            console.log('Has down: ' + hasPageDown());
-            console.log('Newest: '   + getNewestEntryId());
-            console.log('Oldest: '   + getOldestEntryId());
-            console.log('-----');
         }
 
         function loadPage(params, focusOnSearch) {
@@ -2222,7 +2249,7 @@ function updateBuildHistory(ajaxUrl,nBuild) {
 
                     // delete all rows
                     var searchRow;
-                    if (Element.hasClassName(rows[0], "build-search-row")) {
+                    if (rows[0].classList.contains('build-search-row')) {
                         searchRow = rows[0];
                     }
                     while (rows.length > 0) {
@@ -2253,7 +2280,6 @@ function updateBuildHistory(ajaxUrl,nBuild) {
                     if (focusOnSearch) {
                         pageSearchInput.focus();
                     }
-                    //logPageParams();
                 }
             });
         }
@@ -2286,7 +2312,6 @@ function updateBuildHistory(ajaxUrl,nBuild) {
         });
 
         togglePageUpDown();
-        //logPageParams();
     }
     setupHistoryNav();
 }
@@ -2315,13 +2340,13 @@ function getElementOverflowParams(element) {
     // wrapping is potentially happening, or not.
 
     // Force it to wrap.
-    Element.addClassName(element, "force-wrap");
+    element.classList.add('force-wrap');
     var wrappedClientWidth = element.clientWidth;
     var wrappedClientHeight = element.clientHeight;
-    Element.removeClassName(element, "force-wrap");
+    element.classList.remove('force-wrap');
 
     // Force it to nowrap. Return the comparisons.
-    Element.addClassName(element, "force-nowrap");
+    element.classList.add('force-nowrap');
     var nowrapClientHeight = element.clientHeight;
     try {
         var overflowParams = {
@@ -2332,86 +2357,7 @@ function getElementOverflowParams(element) {
         };
         return  overflowParams;
     } finally {
-        Element.removeClassName(element, "force-nowrap");
-    }
-}
-
-var zeroWidthSpace = String.fromCharCode(8203);
-var ELEMENT_NODE = 1;
-var TEXT_NODE = 3;
-function insertZeroWidthSpacesInText(textNode, maxWordSize) {
-    if (textNode.textContent.length < maxWordSize) {
-        return;
-    }
-
-    // capture the original text
-    textNode.preZWSText = textNode.textContent;
-
-    var words = textNode.textContent.split(/\s+/);
-    var newTextContent = '';
-
-    var splitRegex = new RegExp('.{1,' + maxWordSize + '}', 'g');
-    for (var i = 0; i < words.length; i++) {
-        var word = words[i];
-        var wordTokens = word.match(splitRegex);
-        if (wordTokens) {
-            for (var ii = 0; ii < wordTokens.length; ii++) {
-                if (newTextContent.length === 0) {
-                    newTextContent += wordTokens[ii];
-                } else {
-                    newTextContent += zeroWidthSpace + wordTokens[ii];
-                }
-            }
-        } else {
-            newTextContent += word;
-        }
-        newTextContent += ' ';
-    }
-
-    textNode.textContent = newTextContent;
-}
-function insertZeroWidthSpacesInElementText(element, maxWordSize) {
-    if (Element.hasClassName(element, 'zws-inserted')) {
-        // already done.
-        return;
-    }
-    if (!element.hasChildNodes()) {
-        return;
-    }
-
-    var children = element.childNodes;
-    for (var i = 0; i < children.length; i++) {
-        var child = children[i];
-        if (child.nodeType === TEXT_NODE) {
-            insertZeroWidthSpacesInText(child, maxWordSize);
-        } else if (child.nodeType === ELEMENT_NODE) {
-            insertZeroWidthSpacesInElementText(child, maxWordSize);
-        }
-    }
-
-    Element.addClassName(element, 'zws-inserted');
-}
-function removeZeroWidthSpaces(element) {
-    if (element) {
-        if (!Element.hasClassName(element, 'zws-inserted')) {
-            // Doesn't have ZWSed text.
-            return;
-        }
-        if (!element.hasChildNodes()) {
-            return;
-        }
-
-        var children = element.childNodes;
-        for (var i = 0; i < children.length; i++) {
-            var child = children[i];
-            if (child.nodeType === TEXT_NODE && child.preZWSText) {
-                child.textContent = child.preZWSText;
-            } else if (child.nodeType === ELEMENT_NODE) {
-                removeZeroWidthSpaces(child);
-            }
-        }
-
-        Element.removeClassName(element, 'zws-inserted');
+        element.classList.remove('force-nowrap');
     }
 }
 
@@ -2778,20 +2724,6 @@ var toggleCheckboxes = function(toggle) {
     }
 };
 
-// this used to be in prototype.js but it must have been removed somewhere between 1.4.0 to 1.5.1
-String.prototype.trim = function() {
-    var temp = this;
-    var obj = /^(\s*)([\W\w]*)(\b\s*$)/;
-    if (obj.test(temp))
-        temp = temp.replace(obj, '$2');
-    obj = /  /g;
-    while (temp.match(obj))
-        temp = temp.replace(obj, " ");
-    return temp;
-}
-
-
-
 var hoverNotification = (function() {
     var msgBox;
     var body;
@@ -3034,6 +2966,8 @@ var notificationBar = {
             this.div.onclick = function() {
                 self.hide();
             };
+        } else {
+            this.div.innerHTML = "";
         }
     },
     // cancel pending auto-hide timeout
@@ -3052,7 +2986,19 @@ var notificationBar = {
     show : function (text,options) {
         options = options || {};
         this.init();
-        this.div.innerHTML = "<div style=color:"+(options.iconColor || this.defaultIconColor)+";display:inline-block;><svg viewBox='0 0 24 24' aria-hidden='' focusable='false' class='svg-icon'><use href='"+rootURL+"/images/material-icons/"+(options.icon || this.defaultIcon)+"'></use></svg></div><span> "+text+"</span>";
+        var icon = this.div.appendChild(document.createElement("div"));
+        icon.style.display = "inline-block";
+        if (options.iconColor || this.defaultIconColor) {
+            icon.style.color = options.iconColor || this.defaultIconColor;
+        }
+        var svg = icon.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("focusable", "false");
+        svg.setAttribute("class", "svg-icon");
+        var use = svg.appendChild(document.createElementNS("http://www.w3.org/2000/svg","use"));
+        use.setAttribute("href", rootURL + "/images/material-icons/" + (options.icon || this.defaultIcon));
+        var message = this.div.appendChild(document.createElement("span"));
+        message.appendChild(document.createTextNode(text));
 
         this.div.className=options.alertClass || this.defaultAlertClass;
         this.div.classList.add("notif-alert-show");

@@ -61,7 +61,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://rlp243@bitbucket.org/gobiiproject/gobii.deploy.keycloak.git</url>
+        <url>https://bitbucket.org/gobiiproject/gobii.deploy.keycloak.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>

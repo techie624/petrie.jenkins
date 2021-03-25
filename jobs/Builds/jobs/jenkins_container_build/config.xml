@@ -1,45 +1,35 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>&lt;p&gt;&lt;b&gt;This will build a the latest jenkins container and will install:&lt;/b&gt;&lt;/p&gt;&#xd;
-&lt;p&gt;• docker-ce&lt;/p&gt;&#xd;
-&lt;p&gt;• docker-compose&lt;/p&gt;&#xd;
-&lt;p&gt;&lt;b&gt;This will also add docker group to Jenkins user as well as install:&lt;/b&gt;&lt;/p&gt;&#xd;
-&lt;p&gt;• vim&lt;/p&gt;&#xd;
-&lt;p&gt;• tree&lt;/p&gt;&#xd;
-&lt;p&gt;• htop&lt;/p&gt;&#xd;
-&lt;p&gt;• sudo&lt;/p&gt;&#xd;
+  <description>&lt;b&gt;This will build a the latest jenkins container and will install:&lt;/b&gt;&lt;br&gt;&#xd;
+• docker-ce&lt;br&gt;&#xd;
+• docker-compose&lt;br&gt;&#xd;
+&lt;b&gt;This will also add docker group to Jenkins user as well as install:&lt;/b&gt;&lt;br&gt;&#xd;
+• vim&lt;br&gt;&#xd;
+• tree&lt;br&gt;&#xd;
+• htop&lt;br&gt;&#xd;
+• sudo&lt;br&gt;&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.27.0">
-      <doNotScan>false</doNotScan>
-    </com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty>
-    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.13">
-      <gitLabConnection></gitLabConnection>
-    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
-    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
-      <autoRebuild>false</autoRebuild>
-      <rebuildDisabled>false</rebuildDisabled>
-    </com.sonyericsson.rebuild.RebuildSettings>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
           <name>DOCKER_HUB_USERNAME</name>
           <description>Dockerhub repo owner.  
 **In GOBii this is gadm01 where as the login is gadmreader.**</description>
-          <defaultValue>techie624</defaultValue>
+          <defaultValue>gadm01</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.PasswordParameterDefinition>
           <name>DOCKER_HUB_PASSWORD</name>
           <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
-          <defaultValue>{AQAAABAAAAAQHsV2yGsgmjjyZSpz0Vf0uI1qcu1Dme7gGrb8Vu+wipg=}</defaultValue>
+          <defaultValue>{AQAAABAAAAAQFp4Y8+t1srz04HDVSni4dbl3h4qiG8w7F8bhCSAeB5c=}</defaultValue>
         </hudson.model.PasswordParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DOCKER_HUB_REPO_NAME</name>
-          <description>Repo name in Dockerhub. (petrie.jenkins)</description>
-          <defaultValue>petrie.jenkins</defaultValue>
+          <description>Repo name in Dockerhub. (gobii_jenkins)</description>
+          <defaultValue>gobii_jenkins</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -50,24 +40,30 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DOCKER_HUB_LOGIN_USERNAME</name>
-          <description>This is the username used to log into Dockerhub. (techie624)
+          <description>This is the username used to log into Dockerhub. (gadmreader)
 **This is different from DOCKER_HUB_USERNAME as in GOBii gadm01 is the owner where as gadmreader is the collaborator with access to the repos.**</description>
-          <defaultValue>techie624</defaultValue>
+          <defaultValue>gadmreader</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
-    <hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@2.0.2">
-      <maxConcurrentPerNode>0</maxConcurrentPerNode>
-      <maxConcurrentTotal>0</maxConcurrentTotal>
-      <categories class="java.util.concurrent.CopyOnWriteArrayList"/>
-      <throttleEnabled>false</throttleEnabled>
-      <throttleOption>project</throttleOption>
-      <limitOneJobWithMatchingParams>false</limitOneJobWithMatchingParams>
-      <paramsToUseForLimit></paramsToUseForLimit>
-    </hudson.plugins.throttleconcurrents.ThrottleJobProperty>
   </properties>
-  <scm class="hudson.scm.NullSCM"/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.4.5">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://bitbucket.org/gobiiproject/gobii.jenkins.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/$BRANCH</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -76,7 +72,9 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>#--------------------------------------#
+      <command>#!/usr/bin/env bash
+
+#--------------------------------------#
 
 set -e # Abort script at first error
 set -u # Attempt to use undefined variable outputs error message
@@ -89,10 +87,15 @@ BUILD_TAG=&quot;$BRANCH&quot;_$(date +&quot;%Y%m%d&quot;)_build_$BUILD_NUMBER
 echo &quot;BUILD_TAG is set as: $BUILD_TAG&quot;;
 echo;
 
-#-----------------------------------------------------------------------------#
+#--------------------------------------#
+# Remove any jenkins/jenkins:latest images
+
+docker rmi -f jenkins/jenkins:latest
+
+#--------------------------------------#
 # running jenkins image build
 
-cd $JENKINS_HOME/jenkins_container_build/
+cd ~/jenkins_container_build/
 
 time docker image build -t $DOCKER_HUB_USERNAME/$DOCKER_HUB_REPO_NAME:$BUILD_TAG .
 
@@ -100,6 +103,7 @@ time docker image build -t $DOCKER_HUB_USERNAME/$DOCKER_HUB_REPO_NAME:$BUILD_TAG
 # log into dockerhub
 
 set +x # Turning down verbosity as the password is echoed to stdout
+docker logout
 docker login -u $DOCKER_HUB_LOGIN_USERNAME -p $DOCKER_HUB_PASSWORD
 set -x
 
@@ -107,6 +111,11 @@ set -x
 # push image
 
 time docker push $DOCKER_HUB_USERNAME/$DOCKER_HUB_REPO_NAME:$BUILD_TAG
+
+#--------------------------------------#
+# Remove any jenkins/jenkins:latest images
+
+docker rmi -f jenkins/jenkins:latest
 
 #--------------------------------------#
 
@@ -123,6 +132,6 @@ echo &quot;Jenkins image build Completed!&quot;
       <externalDelete></externalDelete>
       <disableDeferredWipeout>false</disableDeferredWipeout>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
-    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.5"/>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.8"/>
   </buildWrappers>
 </project>

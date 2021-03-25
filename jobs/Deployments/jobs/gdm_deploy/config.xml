@@ -1,0 +1,231 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;b&gt;This deployment project will deploy the 3 containers:&lt;/b&gt;&lt;br&gt;&#xd;
+• gobii-db-node&lt;br&gt;&#xd;
+• gobii-web-node&lt;br&gt;&#xd;
+• gobii-compute-node&lt;br&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.PasswordParameterDefinition>
+          <name>DOCKER_GOBII_ADMIN_PASSWORD</name>
+          <description>The &apos;gadm&apos; host user password.</description>
+          <defaultValue>{AQAAABAAAAAQZMPs0X1CRv3w+OWsEjGWmWp6wWKWnjvjx2GWJsZcFSY=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>DOCKER_HUB_PASSWORD</name>
+          <description>The password used by dockerhub user &apos;gadmreader&apos; which is a collaborator on the repos owned by &apos;gadm01&apos;.</description>
+          <defaultValue>{AQAAABAAAAAQH9VYL/sNT3GCkPGCvzAcPVdC3bGacCdZePwW0UVhzWk=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>TIMESCOPER_PASS</name>
+          <description>Password for internal timescope user [timescoper] set from TIMESCOPER_USER.</description>
+          <defaultValue>{AQAAABAAAAAQwm9PvhTCBybQgU3koS0eROp1cnroMYMpTYZ0kwX48yk=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TIMESCOPER_VERSION</name>
+          <description>Timescope Versioning. (2.2)</description>
+          <defaultValue>2.2</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>LDAP_URL</name>
+          <description>Connection LDAP URL. (ldap://cbsugobiixvm06.biohpc.cornell.edu/dc=gobiiproject,dc=org)</description>
+          <defaultValue>ldap://cbsugobiixvm06.biohpc.cornell.edu/dc=gobiiproject,dc=org</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>LDAP_BIND_PASSWORD</name>
+          <description>LDAP_BIND_USER Password.</description>
+          <defaultValue>{AQAAABAAAAAQN2xe2jXjS2iXujvht7jMGOwGbL68LHxLlzlnPg9htLs=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>LDAP_BACKGROUND_PASSWORD</name>
+          <description>LDAP_BACKGROUND_USER Password.</description>
+          <defaultValue>{AQAAABAAAAAQJ+KtKFpfSkGdL00UdAk0jM1YSo9ws64dgGmDnGh0OMI=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>MAIL_USERNAME</name>
+          <description>Mail user account (gobii.rhodes@gmail.com)</description>
+          <defaultValue>gobii.rhodes@gmail.com</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>MAIL_PASSWORD</name>
+          <description>MAIL_USERNAME Password.</description>
+          <defaultValue>{AQAAABAAAAAQWmO5hvLYqD2nWCJClbqEIMh8s/IPwH4xeL+jJR8Ngzk=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>DB_PASS</name>
+          <description>DB_USERNAME Password.</description>
+          <defaultValue>{AQAAABAAAAAQYOgidzgq8IRQ5yvqprbk0i0EL/WGT/7sb6UmAD91sJA=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>LL_USER1_PASS</name>
+          <description>LL_USER1 Password.</description>
+          <defaultValue>{AQAAABAAAAAQkNAm8QPvghTT9XOmFrXraf76TMHtu9LXEzCdcJKPj+s=}</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>GOBII_RELEASE_VERSION</name>
+          <description>This is the image tagged for gobii_compute_vanilla_ubuntu, gobii_db_vanilla_ubuntu, gobii_web_vanilla_ubuntu the image deployment. (release_2.2.2_3)</description>
+          <defaultValue>release_2.2.2_3</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH</name>
+          <description>This is the branch being used for the &lt;b&gt;gobii.deploy.bash&lt;/b&gt; repo. (release/2.2.2) (develop)</description>
+          <defaultValue>develop</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>NODE_DEPLOY</name>
+          <description>Select which set of nodes you would like to deploy.</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>all-nodes</string>
+              <string>db-node</string>
+              <string>web-node</string>
+              <string>compute-node</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.4.5">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://bitbucket.org/gobiiproject/gobii.deploy.bash.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/$BRANCH</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.CloneOption>
+        <shallow>true</shallow>
+        <noTags>false</noTags>
+        <reference></reference>
+        <depth>1</depth>
+        <honorRefspec>false</honorRefspec>
+      </hudson.plugins.git.extensions.impl.CloneOption>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/env bash
+
+#--------------------------------------#
+
+set -e # Abort script at first error
+set -u # Attempt to use undefined variable outputs error message
+#set -x # Verbose with commands displayed
+
+#--------------------------------------#
+
+echo;
+echo &quot;#--------------------------------------#&quot;;
+echo &quot;Nodes being deployed: $NODE_DEPLOY&quot;
+echo &quot;#--------------------------------------#&quot;;
+echo;
+
+
+# Create temperary parameters file
+echo &quot;$WORKSPACE&quot;
+cd $WORKSPACE; printenv &gt;&gt; gobii.parameters.tmp
+
+#--------------------------------------#
+
+set -x
+
+if [[ $NODE_DEPLOY = &quot;all-nodes&quot; ]]; then
+  echo &quot;Deploying all nodes for GDM...&quot;;
+  echo;
+  
+  # Run gobii-db-node deployment
+  echo &quot;Deploying gobii-db-node...&quot;;
+  echo;
+  
+  time bash container_scripts/auto_deploy/gobii_db_deploy.sh
+  echo;
+  
+  echo &quot;Moving on to gobii-web-node deployment...&quot;;
+  echo;
+  sleep 3
+  
+  # Run gobii-web-node deployment
+  time bash container_scripts/auto_deploy/gobii_web_deploy.sh
+  echo;
+  
+  echo &quot;Moving on to gobii-compute-node deployment...&quot;;
+  echo;
+  sleep 3
+  
+  # Run gobii-compute-node deployment
+  time bash container_scripts/auto_deploy/gobii_compute_deploy.sh
+  echo;
+  
+  echo &quot;All GDM nodes have been deployed.&quot;;
+  echo;
+
+else
+  echo &quot;All nodes not choosen... moving on...&quot;
+  
+fi
+
+#--------------------------------------#
+
+if $NODE_DEPLOY == &apos;db-node&apos;; then
+  echo &quot;Deploying only gobii-db-node...&quot;;
+
+  time bash $WORKSPACE/container_scripts/auto_deploy/gobii_db_deploy.sh
+  echo;
+fi
+
+#--------------------------------------#
+
+if [[ $NODE_DEPLOY == &quot;web-node&quot; ]]; then
+  echo &quot;Deploying only gobii-web-node...&quot;;
+
+  time bash container_scripts/auto_deploy/gobii_web_deploy.sh
+  echo;
+fi
+
+#--------------------------------------#
+
+if [[ $NODE_DEPLOY == &quot;compute-node&quot; ]]; then
+  echo &quot;Deploying only gobii-compute-node...&quot;;
+
+  time bash container_scripts/auto_deploy/gobii_compute_deploy.sh
+  echo;
+
+fi
+echo;
+</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.38">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
+      <disableDeferredWipeout>false</disableDeferredWipeout>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.8"/>
+  </buildWrappers>
+</project>
